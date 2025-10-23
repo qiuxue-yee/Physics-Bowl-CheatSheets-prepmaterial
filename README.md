@@ -2,20 +2,20 @@
 
 **Open-source Physics Bowl D1 + D2 study guide by 🌸🐟: 47-page cheat sheets with formulas, heuristics, and solutions for mechanics, waves/EM, optics. CC BY-NC-SA 4.0 for educational use only.**
 
-GitHub Pages: https://quxxue-yee.github.io/Physics-Bowl-CheatSheets-prematerial/  
-Direct PDF: [CheatSheets.pdf](https://quxxue-yee.github.io/Physics-Bowl-CheatSheets-prematerial/CheatSheets.pdf)
+GitHub Pages: https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/
+Direct PDF: [CheatSheets.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/CheatSheets.pdf)
 
-- [CheatSheets.pdf](https://quxxue-yee.github.io/Physics-Bowl-CheatSheets-prematerial/CheatSheets.pdf)
-- [Physics Bowl Initial Version.pdf](https://quxxue-yee.github.io/Physics-Bowl-CheatSheets-prematerial/Physics%20Bowl%20Initial%20Version.pdf)
+- [CheatSheets.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/CheatSheets.pdf)
+- [Physics Bowl Initial Version.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/Physics_Bowl_Initial_Version.pdf)
 
 ## 中文版
 **🌸🐟 著的Physics Bowl D1 + D2备考开源指南：47页备忘单，包含力学、波/EM、光学公式、启发式和解决方案。CC BY-NC-SA 4.0，仅供教育使用。**
 
-GitHub Pages: https://quxxue-yee.github.io/Physics-Bowl-CheatSheets-prematerial/  
-直接PDF: [CheatSheets.pdf](https://quxxue-yee.github.io/Physics-Bowl-CheatSheets-prematerial/CheatSheets.pdf)
+GitHub Pages: https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/
+PDF: [CheatSheets.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/CheatSheets.pdf)
 
-- [CheatSheets.pdf](https://quxxue-yee.github.io/Physics-Bowl-CheatSheets-prematerial/CheatSheets.pdf)
-- [Physics Bowl Initial Version.pdf](https://quxxue-yee.github.io/Physics-Bowl-CheatSheets-prematerial/Physics%20Bowl%20Initial%20Version.pdf)
+- [CheatSheets.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/CheatSheets.pdf)
+- [Physics Bowl Initial Version.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/Physics_Bowl_Initial_Version.pdf)
 
 ## Contents Overview
 - **Part I: Mechanics** – Kinematics (SUVAT, projectiles, circular motion), Dynamics (Newton's laws, friction), Work/Energy, Momentum/Collisions, Rotational Motion.
