@@ -1,0 +1,2227 @@
+﻿\documentclass[12pt,a4paper]{article}
+% Core packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{linktoc=all}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{microtype}
+\usepackage{needspace}
+\usepackage{xparse}
+\usepackage{xstring}
+\usepackage{caption}
+\usepackage{siunitx}
+% Optional simple diagrams
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Ray Zhou}
+\fancyhead[R]{Physics Bowl Cheat Sheets}
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{14.5pt}
+
+% Plain style (used for TOC/title pages): hide header, keep custom footer
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Release mode (public vs internal)
+\newif\ifpublicrelease
+\publicreleasefalse % default: internal use
+
+% Theme colors per Part (low-saturation, color-blind friendly)
+\colorlet{ThemeFrame}{black!15}
+\colorlet{ThemeTitle}{gray!15}
+\newcommand{\setcheattheme}[2]{\colorlet{ThemeFrame}{#1}\colorlet{ThemeTitle}{#2}}
+\newcommand{\parttheme}[1]{%% keys: mech|waves|em|optics
+  \IfStrEqCase{#1}{%
+    {mech}{\setcheattheme{teal!25}{teal!12}}%
+    {waves}{\setcheattheme{yellow!25}{yellow!12}}%
+    {em}{\setcheattheme{magenta!25}{magenta!12}}%
+    {optics}{\setcheattheme{cyan!25}{cyan!12}}%
+  }[\setcheattheme{black!15}{gray!15}]}
+
+% Box styles
+\tcbset{colback=white, boxrule=0.5pt}
+\newtcolorbox{formulabox}{enhanced, breakable, colframe=ThemeFrame,
+  colbacktitle=ThemeTitle, title=\textbf{Formulas \& Concepts},
+  fonttitle=\bfseries, left=10pt, right=10pt, top=7pt, bottom=8pt,
+  before skip=8pt, after skip=10pt}
+\newtcolorbox{heuristicsbox}{enhanced, breakable, colframe=ThemeFrame,
+  colbacktitle=ThemeTitle, title=\textbf{Heuristics \& Pitfalls},
+  fonttitle=\bfseries, left=10pt, right=10pt, top=7pt, bottom=8pt,
+  before skip=8pt, after skip=10pt}
+\newtcolorbox{solutionbox}{enhanced, breakable, colback=white,
+  colframe=black!20, colbacktitle=gray!12, title=\textbf{Solution},
+  fonttitle=\bfseries, left=10pt, right=10pt, top=7pt, bottom=9pt,
+  before skip=8pt, after skip=12pt}
+\newtcolorbox{insightbox}{enhanced, breakable, colback=blue!2,
+  colframe=blue!35, colbacktitle=blue!12, title=\textbf{Key Insight},
+  fonttitle=\bfseries, left=8pt, right=8pt, top=5pt, bottom=6pt,
+  before skip=6pt, after skip=8pt}
+
+% Front-matter disclaimer style
+\newtcolorbox{disclaimerbox}{enhanced, breakable, colback=gray!6,
+  colframe=gray!45, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  before skip=6pt, after skip=8pt, fontupper=\small}
+
+% Unit helpers
+\newcounter{unitproblem}
+\NewDocumentCommand{\Unit}{ O{} m }{%% [coverage-note] {title}
+  \section{#2}%
+  \setcounter{unitproblem}{0}%
+  {\small\textit{Coverage checklist:} #1}\par\vspace{0.4em}
+}
+\NewDocumentEnvironment{cheatproblem}{ O{} }{% optional tag
+  \refstepcounter{unitproblem}%
+  \Needspace{12\baselineskip}% keep problem+solution close
+  \par\noindent\textbf{Problem\ \#\theunitproblem.}\ %
+}{\par}
+
+% Knowledge point helpers (lightweight)
+\makeatletter
+\@ifundefined{KnowledgePoint}{%
+  \NewDocumentEnvironment{KnowledgePoint}{ m }{\subsection{#1}}{}%
+}{}
+% To avoid duplicated headings with the tcolorboxes, keep these macros empty
+\providecommand{\KPFormulas}{}
+\providecommand{\KPHeuristics}{}
+\providecommand{\KPProblems}{}
+\makeatother
+
+% Difficulty tags
+\newcommand{\DOne}{\texorpdfstring{\textsuperscript{\textbf{D1}}}{ D1}}
+\newcommand{\DTwo}{\texorpdfstring{\textsuperscript{\textbf{D2}}}{ D2}}
+
+% Practice pointer macro (page is placeholder for now)
+\newcommand{\practiceitem}[5]{%% Contest, Year, Division, Problem, Page/placeholder
+  \IfStrEq{#5}{TBD}{\item #1\,\/\,#2\,\/\,#3\,\/\,#4}{\item #1\,\/\,#2\,\/\,#3\,\/\,#4\,\/\,Page: #5}}
+
+% Title
+\title{Physics Bowl D1 + D2 Cheat Sheets}
+\author{Ray Zhou}
+\date{Version 1.7}
+
+\begin{document}
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\vspace*{1.6cm}
+{\Huge\bfseries Physics Bowl D1 + D2 Cheat Sheets\par}
+\vspace{0.6cm}
+{\Large Study Guide for Physics Bowl D1/D2\par}
+\vspace{1.2cm}
+{\Large Version 1.7\par}
+\vfill
+{\large Ray Zhou\par}
+\vspace*{0.6cm}
+\end{titlepage}
+\ifpublicrelease
+  \begin{center}
+    \vspace{0.5em}
+    {\small This work contains original problems and original explanatory text. Contest references in \textit{Practice Pointers} are metadata only (Contest/Year/Division/Problem/Page) and do not reproduce source items. Third-party contest materials remain the property of their respective owners.}
+  \end{center}
+\fi
+
+% Use plain page style for front matter (title, letter, disclaimer, TOC)
+\pagestyle{plain}
+\pagenumbering{roman}
+
+% --- Letter to the reader (before everything else) ---
+\section*{A Letter to the Reader}
+\addcontentsline{toc}{section}{A Letter to the Reader}
+\begin{quote}
+\raggedright
+Dear Reader,\par\smallskip
+
+Thank you for opening this guide. It aspires to be a quiet companion on your learning journey. Physics may seem like a towering mountain from afar, but up close, it resembles a garden.\par\medskip
+May this book encourage you to pause and admire the flowers by the roadside, to look up at the starry sky and moonlight.
+
+D1 is like each new encounter; D2 invites you to take one more step: perform a small derivation, use an approximation, or see the same landscape with greater clarity. Don't fear D2---view it as an invitation to pause, ask ``Why?'', and then lift your gaze to take in the scenery.\par\medskip
+If you get stuck, try these three things: sketch another diagram; study a simpler boundary case first; change only one variable at a time. Most confusions will eventually clear.
+
+May this guide reward your Curiosity, Creativity, and Caution. And may the world hold just a little more wonder. Wishing you smooth learning and steady progress.\par\medskip
+\begin{flushright}
+Ray Zhou
+\end{flushright}
+\end{quote}
+\clearpage
+
+
+% --- Reader guidance grouped under Reading Instructions ---
+% --- Reader guidance placed before TOC ---
+\section*{Reading Instructions}
+\addcontentsline{toc}{section}{Reading Instructions}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Purpose}: This guidebook is a study guide to Physics Bowl D1/D2. Use it to go over key concepts and trends, then practice.
+  \item \textbf{Structure}: Material is divided into parts (Mechanics, Dynamics, Waves/EM, Optics). Inside each part, boxes contain formulas, heuristics, and solutions.
+  \item \textbf{Practice pointers}: The list items are metadata only (Contest/Year/Division/Problem/Page). Problem statements are in official sources.
+  \item \textbf{Navigation}: There are hyperlinks provided throughout the PDF to facilitate faster jumps.
+\end{itemize}
+
+
+% --- Difficulty legend (D1/D2) ---
+\subsection*{Difficulty Legend}
+\addcontentsline{toc}{subsection}{Difficulty Legend}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{\DOne}: Baseline knowledge and methods; no calculus derivations; aimed for D1 questions.
+  \item \textbf{\DTwo}: More substantial topics and brief derivations (calculus/ODE/approximations); aimed for D2 or when principles are required.
+  \item \textit{D1 chapters may list some approximation results for memorization purposes alone; derivations will be at \DTwo.}
+\end{itemize}
+
+% --- Notation \& Conventions (moved before TOC) ---
+\subsection*{Notation \& Conventions}
+\addcontentsline{toc}{subsection}{Notation and Conventions}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Units}: SI as default. Gravitation on Earth: $g=9.8\,\mathrm{m/s^2}$ unless otherwise stated. Always $\mathrm{m/s^2}$ (or $\mathrm{m\,s^{-2}}$). Angles: radians except when a symbol for degrees is shown.
+  \item \textbf{Vectors}: Vectors are denoted by arrows (e.g., $\vec v$); magnitudes $v=\|\vec v\|$. Use components $v_x,v_y$ with $\hat\imath,\hat\jmath$.
+  \item \textbf{emf vs field}: Use $\mathcal E$ for emf (scalar); $\vec E$ for electric field (vector). When magnitude is intended, write $|\vec E|$.\;\textit{Example (Faraday--Lenz):} $\mathcal E=\oint_{\partial S}\vec E\cdot d\vec l$ (emf) is to be distinguished from the field $\vec E$.
+  \item \textbf{Common symbols}: Circuits use $V$ (voltage), $I$ (current), $R$ (resistance), $C$ (capacitance). Induced emf uses $\mathcal E$ (not $E$). Electric field is $\vec E$. Waves use $v$ (speed in medium), $f$ (frequency), $\lambda$ (wavelength).
+  \item \textbf{Overloaded symbols}: $P$ for pressure (fluids) or power (circuits) depending on context. Thermodynamics: $\Delta U=Q+W$ (convention: $W>0$ means work done on the system).
+  \item \textbf{Sign conventions}: Choose axes first and maintain consistency. For Doppler in a stationary medium, prefer the rule "approach increases frequency; recession decreases" and employ a sign diagram; see the Waves unit for the formula being given in detail. For KVL, direction of tracing loop; voltage rises are positive.
+\end{itemize}
+
+% --- Disclaimer (moved under Reading Instructions as a subsection) ---
+\subsection*{Disclaimer}
+\addcontentsline{toc}{subsection}{Disclaimer}
+\begin{disclaimerbox}
+This \textit{"Physics Bowl D1 + D2 Cheat Sheets"} (Version 1.7 by Ray Zhou) is an independent, non-official study guide created for educational purposes only. It summarizes key concepts, formulas, heuristics, and original solutions based on standard physics principles and publicly available Physics Bowl metadata (e.g., Contest/Year/Division/Problem/Page).\par\medskip
+Full problem statements are sourced from official AAPT materials---please visit the American Association of Physics Teachers (AAPT) website at \href{https://www.aapt.org/programs/physicsbowl}{aapt.org/programs/physicsbowl} for complete exams and answers.\par\medskip
+This guide is provided "as is" without warranties of accuracy or completeness. It is not endorsed by AAPT and should not be used as a substitute for official resources. Users should verify information independently. Distributed under CC-BY-SA 4.0 license for non-commercial, educational sharing.\par\medskip
+For feedback or questions, contact \href{mailto:zhouxinrui2025@163.com}{zhouxinrui2025@163.com}, or visit the project on GitHub: \url{https://github.com/REPLACE_WITH_LINK}.
+\end{disclaimerbox}
+
+% Ensure the Table of Contents starts on a fresh page
+\clearpage
+
+% --- Table of Contents (header suppressed during TOC pages) ---
+\begingroup
+  \pagestyle{plain}% suppress fancy header/footer on TOC pages
+  \setcounter{tocdepth}{2}% up to subsections in TOC
+  \tableofcontents
+\endgroup
+\clearpage
+\pagenumbering{arabic}% main matter
+\pagestyle{fancy}
+
+% ===================== Part I: Mechanics =====================
+\parttheme{mech}
+\section*{Part I: Mechanics}
+\addcontentsline{toc}{section}{Part I: Mechanics}
+
+% -------- Unit 1: Kinematics --------
+\Unit[Vectors vs scalars; constant-acceleration (SUVAT); projectile motion (same-level range/time/height); uniform circular motion ($a_c=v^2/r$, $T=2\pi r/v$); relative motion; calculus forms $v=dx/dt$, $a=dv/dt$ {\DTwo}; areas under $v$--$t$ and $a$--$t$ graphs {\DTwo}]{Unit 1: Kinematics}
+
+\begin{KnowledgePoint}{Vectors \& Components \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Vectors have both magnitude and direction. The decomposition of a vector into orthogonal components translates geometric relations into algebraic relations such that calculations are simple component arithmetic.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\vec v=(v_x,v_y)\ (\text{2D}),\quad v=\|\vec v\|=\sqrt{v_x^2+v_y^2},\\
+    &\text{Unit vectors: }\hat\imath=(1,0),\ \hat\jmath=(0,1),\ \vec v=v_x\hat\imath+v_y\hat\jmath.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $v_x,v_y$ scalar components; $v$ speed (magnitude of velocity); $\hat\imath,\hat\jmath$ orthonormal basis.
+
+
+  \textbf{Prerequisites \& scope:} Axes must be orthogonal for Pythagorean magnitude; extend to 3D with $\hat k$ and $v=\sqrt{v_x^2+v_y^2+v_z^2}$.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Align axes with directions of steepest slopes and launch angles to reduce components.
+    \item Separate vectors before writing equations (Newton's laws, kinematics) to prevent late trigonometry.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Mixing magnitude and component equations. Solution: write separate equations for $x$ and $y$ and add if applicable.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Resolve velocity vector $\vec v=(30\,\text{m/s},40\,\text{m/s})$ into magnitude and direction.
+\begin{solutionbox}
+  $v=\sqrt{30^2+40^2}=50\,\text{m/s}$. Direction $\theta=\arctan(40/30)\approx53.1^\circ$ above the horizontal.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A force of $100\,\text{N}$ acts at $30^\circ$ to the horizontal. Find its horizontal and vertical components.
+\begin{solutionbox}
+  $F_x=100\cos30^\circ=50\sqrt3\,\text{N}$, $F_y=100\sin30^\circ=50\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Constant Acceleration (SUVAT) \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Position and velocity are quadratic/linear in time with constant acceleration, providing closed-form relations (SUVAT equations).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &x=x_0+v_0 t+\tfrac12 a t^2,\\
+    &v=v_0+at,\\
+    &v^2=v_0^2+2a\,(x-x_0).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $x$ position; $v$ velocity; $a$ constant acceleration; subscript $0$ initial value; $t$ time; $\Delta x=x-x_0$.
+
+
+  \textbf{Prerequisites \& scope:} Acceleration must be constant over the interval; otherwise use calculus forms.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Choose the equation that excludes the unknown you lack (e.g., use $v^2$-form when time is absent).
+    \item Work symbolically until the end to avoid compounding rounding errors.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Applying constant-$a$ formulas when $a=a(t)$ or $a=a(v)$. Fix: switch to calculus forms or energy methods.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  The velocity of a cart is given by the piecewise function $v(t)=\begin{cases} a t, & 0\le t\le T/2,\\ aT/2, & T/2< t\le T,\end{cases}$ with constant $a>0$. Find the total displacement in time $T$.
+  \begin{solutionbox}
+  Area under $v$--$t$: first triangle area $\tfrac12(a\,T/2)(T/2)=\tfrac{aT^2}{8}$; second rectangle area $(aT/2)(T/2)=\tfrac{aT^2}{4}$. Total $\Delta x=\tfrac{3aT^2}{8}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\begin{cheatproblem}
+  A car accelerates uniformly from rest to $20\,\text{m/s}$ in $4\,\text{s}$. Find the acceleration and distance traveled.
+\begin{solutionbox}
+  $a=\dfrac{v-v_0}{t}=\dfrac{20-0}{4}=5\,\text{m/s}^2$. Distance $\Delta x=v_0 t+\tfrac12 a t^2=0+\tfrac12\cdot5\cdot16=40\,\text{m}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Projectile (Equal Heights) \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Horizontal and vertical motions independent in uniform gravity. Decomposition into components provides closed-form solutions for flight time, range, and peak height at the same launch/landing height.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &T=\frac{2v_0\sin\theta}{g},\\
+    &R=\frac{v_0^2\sin2\theta}{g},\\
+    &H=\frac{v_0^2\sin^2\theta}{2g}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $v_0$ launch speed; $\theta$ launch angle; $g$ gravitational acceleration; $T$ flight time; $R$ range; $H$ apex height.
+
+  \textbf{Prerequisites \& scope:} Launch/landing at equal heights; neglect air resistance; for unequal heights, solve quadratic in $t$.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  % (title removed per style unification)
+  \begin{itemize}[leftmargin=*]
+    \item Separate $x$ and $y$ equations; eliminate $t$ or use symmetry about the apex for time splits.
+    \item For maximum range at equal heights, use $\theta=45^\circ$.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using $R$ formula when launch and landing heights differ. Fix: solve general quadratic and then compute $x(T)$.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A projectile is launched at speed $v_0$ and angle $\theta$ from flat ground and lands at the same height. Express the time of flight $T$, the maximum height $H$, and the range $R$ in terms of $v_0,\theta,g$.
+  \begin{solutionbox}
+  $T=\dfrac{2v_0\sin\theta}{g}$, $H=\dfrac{v_0^2\sin^2\theta}{2g}$, $R=\dfrac{v_0^2\sin2\theta}{g}$, by separating vertical and horizontal components and using constant-$g$ kinematics.
+  \end{solutionbox}
+  \end{cheatproblem}
+
+  \begin{cheatproblem}
+  Two projectiles launched with the same $v_0$ at angles $\theta$ and $90^\circ-\theta$ have equal ranges. What is the ratio of their maximum heights $H_\theta/H_{90^\circ-\theta}$?
+  \begin{solutionbox}
+  $H=\dfrac{v_0^2\sin^2\theta}{2g}$. Hence $\dfrac{H_\theta}{H_{90^\circ-\theta}}=\dfrac{\sin^2\theta}{\cos^2\theta}=\tan^2\theta$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Uniform Circular Motion \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept description:} In uniform speed circular motion, the acceleration is centripetal (centerwards) with magnitude $v^2/r$; period and speed are related by circumference.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &a_c=\frac{v^2}{r}=\frac{4\pi^2 r}{T^2},\\
+    &T=\frac{2\pi r}{v}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $r$ radius; $v$ speed; $T$ period; $a_c$ centripetal acceleration.
+
+  \textbf{Prerequisites \& scope:} Speed constant; acceleration direction changes; for non-uniform circular motion add tangential component.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  % (title removed per style unification)
+  \begin{itemize}[leftmargin=*]
+    \item Draw radial/tangential components explicitly; set $a_t=0$ for UCM.
+    \item Vertical circle normals: at the top, $T+mg=mv^2/r$; at the bottom, $T-mg=mv^2/r$.
+    \item Minimum speed at the top for a taut string (no slack): $v_{\text{top}}\ge \sqrt{gr}$ (else $T=0$ at the top).
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Treating centripetal force as an extra force. Fix: centripetal is the net radial component of existing forces.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A bead moves in a circle of radius $r$ with period $T$. Compute its speed and centripetal acceleration.
+  \begin{solutionbox}
+  $v=\dfrac{2\pi r}{T}$ and $a_c=\dfrac{v^2}{r}=\dfrac{4\pi^2 r}{T^2}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Relative Motion \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Relative velocity cancels observer motion: the velocity of $A$ relative to $B$ is $\vec v_A-\vec v_B$.
+
+  \textbf{Core formula:}
+  \[
+  \vec v_{A/B}=\vec v_A-\vec v_B.
+  \]
+
+  \textbf{Variable definitions:} $\vec v_{A/B}$ velocity of $A$ relative to $B$; $\vec v_A,\vec v_B$ velocities in an inertial frame.
+
+  \textbf{Prerequisites \& scope:} Within Galilean (non-relativistic) regime; in 2D/3D apply component-wise.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Move to the target's rest frame to align directions and simplify timing.
+    \item For winds/rivers, remove drift by aiming to oppose the current component.
+    \item Boundary condition: if $v\le u$, landing directly across is not possible; you will be swept downstream and must land downstream.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Superposing speeds scalarly when directions are different. Remedy: take difference of vectors component-wise.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A river of width $W$ flows east at speed $u$. A boat of speed $v$ relative to water aims at angle $\alpha$ north of west to land directly across. Find $\alpha$ and the crossing time, assuming $v>u$.
+  \begin{solutionbox}
+  Require zero east drift: west component equals current, so $v\cos\alpha=u$ and $\alpha=\arccos(u/v)$. North component is $v\sin\alpha=\sqrt{v^2-u^2}$, so time $t=\dfrac{W}{\sqrt{v^2-u^2}}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Calculus Forms \& Graph Areas \DTwo}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} With acceleration varying, kinematics is found by integrating velocity and acceleration; graph areas are summaries of change.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &v=\frac{dx}{dt},\quad a=\frac{dv}{dt}=\frac{d^2x}{dt^2}.\\
+    &v(t)=v(t_0)+\int_{t_0}^t a(\tau)\,d\tau,\quad x(t)=x(t_0)+\int_{t_0}^t v(\tau)\,d\tau.\\
+    &\Delta x=\int v\,dt\ (\text{area under }v\text{--}t),\quad \Delta v=\int a\,dt\ (\text{area under }a\text{--}t).\\
+    &\text{Chain rule: } a=\frac{dv}{dt}=\frac{dv}{dx}\,v\ \Rightarrow\ v\,dv=a(x)\,dx.\\
+    &\text{If }a=\text{const: } v^2=v_0^2+2a\,(x-x_0).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $x,v,a$ position/velocity/acceleration; $t$ time; integrals are definite over the time interval.
+
+  \textbf{Prerequisites \& scope:} Differentiability over interval; interpret signed areas for direction-sensitive quantities.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Read slopes of $x$--$t$ as $v$ and slopes of $v$--$t$ as $a$; use areas for accumulated change.
+    \item When $a=a(v)$ or $a=a(x)$, separate variables via $v\,dv=a\,dx$ to avoid time explicitly.
+    \item If motion crosses turning points where $v=0$, integrate piecewise and track signs to avoid taking an incorrect branch.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Confusing displacement with distance on $v$--$t$ when $v$ changes sign. Fix: integrate absolute value for distance.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  An object has acceleration $a(t)=a_0+bt$ with constants $a_0,b$. If $x(0)=0$ and $v(0)=v_0$, find $x(t)$.
+  \begin{solutionbox}
+  Integrate: $v(t)=v_0+\int_0^t(a_0+b\tau)\,d\tau=v_0+a_0 t+\tfrac12 b t^2$. Then $x(t)=\int_0^t v(\tau)\,d\tau=v_0 t+\tfrac12 a_0 t^2+\tfrac16 b t^3$.
+  \end{solutionbox}
+  \end{cheatproblem}
+
+  \begin{cheatproblem}
+  A particle obeys $\dfrac{dx}{dt}=k\sqrt{x}$ with $k>0$ and $x(0)=0$. Find $x(t)$.
+  \begin{solutionbox}
+  Separate: $\dfrac{dx}{\sqrt{x}}=k\,dt\Rightarrow 2\sqrt{x}=kt+C$. With $x(0)=0$, $C=0$. Hence $x(t)=\dfrac{k^2 t^2}{4}$ and $v(t)=\dfrac{k^2 t}{2}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+% (Removed outdated Practice Pointers for Part I Unit 1)
+
+% -------- Placeholders for remaining Mechanics Units (skeletons only) --------
+\Unit[Newton's laws; common forces (weight, spring, friction, normal); free-body diagrams; non-uniform circular motion; variable force and impulse]{Unit 2: Newtonian Dynamics}
+
+\begin{KnowledgePoint}{Newton's Laws and Free-Body Diagrams \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \[
+  \left\{\begin{aligned}
+    &\sum \vec F=m\vec a\ \text{; action--reaction pairs on separate bodies}.
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Split each body; sketch clean FBDs and project along convenient directions.
+    \item Don't place action--reaction pairs on the same drawing; they're on separate bodies and cancel only at the system level.
+    \item Use radial/tangential axes for curves or inclined axes on ramps; use friction direction as unknown and solve for its sign.
+    \item For connected bodies (strings/pulleys), apply kinematic constraints (e.g., equal string lengths imply proportional accelerations) and apply one tension per ideal massless string.
+    \item In non-inertial frames (elevators, speeding cars), add $-m\,\vec a_{\text{frame}}$ only if you change frames explicitly.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $5\,\text{kg}$ block rests on a horizontal surface. A horizontal force $F=20\,\text{N}$ is applied. Find its acceleration if friction is negligible.
+\begin{solutionbox}
+  $\sum F=ma\Rightarrow 20=5a\Rightarrow a=4\,\text{m/s}^2$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A $2\,\text{kg}$ block hangs from a string. Find the tension in the string when the block is at rest.
+\begin{solutionbox}
+  $\sum F_y=0\Rightarrow T-mg=0\Rightarrow T=2\cdot9.8=19.6\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Friction and Springs \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \[
+  \left\{\begin{aligned}
+    &\text{Friction: } f_s\le \mu_s N\ \text{(variable up to max)},\quad f_k=\mu_k N,\\
+    &\text{Spring force: } F=-kx\ \text{(Hooke) within elastic limit}.
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+
+  \KPHeuristics
+\begin{heuristicsbox}
+\begin{itemize}[leftmargin=*]
+  \item Assume the direction of static friction to be unknown; solve and interpret its sign from the solution.
+  \item Apply $f_s\le \mu_s N$; on the verge of sliding, take $f_{s,\max}=\mu_s N$. For steady sliding, use $f_k=\mu_k N$.
+  \item For springs in series, use $k_{\text{eq}}$: in series $\tfrac{1}{k_{\text{eq}}}=\sum \tfrac{1}{k_i}$, in parallel $k_{\text{eq}}=\sum k_i$.
+\end{itemize}
+\end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $3\,\text{kg}$ block on a horizontal surface has $\mu_k=0.2$. Find the kinetic friction force when the block slides.
+\begin{solutionbox}
+  $N=mg=3\cdot9.8=29.4\,\text{N}$. $f_k=\mu_k N=0.2\cdot29.4=5.88\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A spring with constant $k=200\,\text{N/m}$ is compressed by $x=0.1\,\text{m}$. Find the restoring force.
+\begin{solutionbox}
+  $F=-kx=-200\cdot0.1=-20\,\text{N}$ (opposite to compression).
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Non-uniform Circular Motion \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \[
+  \left\{\begin{aligned}
+    &\text{Radial: } \sum F_r=m v^2/r\ ;\ \text{tangential: } \sum F_t=m a_t.
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  Split radial and tangential components explicitly; centripetal is net radial.
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A car of mass $m$ rounds a curve of radius $r=50\,\text{m}$ at $v=20\,\text{m/s}$. Find the required centripetal force.
+\begin{solutionbox}
+  $F_c=\dfrac{mv^2}{r}=m\dfrac{400}{50}=8m\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A ball on a string swings in a vertical circle of radius $r$. At the top, the tension is $T$ and speed is $v$. Write the centripetal force equation.
+\begin{solutionbox}
+  At the top, $T+mg=\dfrac{mv^2}{r}$ (both point inward).
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Impulse and Variable Forces \DTwo}
+  \KPFormulas
+\begin{formulabox}
+  \[
+  \left\{\begin{aligned}
+    &\text{Impulse: } \vec J=\int \vec F\,dt=\Delta \vec p.
+  \end{aligned}\right.
+  \]
+\end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  Extrapolate force-time profiles for varying forces; examine external impulses for system imparted momentum changes.
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A constant force $F=10\,\text{N}$ acts on a mass for $\Delta t=3\,\text{s}$. Find the impulse delivered.
+\begin{solutionbox}
+  $J=F\Delta t=10\cdot3=30\,\text{N}\cdot\text{s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A particle's momentum changes from $\vec p_i=(5,0)\,\text{kg·m/s}$ to $\vec p_f=(5,10)\,\text{kg·m/s}$ in $2\,\text{s}$. Find the average force.
+\begin{solutionbox}
+  $\vec J=\Delta\vec p=(0,10)\,\text{kg·m/s}$. $\vec F_{\text{avg}}=\dfrac{\vec J}{\Delta t}=(0,5)\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\Unit[Work $W=\int \vec F\cdot d\vec r$; Work--Energy theorem; potential energies (gravity, spring); mechanical energy conservation; power (instantaneous vs average); conservative fields ($F_x=-\,dU/dx$)]{Unit 3: Work, Energy, Power}
+
+\begin{KnowledgePoint}{Work and the Work--Energy Theorem \DOne}
+  \KPFormulas
+\begin{formulabox}
+  \[
+  \left\{\begin{aligned}
+    &\text{For constant }F\text{ and displacement }d\text{ at angle }\theta:\ \ W=Fd\cos\theta,\\
+    &\text{Work--Energy: }\Delta K=W_{\text{net}},\\
+    &\text{Power: instantaneous }P=\vec F\cdot\vec v,\quad \text{average over }\Delta t:\ \bar P=\dfrac{\Delta W}{\Delta t}.
+  \end{aligned}\right.
+  \]
+\end{formulabox}
+
+  \KPHeuristics
+\begin{heuristicsbox}
+\begin{itemize}[leftmargin=*]
+  \item Choose the system to eliminate internal forces; only external work should be considered.
+  \item Include nonconservative work explicitly (friction, thrust). For rolling without slipping, static friction often does no work on the rolling body.
+  \item Check for indications by comparing the endpoints: $K_i+U_i$ vs. $K_f+U_f$.
+\end{itemize}
+\end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $10\,\text{kg}$ block is pushed $5\,\text{m}$ horizontally by a constant force $F=30\,\text{N}$. Find the work done.
+\begin{solutionbox}
+  $W=Fd\cos\theta=30\cdot5\cdot\cos0=150\,\text{J}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A net force of $50\,\text{N}$ accelerates a $5\,\text{kg}$ mass from rest over $10\,\text{m}$. Find the final kinetic energy and speed.
+\begin{solutionbox}
+  $W_{\text{net}}=50\cdot10=500\,\text{J}$. By work-energy theorem, $\Delta K=W_{\text{net}}=500\,\text{J}$. Then $\tfrac12mv^2=500\Rightarrow v=\sqrt{200}=10\sqrt2\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Potential Energy and Conservation \DOne}
+  \KPFormulas
+\begin{formulabox}
+  \[
+  \left\{\begin{aligned}
+    &U_g=mgh\ \text{(near-Earth)},\quad U_s=\tfrac12 kx^2,\\
+    &\text{Conservation (when nonconservative work zero): }K_i+U_i=K_f+U_f.
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  Use reference $U=0$ conveniently; only differences matter.
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $2\,\text{kg}$ block falls $h=5\,\text{m}$ from rest. Find its speed at the bottom using energy conservation.
+\begin{solutionbox}
+  $K_i+U_i=K_f+U_f\Rightarrow0+mgh=\tfrac12mv^2+0\Rightarrow v=\sqrt{2gh}=\sqrt{2\cdot9.8\cdot5}=\sqrt{98}\approx9.9\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A spring ($k=100\,\text{N/m}$) is compressed by $x=0.2\,\text{m}$. Compute the stored elastic potential energy.
+\begin{solutionbox}
+  $U_s=\tfrac12 kx^2=\tfrac12\cdot100\cdot0.04=2\,\text{J}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Conservative Fields \DTwo}
+  \KPFormulas
+\begin{formulabox}
+  \[
+  F_x=-\\,\\dfrac{dU}{dx}
+  \]
+  Path independence in conservative fields; use energy methods when applicable.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  Use energy methods if forces are conservative; verify curl-free areas.
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A mass moves in a potential $U(x)=\tfrac12 kx^2$. Find the force acting on it.
+\begin{solutionbox}
+  $\vec F=-\dfrac{dU}{dx}\,\hat\imath=-kx\,\hat\imath$ (Hooke's law in 1D).
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  Show that gravitational potential $U=-\dfrac{GMm}{r}$ gives force $F=-\dfrac{GMm}{r^2}$ (radial).
+\begin{solutionbox}
+  First compute $\dfrac{dU}{dr}=\dfrac{d}{dr}\Big(-GMm\,r^{-1}\Big)=+\dfrac{GMm}{r^2}$. Therefore the radial force is $\vec F=-\dfrac{dU}{dr}\,\hat{\mathbf r}=-\dfrac{GMm}{r^2}\,\hat{\mathbf r}$ (attractive, inward).
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\Unit[Momentum $\vec p=m\vec v$; impulse; momentum conservation; elastic/inelastic/fully inelastic collisions; center of mass; rocket equation]{Unit 4: Momentum \& Collisions}
+
+\begin{KnowledgePoint}{Momentum and Impulse \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Momentum measures motion; impulse is the total effect of force over time and is equal to the change in momentum.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\vec p=m\,\vec v,\\
+    &\vec J=\int_{t_1}^{t_2} \vec F\,dt=\Delta\vec p,\\
+    &\text{System: }\ \vec P=\sum_i m_i\vec v_i,\quad \Delta\vec P=\vec J_{\text{ext}}.\ (\text{If }\vec J_{\text{ext}}=0,\ \vec P\ \text{conserved})
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\vec p$ momentum; $\vec P$ total momentum; $\vec J$ impulse; $\vec F$ external force; $m$ mass; $\vec v$ velocity.
+
+  
+
+  \textbf{Prerequisites \& scope:} Valid for Newtonian mechanics; for varying mass systems, take care with momentum flux (see rockets).
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Identify a closed system (no external impulse) to use momentum conservation immediately.
+    \item For short-duration large forces (collisions), use impulse–momentum rather than force–time details.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Treating internal forces as external. Fix: define the system to include interacting bodies so internal forces cancel.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $4\,\text{kg}$ object moves with velocity $\vec v=(6,8)\,\text{m/s}$. Find its momentum vector and magnitude.
+\begin{solutionbox}
+  $\vec p=m\vec v=4(6,8)=(24,32)\,\text{kg·m/s}$, so $|\vec p|=\sqrt{24^2+32^2}=40\,\text{kg·m/s}$ and the direction matches $\vec v$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A force $F(t)=10t\,\text{N}$ acts on a particle from $t=0$ to $t=2\,\text{s}$. Find the impulse delivered.
+\begin{solutionbox}
+  $J=\int_0^2 10t\,dt=\left[5t^2\right]_0^2=20\,\text{N}\cdot\text{s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Elastic and Inelastic Collisions \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Collisions conserve total momentum; elastic ones also conserve kinetic energy. The center-of-mass (COM) frame makes algebra simpler.
+
+  \textbf{Core formulas (1D):}
+  \[
+  \left\{\begin{aligned}
+    &\text{Momentum: } m_1u_1+m_2u_2=m_1v_1+m_2v_2,\\
+    &\text{Elastic energy: } \tfrac12 m_1u_1^2+\tfrac12 m_2u_2^2=\tfrac12 m_1v_1^2+\tfrac12 m_2v_2^2,\\
+    &\text{Result (elastic): } v_1=\frac{(m_1-m_2)u_1+2m_2u_2}{m_1+m_2},\ \ v_2=\frac{2m_1u_1+(m_2-m_1)u_2}{m_1+m_2},\\
+    &\text{Completely inelastic: stick }(v_1=v_2=v)=\frac{m_1u_1+m_2u_2}{m_1+m_2}.\\
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $u_i$ initial, $v_i$ final velocities; $m_i$ masses; all along one line (1D).
+
+  
+
+  \textbf{Prerequisites \& scope:} For oblique/2D, conserve vector momentum and use geometry; kinetic energy changes via deformation/heat in inelastic cases.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Switch to the COM frame where total momentum is zero; velocities reverse in elastic 1D collisions.
+    \item For 2D glancing collisions, conserve components along orthogonal axes; use restitution or geometry for angles.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Enforcing kinetic energy conservation in inelastic impact. Fix: only momentum is guaranteed; account for energy loss.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Two carts collide elastically in 1D. Mass $m_1=2\,\text{kg}$ at $u_1=5\,\text{m/s}$ hits mass $m_2=3\,\text{kg}$ at rest. Find $v_1$ and $v_2$.
+\begin{solutionbox}
+  $v_1=\dfrac{(2-3)\cdot5+2\cdot3\cdot0}{5}=\dfrac{-5}{5}=-1\,\text{m/s}$. $v_2=\dfrac{2\cdot2\cdot5+(3-2)\cdot0}{5}=\dfrac{20}{5}=4\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  In a perfectly inelastic collision, $m_1=4\,\text{kg}$ at $u_1=6\,\text{m/s}$ collides with $m_2=2\,\text{kg}$ at rest. Find the final velocity.
+\begin{solutionbox}
+  $v=\dfrac{m_1u_1+m_2u_2}{m_1+m_2}=\dfrac{4\cdot6+0}{6}=4\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Center of Mass and System Dynamics \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Conceptual explanation:} The center of mass (COM) is an average of the mass distribution of a system; external forces accelerate the COM as if all the mass were centered at the COM.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\vec R=\frac{\sum m_i\vec r_i}{\sum m_i},\quad \vec V=\dot{\vec R}=\frac{\sum m_i\vec v_i}{M},\\
+    &M\,\ddot{\vec R}=\sum \vec F_{\text{ext}}.\ (\text{Internal forces cancel in pairs})
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\vec r_i,\vec v_i$ positions/velocities; $M=\sum m_i$ total mass; $\vec R$ COM position.
+
+  
+
+  \textbf{Prerequisites \& scope:} Requires Newton's third law in internal pairs; for variable mass, include momentum flux.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Compute COM motion to track overall translation, then analyze internal relative motion separately.
+    \item In explosions/fragmentation, the COM continues with pre-event velocity if external forces are negligible.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Treating internal impulses as changing COM momentum. Fix: only external impulse changes total momentum.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Two masses $m_1=3\,\text{kg}$ at $x_1=0$ and $m_2=2\,\text{kg}$ at $x_2=5\,\text{m}$ lie on a line. Find the COM position.
+\begin{solutionbox}
+  $X=\dfrac{m_1x_1+m_2x_2}{m_1+m_2}=\dfrac{0+10}{5}=2\,\text{m}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A system has two equal masses $m$ moving at velocities $\vec v_1=(2,0)$ and $\vec v_2=(-1,3)$ m/s. Find the velocity of the COM.
+\begin{solutionbox}
+  $\vec V=\dfrac{m\vec v_1+m\vec v_2}{2m}=\dfrac{(1,3)}{2}=(0.5,1.5)\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Variable Mass and Rockets \DTwo}
+  \KPFormulas
+\begin{formulabox}
+  \textbf{Concept explanation:} For mass-exchange systems (rockets), momentum conservation for rocket+exhaust yields logarithmic change in velocity.
+  
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{Continuous: } m\,d\vec v=-\,\vec v_e\,dm,\\
+    &\text{with } dm<0\ (\text{mass loss}),\ \vec v_e\ \text{ exhaust speed relative to rocket},\\
+    &\text{Ideal Tsiolkovsky (1D): } \Delta v=v_e\ln\frac{m_i}{m_f}.\\
+  \end{aligned}\right.
+  \]
+  
+  \textbf{Variable definitions:} $\vec v_e$ exhaust velocity relative to rocket (magnitude $v_e$); $m_i,m_f$ initial/final mass; $m$ instantaneous mass.
+  
+  
+  
+  \textbf{Prerequisites \& scope:} Neglect external forces (or include gravity drag separately); $v_e$ constant; exhaust ejected at steady relative speed.
+\end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Include gravity losses by subtracting $g\,\Delta t$ from $\Delta v$ when appropriate (vertical ascent approximation).
+    \item Use staging by summing $v_e\ln(m_i/m_f)$ per stage.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using exhaust speed relative to Earth instead of rocket. Fix: $v_e$ is defined relative to the rocket.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A rocket has initial mass $m_i=1000\,\text{kg}$, final mass $m_f=400\,\text{kg}$, and exhaust speed $v_e=2000\,\text{m/s}$. Find $\Delta v$ in space (ignoring gravity).
+\begin{solutionbox}
+  $\Delta v=v_e\ln\dfrac{m_i}{m_f}=2000\ln\dfrac{1000}{400}=2000\ln2.5\approx1833\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A rocket ejects mass at rate $\dot m=10\,\text{kg/s}$ with effective exhaust speed $v_e=1500\,\text{m/s}$. Find the instantaneous thrust force.
+\begin{solutionbox}
+  Thrust $=\dot m\,v_e=10\cdot1500=15000\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\Unit[Angular kinematics; torque ($|\boldsymbol{\tau}|=rF\sin\theta$); moment of inertia; $\tau_{\text{net}}=I\alpha$; rotational kinetic energy; angular momentum and conservation; rolling without slipping; inertia integrals]{Unit 5: Rotational Motion}
+
+\begin{KnowledgePoint}{Angular Kinematics and Dynamics \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept description:} Rotational motion is analog to linear motion: torque is the rotational analog to force, and moment of inertia of mass.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\omega=\frac{d\theta}{dt},\quad \alpha=\frac{d\omega}{dt},\ \text{with constant-}\alpha\ \text{kinematics}.\\
+&\boldsymbol{\tau}=\vec r\times\vec F,\quad |\boldsymbol{\tau}|=r_\perp F=rF\sin\theta,\quad \sum \tau=I\alpha,\\
+    &K_r=\tfrac12 I\omega^2,\quad P=\tau\,\omega.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\theta,\omega,\alpha$ angular position/velocity/acceleration; $\tau$ torque; $I$ moment of inertia.
+
+  
+  
+  \textbf{Prerequisites \& scope:} Rigid body about a fixed axis; $I$ constant in time.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Use the perpendicular lever arm $r_\perp$ for torques; sum about convenient pivots to kill unknown forces.
+    \item Prefer energy when forces are complicated but conservative; otherwise use $\sum \tau=I\alpha$ about the COM or a fixed axis.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Mixing signs of torques from different reference senses. Fix: choose a positive rotation sense and stick with it.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A disk of radius $r=0.5\,\text{m}$ and moment of inertia $I=2\,\text{kg·m}^2$ experiences a net torque $\tau=10\,\text{N·m}$. Find its angular acceleration.
+\begin{solutionbox}
+  $\alpha=\dfrac{\tau}{I}=\dfrac{10}{2}=5\,\text{rad/s}^2$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A flywheel rotating at $\omega=20\,\text{rad/s}$ has $I=5\,\text{kg·m}^2$. Find its rotational kinetic energy.
+\begin{solutionbox}
+  $K_r=\tfrac12 I\omega^2=\tfrac12\cdot5\cdot400=1000\,\text{J}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Angular Momentum and Conservation \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Explanation of concept:} Angular momentum is conserved when no external torque is applied.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\vec L=I\,\vec\omega\ (\text{about fixed axis}),\ \ \sum \tau_{\text{ext}}=\frac{d\vec L}{dt}.\\
+    &\text{If }\sum \tau_{\text{ext}}=0,\ \vec L\ \text{conserved}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\vec L$ angular momentum; $I$ moment of inertia.
+
+  \textbf{Prerequisites \& scope:} Axis and point of reference must be specified; rolling applies at instantaneous point of contact.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item For isolated systems with negligible external torques, apply $\vec L$ conservation about a fixed axis.
+    \item Choose the reference point wisely to eliminate unknown torques.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Forgetting that static friction can act either way in rolling. Fix: determine its direction from torque/acceleration requirements.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A disk of radius $R$ rolls without slipping at $v_{cm}=5\,\text{m/s}$. Find $\omega$.
+\begin{solutionbox}
+  $v_{cm}=\omega R\Rightarrow\omega=\dfrac{v_{cm}}{R}=\dfrac{5}{R}\,\text{rad/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A solid sphere ($I=\tfrac25 mR^2$) rolls at $\omega=10\,\text{rad/s}$ and $v_{cm}=2\,\text{m/s}$. Find its total kinetic energy if $m=3\,\text{kg}$.
+\begin{solutionbox}
+  Using no-slip $v_{cm}=\omega R$, we have $I\omega^2=\tfrac25 mR^2\omega^2=\tfrac25 m v_{cm}^2$. Thus
+  $K=\tfrac12 m v_{cm}^2+\tfrac12 I\omega^2=\Big(\tfrac12+\tfrac15\Big)m v_{cm}^2=\tfrac{7}{10}\,m v_{cm}^2=\tfrac{7}{10}\cdot3\cdot4=8.4\,\text{J}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Moments of Inertia \DTwo}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept description:} Moment of inertia is a measure of resistance to angular acceleration; composition rules and standard shapes allow for rapid calculation.
+  
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &I=\int r^2\,dm\ (\text{axis distance }r),\\
+    &\text{Parallel axis: } I=I_{\text{cm}}+Md^2,\\
+    &\text{Perpendicular axis (planar lamina): } I_z=I_x+I_y.
+  \end{aligned}\right.
+  \]
+  
+  \textbf{Variable definitions:} $I_{\text{cm}}$ about COM axis; $d$ offset; $M$ total mass.
+  
+  
+  \textbf{Prerequisites \& scope:} Perpendicular-axis requires lamina in the plane; parallel-axis requires fixed, parallel axes.
+  \end{formulabox}
+  
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Decompose into standard shapes and sum moments about the same axis.
+    \item Use symmetry to eliminate products of inertia; choose axes through COM when possible.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Applying perpendicular-axis to 3D bodies. Fix: valid only for planar laminae.
+  \end{itemize}
+  \end{heuristicsbox}
+  
+  \KPProblems
+\begin{cheatproblem}
+  A thin rod of mass $m$ and length $L$ rotates about one end. Find its moment of inertia.
+\begin{solutionbox}
+  $I=\int_0^L x^2\,dm=\int_0^L x^2\dfrac{m}{L}\,dx=\dfrac{m}{L}\dfrac{L^3}{3}=\dfrac{mL^2}{3}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A disk of mass $M$ and radius $R$ has $I_{cm}=\tfrac12 MR^2$. Using the parallel-axis theorem, find $I$ about a point on its rim.
+\begin{solutionbox}
+  $I=I_{cm}+MR^2=\tfrac12 MR^2+MR^2=\tfrac32 MR^2$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Rolling Without Slipping \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept description:} Rolling is a mixture of translation of the center of mass and rotation; the no-slip condition ties them together.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &v_{\text{cm}}=\omega R,\\
+    &K=\tfrac12 M v_{\text{cm}}^2+\tfrac12 I\omega^2.\\
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $R$ radius; $M$ mass; $I$ moment of inertia; $v_{\text{cm}}$ center-of-mass speed.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Static friction can accelerate or decelerate rolling bodies but does no work on the body in pure rolling.
+    \item Use energy for ramp problems; use $\sum \tau=I\alpha$ when forces/accelerations are requested.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A solid cylinder of mass $m$ and radius $R$ is released from rest to roll without slipping down an incline of height $h$. Find its speed at the bottom.
+  \begin{solutionbox}
+  Energy: $mgh=\tfrac12 m v_{cm}^2+\tfrac12 I\omega^2=\tfrac12 m v_{cm}^2+\tfrac12(\tfrac12 mR^2)(v_{cm}^2/R^2)=\tfrac12 m v_{cm}^2+\tfrac14 m v_{cm}^2=\tfrac34 m v_{cm}^2$, so $v_{cm}=\sqrt{\tfrac{4}{3}gh}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+  \begin{cheatproblem}
+  A rolling sphere moves to the right and speeds up. Determine the direction of static friction on the sphere.
+  \begin{solutionbox}
+  For a solid sphere with $a>0$, no slip implies friction acts up the incline or in the direction that provides a torque to increase $\omega$: here, friction acts forward (to the right) at the contact point to produce a counterclockwise torque consistent with $\dot\omega>0$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+% --- New consolidated Practice Pointers for Part I ---
+\subsection*{Part I: Mechanics Practice Pointers}
+\addcontentsline{toc}{subsection}{Part I: Mechanics Practice Pointers}
+\begin{itemize}[leftmargin=*]
+  \item Physics Bowl Kinematics \& Momentum Problem 1 Page: 2
+  \item Physics Bowl Circular Motion \& Energy Problem 2 Page: 3
+  \item Physics Bowl Simple Machines \& Statics Problem 5 Page: 6
+  \item Physics Bowl Kinematics Problem 10 Page: 11
+  \item Physics Bowl Kinematics Problem 13 Page: 14
+  \item Physics Bowl Work \& Energy with Friction Problem 14 Page: 14
+  \item Physics Bowl Rotational Kinematics Problem 15 Page: 16
+  \item Physics Bowl Rolling Dynamics Problem 16 Page: 17
+  \item Physics Bowl Gravitation Problem 17 Page: 18
+  \item Physics Bowl Rolling Energy Problem 20 Page: 21
+  \item Physics Bowl Statics Problem 23 Page: 24
+  \item Physics Bowl Relative Motion Problem 26 Page: 27
+  \item Physics Bowl Circular Motion Problem 27 Page: 28
+  \item Physics Bowl Work \& Energy with Friction Problem 28 Page: 28
+  \item Physics Bowl Center of Mass Problem 29 Page: 29
+  \item Physics Bowl Kinematics Problem 30 Page: 30
+  \item Physics Bowl Momentum \& Impulse Problem 33 Page: 32
+  \item Physics Bowl Kinematics Problem 35 Page: 33
+  \item Physics Bowl Dynamics \& Friction Problem 36 Page: 33
+  \item Physics Bowl Statics Problem 37 Page: 35
+  \item Physics Bowl Rotational Energy Problem 38 Page: 36
+  \item Physics Bowl Kinematics Problem 39 Page: 37
+\end{itemize}
+
+% ===================== Part II: Oscillations, Waves, Thermo/Fluids =====================
+\clearpage
+\parttheme{waves}
+\section*{Part II: Oscillations, Waves, Thermodynamics \& Fluids}
+\addcontentsline{toc}{section}{Part II: Oscillations, Waves, Thermodynamics and Fluids}
+
+\Unit[SHM; pendulum (small-angle); wave speed $v=f\lambda$; superposition/standing waves; sound and Doppler; SHM ODE]{Unit 6: Oscillations \& Waves}
+
+\begin{KnowledgePoint}{Simple Harmonic Motion \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} SHM occurs when acceleration is proportional to and opposite to displacement; solutions are sinusoidal with constant amplitude (no damping).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &x=A\cos(\omega t+\phi),\quad v=-A\omega\sin(\omega t+\phi),\quad a=-\omega^2 x,\\
+    &T=\frac{2\pi}{\omega},\quad \omega=\sqrt{\frac{k}{m}}\ (\text{mass--spring}),\quad T_{\text{pend}}\approx2\pi\sqrt{\frac{\ell}{g}}\ (\text{small angle}).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $A$ amplitude; $\omega$ angular frequency; $\phi$ phase; $k$ spring constant; $\ell$ pendulum length.
+
+  
+
+  \textbf{Prerequisites \& scope:} No damping/driving; small-angle approximation for pendulum.
+  \end{formulabox}
+
+  \KPHeuristics
+\begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Use energy partition $K+U=\tfrac12kA^2$ to find speeds at positions; use phase to compute time fractions.
+    \item For compound oscillators, reduce to effective $k_{\text{eff}}$ or $\ell_{\text{eff}}$ before applying SHM formulas.
+    \item Small-angle pendulum: check $\theta_{\max}\lesssim 10^\circ$ for $T\approx2\pi\sqrt{\ell/g}$ to be within a percent; otherwise expect longer $T$. First-order correction (radians; \DTwo result, memorize only): $\displaystyle T\approx 2\pi\sqrt{\ell/g}\,\big(1+\tfrac{\theta_0^2}{16}\big)$.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using pendulum period formula at large angles. Fix: restrict to small angles or use elliptic corrections.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A mass on a spring follows SHM with amplitude $A$ and period $T$. What fraction of the period is spent with $|x|>\tfrac{A}{2}$?
+  \begin{solutionbox}
+  Let $x(t)=A\cos(\omega t)$. The condition $|x(t)|>A/2$ is equivalent to $|\cos(\omega t)|>1/2$. It is simpler to calculate the fraction of time for the complementary condition, $|x(t)|\le A/2$, which corresponds to $|\cos(\omega t)|\le 1/2$.
+  In one full cycle $\theta=\omega t \in [0, 2\pi)$, this holds for $\theta \in [\pi/3, 2\pi/3]$ and $\theta \in [4\pi/3, 5\pi/3]$. The total angular duration is $(\frac{2\pi}{3}-\frac{\pi}{3}) + (\frac{5\pi}{3}-\frac{4\pi}{3}) = \frac{\pi}{3}+\frac{\pi}{3}=\frac{2\pi}{3}$.
+  The fraction of the period for this condition is $\frac{2\pi/3}{2\pi}=\frac{1}{3}$.
+  Therefore, the fraction of the period spent with $|x|>A/2$ is $1 - 1/3 = 2/3$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Waves (Traveling) \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Traveling waves follow $v=f\lambda$; boundary conditions set standing-wave modes; source/observer motion shifts frequency (Doppler).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &v=f\lambda,\ \ y(x,t)=A\cos(kx-\omega t+\phi),\ k=\tfrac{2\pi}{\lambda},\ \omega=2\pi f.\\
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $v$ wave speed in medium; $L$ length; $v_o$ observer speed; $v_s$ source speed.
+
+  \textbf{Prerequisites \& scope:} Linear superposition; small amplitudes; Doppler formula assumes $v_o,v_s\ll v$ (nonrelativistic).
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Draw mode shapes to match node/antinode boundary conditions before writing $f_n$.
+    \item Use a sign diagram for Doppler to avoid sign errors; approaching increases frequency. For the formula given, this means observer towards source ($+v_o$, numerator) and source towards observer ($-v_s$, denominator). For receding, reverse these signs.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using $v$ of sound/light incorrectly across media. Fix: use the correct medium speed for $v=f\lambda$.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A wave has wavelength $\lambda=2\,\text{m}$ and frequency $f=50\,\text{Hz}$. Find its speed.
+  \begin{solutionbox}
+  $v=f\lambda=50\cdot2=100\,\text{m/s}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Standing Waves (Strings/Pipes) \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Boundaries reflect waves; interference of forward and backward waves creates nodes and antinodes with discrete mode frequencies set by geometry and boundary conditions.
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{String fixed ends: } f_n=\frac{nv}{2L},\ n=1,2,\dots\\
+    &\text{Open/closed pipe: }\begin{cases}
+      f_n=\dfrac{nv}{2L}, & n=1,2,3,\dots\ (\text{both ends open}),\\
+      f_n=\dfrac{(2n-1)v}{4L}, & n=1,2,3,\dots\ (\text{one end closed}).
+    \end{cases}
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A string of length $L=1.2\,\text{m}$ fixed at both ends has fundamental frequency $f_1=200\,\text{Hz}$. Find the wave speed.
+  \begin{solutionbox}
+  $f_1=\dfrac{v}{2L}\Rightarrow v=2Lf_1=2\cdot1.2\cdot200=480\,\text{m/s}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Doppler Effect (Fixed Medium) \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Relative motion between source and observer shifts the detected frequency: approaching raises $f'$ and receding lowers it; the medium is stationary.
+  \textbf{Core formula:}
+  \[
+    f'=\frac{v\pm v_o}{v\mp v_s}\,f\ (\text{approach uses top signs}).
+  \]
+  \textbf{Variable definitions:} $v$ wave speed; $v_o$ observer speed; $v_s$ source speed.
+  \end{formulabox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  An acoustic source emits $f=440\,\text{Hz}$ in air with $v=340\,\text{m/s}$. The observer moves toward the source at $v_o=10\,\text{m/s}$ while the source moves toward the observer at $v_s=20\,\text{m/s}$. Find the observed frequency.
+  \begin{solutionbox}
+  $f'=\dfrac{v+v_o}{v-v_s}\,f=\dfrac{350}{320}\cdot 440\approx 481\,\text{Hz}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{SHM ODE and Driven Forms \DTwo}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} The homogeneous SHM ODE has sinusoidal solutions; with driving and damping, the steady-state response depends on drive frequency and damping ratio.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &x''+\omega_0^2 x=0 \Rightarrow x(t)=C\cos\omega_0 t+D\sin\omega_0 t,\\
+    &\text{Damped: } x''+2\zeta\omega_0 x'+\omega_0^2 x=0,\ \text{under/critical/over-damped by }\zeta,\\
+      &\text{Driven: } x''+2\zeta\omega_0 x'+\omega_0^2 x=\frac{F_0}{m}\cos\omega t,\\
+      &\Rightarrow\ \text{amplitude peaks near }\omega\approx\omega_0,\\
+      &\text{for small damping }\omega_{\text{peak}}\approx\omega_0\sqrt{1-2\zeta^2}\ (\zeta\ll1).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\omega_0$ natural frequency; $\zeta$ damping ratio; $F_0$ drive amplitude.
+
+  \textbf{Prerequisites \& scope:} Linear oscillator model; small oscillations; steady-state assumes transients have decayed.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Identify regime via $\zeta$; near resonance, estimate amplification and phase shift.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Confusing natural and driving frequencies. Fix: keep $\omega_0$ (system) distinct from $\omega$ (drive).
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  For $x''+\omega^2x=0$ with $x(0)=0$ and $\dot x(0)=v_0$, find $x(t)$ and the maximum speed.
+  \begin{solutionbox}
+  The general solution is $x(t)=C\cos(\omega t)+D\sin(\omega t)$.
+  $x(0)=0 \Rightarrow C=0$.
+  $\dot x(t) = D\omega\cos(\omega t)$, so $\dot x(0)=v_0 \Rightarrow D\omega=v_0 \Rightarrow D=v_0/\omega$.
+  Thus, $x(t)=\dfrac{v_0}{\omega}\sin(\omega t)$. The velocity is $v(t) = \dot x(t) = v_0\cos(\omega t)$.
+  The maximum speed is the amplitude of $v(t)$, which is $|v_0|$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\Unit[Hydrostatics (pressure/buoyancy); continuity; Bernoulli; ideal gas; First Law and engines; entropy]{Unit 7: Fluids \& Thermodynamics}
+
+\begin{KnowledgePoint}{Hydrostatics and Buoyancy \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Static fluids exert pressure that increases with depth; the buoyant force equals the weight of displaced fluid (Archimedes).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &P=P_0+\rho g h\ (\text{hydrostatic pressure}),\\
+    &F_b=\rho g V_{\text{disp}}\ (\text{buoyancy}).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $P_0$ reference pressure (often atmospheric at $h=0$); $\rho$ fluid density; $h$ depth; $V_{\text{disp}}$ displaced volume.
+
+  
+
+  \textbf{Prerequisites \& scope:} Fluid at rest (no flow), constant $\rho$ with depth (or integrate if varying); neglect surface tension unless specified.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Draw free-body diagrams (FBD) of floating/sinking bodies: set $F_b$ vs weight vs any tension to solve equilibrium.
+    \item Choose a definite reference level for $h$ and keep $P_0$ the same when comparing points.
+    \item Submerged fraction for floating: $\dfrac{V_{sub}}{V}=\dfrac{\rho_b}{\rho}$ (with $0<\rho_b\le\rho$).
+    \item If $\rho_b>\rho$ and the object is released freely, the initial net force is downward: $mg-F_b>0$.
+    \item If later supported (bottom contact or tension), static equilibrium requires $T+F_b=mg$.
+    \item Gauge vs absolute pressure: $\Delta P=\rho g h$ is a \emph{gauge} difference; absolute pressure is $P= P_{\text{atm}}+\rho g h$ when the surface is open to atmosphere.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using object's volume instead of displaced volume for $F_b$. Fix: use actual displaced fluid volume (submerged part only).
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A block of volume $V$ and density $\rho_b$ floats in a liquid of density $\rho$. What fraction of its volume is submerged?
+  \begin{solutionbox}
+  At equilibrium $\rho g V_{sub}=\rho_b g V$, so $V_{sub}/V=\rho_b/\rho$.
+  \end{solutionbox}
+  \end{cheatproblem}
+% (duplicate problem removed)
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Continuity and Bernoulli \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} In steady incompressible flow, mass conservation gives $Av=\text{const}$; along a streamline with negligible viscosity, mechanical energy per volume is constant (Bernoulli).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{Continuity: } A_1 v_1=A_2 v_2\ (\rho \ \text{constant}).\\
+    &\text{Bernoulli: } P+\tfrac12\rho v^2+\rho g y=\text{const}\ (\text{along a streamline}).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $A$ cross-sectional area; $v$ speed; $P$ pressure; $y$ elevation; $\rho$ density.
+
+  
+
+  \textbf{Prerequisites \& scope:} Steady, incompressible, non-viscous flow; apply Bernoulli along a streamline, not across shocks or with pumps/turbines unaccounted.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Check assumptions (steady/incompressible/irrotational) before using Bernoulli; otherwise use energy loss terms.
+    \item Combine continuity with Bernoulli to eliminate speeds or pressures efficiently.
+  \item Use stagnation points: where $v=0$, the total (stagnation) pressure is $P_0=P+\tfrac12\rho v^2$ upstream along a streamline.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using Bernoulli across different streamlines where viscous losses or pumps exist. Fix: apply along a single streamline and include head gains/losses when needed.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Water flows through a horizontal pipe from diameter $D_1=0.1\,\text{m}$ to $D_2=0.05\,\text{m}$. If $v_1=2\,\text{m/s}$, find $v_2$ using continuity.
+\begin{solutionbox}
+  $A_1v_1=A_2v_2\Rightarrow\pi(D_1/2)^2v_1=\pi(D_2/2)^2v_2\Rightarrow v_2=v_1\dfrac{D_1^2}{D_2^2}=2\dfrac{0.01}{0.0025}=8\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  At point 1 in a pipe, $P_1=1.0\times10^5\,\text{Pa}$, $v_1=2\,\text{m/s}$, $y_1=0$. At point 2, $v_2=5\,\text{m/s}$, $y_2=3\,\text{m}$. Find $P_2$ for water ($\rho=1000\,\text{kg/m}^3$).
+\begin{solutionbox}
+  Bernoulli: $P_1+\tfrac12\rho v_1^2+\rho gy_1=P_2+\tfrac12\rho v_2^2+\rho gy_2$.
+  Compute in SI with scientific notation:
+  $\tfrac12\rho(v_1^2-v_2^2)=0.5\times10^3\,(4-25)=-1.05\times10^4\,\text{Pa}$ and
+  $\rho g(y_2-y_1)=10^3\times9.8\times3=2.94\times10^4\,\text{Pa}$.
+  Hence $P_2=1.00\times10^5-1.05\times10^4-2.94\times10^4=6.01\times10^4\,\text{Pa}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Ideal Gas and First Law \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} $PV=nRT$ holds for ideal gases; the First Law links changes in internal energy to heat and work with clear sign conventions.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+      &PV=nRT,\quad U=\tfrac{f}{2}nRT,\\
+      &\text{where } f\ \text{is dof (e.g., }f=3\ \text{monatomic},\ 5\ \text{diatomic at room T)},\\
+    &\Delta U=Q+W_{\text{on}}\ \ (W_{\text{on}}=\text{work done on the system}),\\
+    &W_{\text{on}}=-\int P\,dV\quad (\text{so }W_{\text{by}}\equiv-\,W_{\text{on}}=\int P\,dV).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $P,V,T$ pressure/volume/temperature; $n$ moles; $R$ gas constant; $Q$ heat into system; $W_{\text{on}}$ work on system; $W_{\text{by}}$ work done by the gas; $U$ internal energy.
+
+  
+
+  \textbf{Prerequisites \& scope:} Ideal gas approximation; $U$ depends only on $T$ for ideal gases; sign convention must be consistent.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Identify process (isochoric/isobaric/isothermal/adiabatic) to pick $W,\,Q,\,\Delta U$ quickly.
+    \item Draw $P$–$V$ diagrams: areas give work; direction indicates sign.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Mixing sign conventions for work. Fix: adopt $\Delta U=Q+W_{\text{on}}$ (work on system positive) consistently; then $W_{\text{by}}=-W_{\text{on}}$.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  An ideal gas undergoes an isothermal expansion from volume $V_1$ to $V_2$ at temperature $T$. Find the work done by the gas.
+  \begin{solutionbox}
+  $W=\int_{V_1}^{V_2} \frac{nRT}{V}\,dV=nRT\ln\!\frac{V_2}{V_1}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\begin{cheatproblem}
+  An ideal gas at $P=2\times10^5\,\text{Pa}$ and $V=0.01\,\text{m}^3$ has $n=1\,\text{mol}$. Find the temperature $T$ using $PV=nRT$ with $R=8.314\,\text{J/(mol·K)}$.
+\begin{solutionbox}
+  $T=\dfrac{PV}{nR}=\dfrac{2\times10^5\cdot0.01}{1\cdot8.314}\approx240\,\text{K}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Entropy and Carnot \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Entropy quantifies thermal disorder and increases in irreversible processes; Carnot gives the maximum efficiency of heat engines between two reservoirs.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\Delta S=\int_{\text{rev}} \frac{\delta Q}{T},\\
+    &\text{Carnot bound: } \eta_{\max}=1-\frac{T_c}{T_h}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $S$ entropy; $T_h,T_c$ hot/cold absolute temperatures; $\delta Q$ infinitesimal heat (reversible path).
+
+  
+
+  \textbf{Prerequisites \& scope:} Absolute temperatures (Kelvin); reversible paths for definition; real engines achieve less than Carnot due to irreversibilities.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Compute $\Delta S$ along a convenient reversible path (e.g., isothermal + isochoric steps).
+    \item For engine limits, compare cycle temperatures to $T_h,T_c$ to bound $\eta$ quickly.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using Celsius in $\eta=1-T_c/T_h$. Fix: convert to Kelvin.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A Carnot engine operates between $T_h=500\,\text{K}$ and $T_c=300\,\text{K}$. Find its maximum efficiency.
+\begin{solutionbox}
+  $\eta_{\max}=1-\dfrac{T_c}{T_h}=1-\dfrac{300}{500}=0.4=40\%$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  An ideal gas expands reversibly at constant $T=400\,\text{K}$ from $V_1=1\,\text{m}^3$ to $V_2=2\,\text{m}^3$. Find the entropy change if $n=1\,\text{mol}$.
+\begin{solutionbox}
+  $\Delta S=\dfrac{Q_{rev}}{T}=\dfrac{nRT\ln(V_2/V_1)}{T}=nR\ln2=8.314\ln2\approx5.76\,\text{J/K}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Heat Engines and Efficiency \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &W_{\text{by}}=\int P\,dV,\quad W_{\text{on}}=-W_{\text{by}},\quad \eta=\frac{W_{\text{by}}}{Q_h},\\
+    &\eta_{\max,\,\text{Carnot}}=1-\frac{T_c}{T_h}.
+  \end{aligned}\right.
+  \]
+  \textbf{Variable definitions:} $Q_h$ heat absorbed from hot reservoir; $T_h,T_c$ absolute temperatures of hot/cold reservoirs; $W_{\text{by}}$ work done by the gas.
+  \end{formulabox}
+\end{KnowledgePoint}
+
+% --- New consolidated Practice Pointers for Part II ---
+\subsection*{Part II: Oscillations, Waves, Thermodynamics and Fluids Practice Pointers}
+\addcontentsline{toc}{subsection}{Part II: Oscillations, Waves, Thermodynamics and Fluids Practice Pointers}
+\begin{itemize}[leftmargin=*]
+  \item Physics Bowl Waves \& Sound Problem 3 Page: 4
+  \item Physics Bowl Thermodynamics \& Phase Change Problem 4 Page: 5
+  \item Physics Bowl Thermodynamics \& Phase Equilibrium Problem 6 Page: 7
+  \item Physics Bowl Fluid Mechanics Problem 11 Page: 12
+  \item Physics Bowl Fluid Mechanics \& Projectile Motion Problem 18 Page: 19
+  \item Physics Bowl Thermodynamics \& Engines Problem 19 Page: 20
+  \item Physics Bowl Oscillations Problem 24 Page: 25
+  \item Physics Bowl Oscillations Problem 31 Page: 31
+\end{itemize}
+
+% ===================== Part III: Electricity & Magnetism =====================
+\clearpage
+\parttheme{em}
+\section*{Part III: Electricity \texorpdfstring{\&}{&} Magnetism}
+\addcontentsline{toc}{section}{Part III: Electricity \& Magnetism}
+
+\Unit[Coulomb force; electric field/potential; capacitors and energy; Gauss's law]{Unit 8: Electrostatics}
+
+\begin{KnowledgePoint}{Coulomb, Field and Potential \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Point charges interact by an inverse-square law; electric field and potential describe force per unit charge and energy per unit charge.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &|\vec F|=k\,\frac{|q_1 q_2|}{r^2}\ (\text{along the line of centers}),\\
+    &\vec E=\frac{\vec F}{q},\quad V=\frac{U}{q},\quad \Delta U=-q\int \vec E\cdot d\vec r,\\
+    &\text{Point charge: } E=\frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2},\ V=\frac{1}{4\pi\varepsilon_0}\frac{Q}{r}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $q,Q$ charges; $r$ separation; $k=1/(4\pi\varepsilon_0)$; $U$ potential energy.
+
+  \textbf{Prerequisites \& scope:} Electrostatics (charges at rest); superposition holds; signs determine directions.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Apply symmetry (dipoles, rings, infinite sheets) to cancel parts before integrating.
+    \item Apply potential for conservative additions first, then differentiate to get fields.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Not remembering vector directions for $\vec E$ and $\vec F$. Fix: graph direction first, calculate magnitude second.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Two point charges $+Q$ are at $(\pm a,0)$. Find the electric field on the $y$-axis at $(0,y)$.
+  \begin{solutionbox}
+  Horizontal components cancel; vertical add: $E_y=2\,kQ\,\dfrac{y}{(a^2+y^2)^{3/2}}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+% Constants and units quick reference (placed near EM section for convenience)
+\begin{insightbox}
+\textbf{Constants/units:} $\varepsilon_0=8.85\times10^{-12}\,\mathrm{F/m}$, $\mu_0=4\pi\times10^{-7}\,\mathrm{H/m}$, $c=3.00\times10^8\,\mathrm{m/s}$, $e=1.60\times10^{-19}\,\mathrm{C}$. Use SI unless specified.
+\end{insightbox}
+
+% (Removed redundant KnowledgePoint: Point Charge Field; content covered in Unit 8 Electrostatics)
+
+\begin{KnowledgePoint}{Capacitors and Energy \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} A capacitor is a device that holds equal and opposite charge on two conductors with a gap or dielectric between them. The stored charge at a given potential difference will be proportional to the geometry and material. Networks simplify by simple series/parallel formulas and energy can be traced by $U=\tfrac12 C V^2$.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &C=\varepsilon_0\,\frac{A}{d}\ \text{(parallel plates in vacuum)},\quad C=\varepsilon_r\varepsilon_0\,\frac{A}{d}\ \text{(uniform dielectric)},\\
+    &\text{Series: } \frac{1}{C_s}=\sum \frac{1}{C_i},\quad \text{Parallel: } C_p=\sum C_i,\\
+    &U=\tfrac12 C V^2=\tfrac12 QV=\frac{Q^2}{2C}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $A$ plate area; $d$ separation; $\varepsilon_0$ vacuum permittivity; $\varepsilon_r$ relative permittivity; $Q$ charge; $V$ voltage.
+
+  \textbf{Prerequisites \& scope:} Edge effects neglected; linear dielectrics; use equivalent capacitance to reduce networks.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Parallel by series and symmetry simplify before writing node/loop equations.
+    \item Use $U=\tfrac12 CV^2$ to compare energy storage or redistribution after reconfiguration.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Assuming charge conservation on each plate when switches change connectivity. Fix: conserve charge on isolated conductors only.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Two capacitors $C_1=2\,\mu\text{F}$ and $C_2=3\,\mu\text{F}$ are in series. Find the equivalent capacitance.
+\begin{solutionbox}
+  $\dfrac{1}{C_s}=\dfrac{1}{C_1}+\dfrac{1}{C_2}=\dfrac{1}{2}+\dfrac{1}{3}=\dfrac{5}{6}\Rightarrow C_s=\dfrac{6}{5}=1.2\,\mu\text{F}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A capacitor with $C=10\,\mu\text{F}$ is charged to $V=50\,\text{V}$. Find the energy stored.
+\begin{solutionbox}
+  $U=\tfrac12 CV^2=\tfrac12\cdot10\times10^{-6}\cdot2500=12.5\times10^{-3}=12.5\,\text{mJ}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Gauss's Law \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} The flux of $\vec E$ through a closed surface equals enclosed charge over $\varepsilon_0$; symmetry lets you get fields without integration.
+
+  \textbf{Core formula:}
+  \[
+  \oint \vec E\cdot d\vec A=\frac{Q_{enc}}{\varepsilon_0}.
+  \]
+
+  \textbf{Variable definitions:} $Q_{enc}$ charge enclosed; $d\vec A$ outward area element; choose Gaussian surface aligned to symmetry.
+
+  
+
+  \textbf{Prerequisites \& scope:} Use for infinite planes/cylinders/spheres; for conductors, $E=0$ inside and charges reside on surfaces. Within uniform dielectrics/insulators with embedded charge, fields may exist inside the material (i.e., $E$ need not vanish). \textit{Under \DOne: memorize the integral statement; derivations are not required.}
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Pick surfaces where $E$ is constant and parallel to $d\vec A$ over large patches (sphere/cylinder/plane).
+    \item For conductors in electrostatics, set $E_{\text{inside}}=0$ and use boundary conditions for surface charge; for dielectrics, prefer symmetry and superposition without advanced $\vec D$ formalism.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Choosing a Gaussian surface that doesn't match symmetry, forcing difficult integrals. Fix: reselect surface to exploit symmetry.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Using Gauss's law, find $E(r)$ outside a uniformly charged sphere of radius $R$ and total charge $Q$.
+  \begin{solutionbox}
+  Gaussian sphere: $E\cdot4\pi r^2=Q/\varepsilon_0$, so $E(r)=\dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r^2}$ for $r\ge R$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+% (Removed outdated Practice Pointers for Part III Unit 8)
+
+\Unit[Ohm's law and power; series/parallel reductions; Kirchhoff (KCL/KVL); RC qualitative; RC exact]{Unit 9: DC Circuits}
+
+\begin{KnowledgePoint}{Ohm's Law and Reductions \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Ohm's law relates voltage, current, and resistance; power forms help rank dissipation; series/parallel laws simplify networks.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &V=IR,\quad P=IV=I^2R=\frac{V^2}{R},\\
+    &R_s=\sum R_i,\quad \frac{1}{R_p}=\sum \frac{1}{R_i}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $V$ voltage; $I$ current; $R$ resistance; $P$ power.
+
+  \textbf{Prerequisites \& scope:} Ohmic elements only; temperature dependence ignored unless specified.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+\begin{itemize}[leftmargin=*]
+  \item Reduce networks with series/parallel and symmetry; then solve KCL/KVL for the rest of unknowns alone.
+  \item Equate power by using $I^2 R$ or $V^2/R$ based on conditions of fixed current/voltage.
+  \item In bridge-type circuits, look for equal potentials in a branch (through symmetry or KCL) to remove it.
+\end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Mixing fixed-voltage and fixed-current contexts when comparing brightness. Fix: pick the power form consistent with constraints.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Three resistors of $R$ are in parallel; find the equivalent resistance.
+  \begin{solutionbox}
+  $\dfrac{1}{R_{eq}}=\dfrac{1}{R}+\dfrac{1}{R}+\dfrac{1}{R}$ so $R_{eq}=R/3$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Kirchhoff Laws (KCL/KVL) \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Kirchhoff's current and voltage laws enforce charge and energy conservation; first-order RC circuits charge and discharge exponentially with time constant $\tau$.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{KCL: } \sum I_{\text{in}}=\sum I_{\text{out}}\ (\text{at a node}),\\
+    &\text{KVL: } \sum \Delta V=0\ (\text{around a loop}),\\
+    &\text{Charging (step from }V_0\to V):\\
+    &\quad V_C(t)=V+\big(V_0-V\big)e^{-t/RC},\\
+    &\quad I(t)=\frac{V-V_0}{R}\,e^{-t/RC},\\
+    &\text{Discharging (to 0): }\\
+    &\quad V_C(t)=V_0\,e^{-t/RC},\\
+    &\quad I(t)=-\frac{V_0}{R}e^{-t/RC},\\
+      &\text{General: }\ V_C(t)=V_\infty+\big(V_0-V_\infty\big)e^{-t/\tau}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\tau=RC$ time constant; $V$ source voltage; $V_C$ capacitor voltage; $I$ branch current.
+
+  \textbf{Prerequisites \& scope:} Linear time-invariant components; piecewise-constant sources for standard transients.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+\begin{itemize}[leftmargin=*]
+  \item Use series/parallel reductions or source transformations conceptually when helpful, but solve RC timing with baseline KCL/KVL forms.
+  \item Check for limiting values at $t=0^+$ and $t=\infty$ to test expressions; impose continuity of $V_C$ at switching times.
+  \item Time constant: $\tau=RC$ for the basic first-order RC considered here.
+\end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Letting capacitor voltage jump at $t=0$. Fix: enforce continuity of $V_C$ and initial condition from prior steady state.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  An $RC$ circuit with $V$ applied at $t=0$ has $R=2\,\Omega$, $C=1\,\text{F}$. Find $V_C(t)$.
+  \begin{solutionbox}
+  $V_C(t)=V(1-e^{-t/RC})=V(1-e^{-t/2})$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\begin{cheatproblem}
+  Quick check for limits: For any first-order $RC$ with step to $V_\infty$, verify $V_C(0^+)=V_C(0^-)$ (no jump) and $V_C(\infty)=V_\infty$. With $V_C(0^-)=V_0$, the standard form $V_C(t)=V_\infty+(V_0-V_\infty)e^{-t/\tau}$ satisfies both.
+  \begin{solutionbox}
+    Evaluate: $V_C(0^+)=V_\infty+(V_0-V_\infty)=V_0$ (continuous). As $t\to\infty$, $e^{-t/\tau}\to0$, so $V_C\to V_\infty$.
+  \end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{RC Transients (First Order) \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Core results:}
+  \[
+  \left\{\begin{aligned}
+    &\tau=RC,\\
+    &\text{Charge to }V:\ V_C(t)=V+\big(V_0-V\big)e^{-t/RC},\\
+    &\text{Discharge to 0: } V_C(t)=V_0 e^{-t/RC}.
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  An $RC$ circuit with $V$ applied at $t=0$ has $R=2\,\Omega$, $C=1\,\text{F}$. Find $V_C(t)$.
+  \begin{solutionbox}
+  $V_C(t)=V(1-e^{-t/RC})=V(1-e^{-t/2}).$
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+% (Removed outdated Practice Pointers for Part III Unit 9)
+
+\Unit[Lorentz force (charges/wires); Faraday-Lenz induction; EM spectrum; Ampere law]{Unit 10: Magnetism \& Induction}
+
+\begin{KnowledgePoint}{Lorentz Force \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} A moving charge feels $q\vec E$ and $q\,\vec v\times\vec B$; the magnetic force stays perpendicular to velocity, so it deflects direction without changing speed.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\vec F=q\,(\vec E+\vec v\times\vec B)
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $q$ charge; $\vec v$ particle velocity; $\vec E,\vec B$ fields.
+
+\textbf{Prerequisites \& scope:} Nonrelativistic; right-hand rule for cross products.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Use right-hand rule consistently; reverse direction for negative charges.
+    \item Magnetic force does no work (always perpendicular to $\vec v$), so magnetic fields alone cannot change particle speed.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using $q$'s sign incorrectly in $q\,\vec v\times\vec B$. Fix: compute direction for positive charge, then flip if $q<0$.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A particle of charge $q$ enters a uniform magnetic field $\vec B$ perpendicular to its velocity with speed $v$. Find the radius and period of its circular motion (neglect $\vec E$).
+  \begin{solutionbox}
+  Magnetic force provides centripetal: $qvB=\dfrac{mv^2}{r}\Rightarrow r=\dfrac{mv}{qB}$. The period is $T=\dfrac{2\pi r}{v}=\dfrac{2\pi m}{qB}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Magnetic Force on Wires \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Core formulas:}
+  \[
+    \vec F=I\,\vec L\times\vec B,\quad |\vec F|=ILB\sin\theta.
+  \]
+  \textbf{Variable definitions:} $I$ current; $\vec L$ directed along the current segment with magnitude $L$; $\vec B$ magnetic field; $\theta$ angle between $\vec L$ and $\vec B$.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item For loops, integrate $d\vec F=I\,d\vec l\times\vec B$ and exploit symmetry.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A wire of length $L$ carries current $I$ in a uniform field $\vec B$ perpendicular to the wire. Find the magnitude of magnetic force.
+  \begin{solutionbox}
+  $F=ILB$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Faraday-Lenz \DOne}
+  \KPFormulas
+\begin{formulabox}
+  \textbf{Concept explanation:} Changing magnetic flux induces an emf that opposes the change (Lenz); steady currents set magnetic fields constrained by Amp\`ere's law.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\mathcal E=\oint_{\partial S}\vec E\cdot d\vec l=-\frac{d\Phi_B}{dt},\ \ \Phi_B=\iint_S \vec B\cdot d\vec A,\ \ \Phi_E=\iint_S \vec E\cdot d\vec A,\\
+    &\text{(see Amp\`ere/Maxwell--Amp\`ere for magnetic circulation)}
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\mathcal E$ induced emf (scalar, $\mathcal E=\oint_{\partial S}\vec E\cdot d\vec l$); $\Phi_B=\iint_S \vec B\cdot d\vec A$ magnetic flux; $\Phi_E=\iint_S \vec E\cdot d\vec A$ electric flux; $I_{enc}$ enclosed current.
+  
+  \textbf{Prerequisites \& scope:} Under \DOne memorize the integral form (no derivation). Generally assume quasi-static fields; for time-varying fields use Maxwell--Amp\`ere with displacement current.
+  \end{formulabox}
+
+  \begin{insightbox}
+  \textbf{Terminology note}: \emph{Electric circulation} refers to the line integral of the electric field that defines emf, $\mathcal E=\oint_{\partial S}\vec E\cdot d\vec l$. \emph{Magnetic circulation} refers to $\oint\vec B\cdot d\vec l$ as used in Amp\`ere/Maxwell--Amp\`ere. These are distinct: $\mathcal E$ is a scalar (emf), while $\vec E$ and $\vec B$ are fields.
+  \end{insightbox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Sketch the loop and determine the positive normal; apply Lenz's rule to deduce the direction of the induced current.
+    \item Apply circular/rectangular Amperian loops along symmetry for infinite wires/solenoids.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Missing displacement current for charging capacitors. Fix: include $\varepsilon_0\,d\Phi_E/dt$ in Maxwell–Amp\`ere when fields vary.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  In a loop of area $A$, the magnetic field increases as $B(t)=B_0+kt$. Find the induced emf.
+  \begin{solutionbox}
+  $\mathcal E=\left|\dfrac{d\Phi}{dt}\right|=\left|\dfrac{d(BA)}{dt}\right|=kA$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Ampere and Maxwell--Ampere \DTwo}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\oint \vec B\cdot d\vec l=\mu_0 I_{enc}\ (\text{steady currents}),\\
+    &\text{Maxwell--Ampere (general): }\oint \vec B\cdot d\vec l=\mu_0 I_{enc}+\mu_0\varepsilon_0\,\frac{d\Phi_E}{dt}.
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{EM Spectrum and Maxwell (Concept) \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Electromagnetic waves range from radio to gamma; Maxwell's equations couple $\vec E$ and $\vec B$ and give wave speed $c$ in vacuum.
+
+  \textbf{Formulas \& Concepts:}
+  \[
+  \left\{\begin{aligned}
+    &c=\frac{1}{\sqrt{\mu_0\varepsilon_0}},\\
+      &\text{Spectrum ordering by frequency: radio }\to\ \text{microwave }\to\ \text{IR }\to\ \text{visible},\\
+      &\text{then }\ \text{UV }\to\ \text{X }\to\ \text{gamma}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Prerequisites \& scope:} Vacuum relations shown; material dispersion alters speed and wavelength.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item   Recall typical sources: antennas (radio), thermal (IR), electronic transitions (visible/UV), inner-shell transitions (X/gamma).
+    \item Use $c=f\lambda$ with medium refractive index $n$ via $v=c/n$.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Light in vacuum has wavelength $\lambda=600\,\text{nm}$ and speed $c=3\times10^8\,\text{m/s}$. Find its frequency.
+\begin{solutionbox}
+  $f=\dfrac{c}{\lambda}=\dfrac{3\times10^8}{600\times10^{-9}}=5\times10^{14}\,\text{Hz}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  Rank the following by increasing photon energy: radio, visible, X-ray.
+\begin{solutionbox}
+  Higher frequency means higher photon energy $E=hf$. Ordering: radio $<$ visible $<$ X-ray.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+% --- New consolidated Practice Pointers for Part III ---
+\subsection*{Part III: Electricity \texorpdfstring{\&}{&} Magnetism Practice Pointers}
+\addcontentsline{toc}{subsection}{Part III: Electricity \& Magnetism Practice Pointers}
+\begin{itemize}[leftmargin=*]
+  \item Physics Bowl DC Circuits Problem 7 Page: 8
+  \item Physics Bowl Electricity \& Magnetism Problem 8 Page: 9
+  \item Physics Bowl DC Circuits Problem 9 Page: 10
+  \item Physics Bowl RC Circuits Problem 12 Page: 13
+  \item Physics Bowl DC Circuits Problem 22 Page: 23
+\end{itemize}
+
+% ===================== Part IV: Optics & Modern Physics =====================
+\clearpage
+\parttheme{optics}
+\section*{Part IV: Optics \texorpdfstring{\&}{&} Modern Physics}
+\addcontentsline{toc}{section}{Part IV: Optics and Modern Physics}
+
+\Unit[Reflection; refraction (Snell); thin lens and magnification; interference/diffraction]{Unit 11: Optics}
+
+\begin{KnowledgePoint}{Reflection and Refraction \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Light reflects with equal incident and reflected angles; refraction across media obeys Snell's law.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\theta_i=\theta_r,\\
+    &n_1\sin\theta_1=n_2\sin\theta_2,\quad \text{TIR when }\theta_1>\theta_c=\arcsin(n_2/n_1)\ (n_1>n_2).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $n$ refractive index; $\theta$ angles measured to the normal.
+
+  \textbf{Prerequisites \& scope:} Geometric optics regime; isotropic media; polarization effects ignored here.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Draw the normal and principal rays first; search for total internal reflection when going to a lower-$n$ medium.
+    \item Use reversibility of light to validate constructions.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Light travels from air ($n_1=1$) into water ($n_2=1.33$) at incidence angle $\theta_1=40^\circ$. Find the refraction angle $\theta_2$.
+\begin{solutionbox}
+  Snell: $n_1\sin\theta_1=n_2\sin\theta_2\Rightarrow\sin\theta_2=\dfrac{\sin40^\circ}{1.33}\Rightarrow\theta_2\approx28.9^\circ$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  Light moves from glass ($n=1.5$) to air ($n=1$). Find the critical angle for total internal reflection.
+\begin{solutionbox}
+  $\theta_c=\arcsin\dfrac{n_2}{n_1}=\arcsin\dfrac{1}{1.5}\approx41.8^\circ$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Thin Lenses and Sign Conventions \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Thin lens imaging follows the lens equation with sign conventions; magnification uses image and object sizes/orientations.
+  
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\frac{1}{f}=\frac{1}{s}+\frac{1}{s'},\quad m=-\frac{s'}{s}=\frac{h'}{h}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $f$ focal length; $s$ object distance; $s'$ image distance; $m$ magnification; $h',h$ image/object heights.
+
+  \textbf{Prerequisites \& scope:} Use consistent sign convention (e.g., real is positive); paraxial approximation.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Combine equation + ray diagram: draw two principal rays to confirm the algebraic image location.
+    \item Remember that negative $m$ indicates inversion; $|m|>1$ indicates magnification.
+    \item Sign convention (real-is-positive): take $s>0$ for real objects and $s'>0$ for real images on the opposite side of the lens from the object; $s'<0$ indicates a virtual image on the object side (then $m>0$ and the image is upright).
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  % Simple principal-ray diagram (converging lens, object inside f -> virtual image)
+  \begin{center}
+    \begin{tikzpicture}[x=0.06cm,y=0.06cm,>=Latex]
+      % Optical axis
+      \draw[-] (-60,0) -- (80,0);
+      % Lens at x=0
+      \draw[thick] (0,-25) -- (0,25);
+      % Focal points at ±60 cm (f=60 cm)
+      \fill (-60,0) circle (1.2pt) node[below=2pt] {$F$};
+      \fill (60,0) circle (1.2pt) node[below=2pt] {$F'$};
+      % Object (arrow) at s=30 cm left of lens (inside focal length)
+      \draw[thick,->] (-30,0) -- (-30,18) node[left] {object};
+      % Principal ray 1: parallel to axis, refracted as if through F'
+      \draw[->] (-30,18) -- (0,18);      % incident
+      \draw[->] (0,18) -- (60,0);         % refracted
+      % Principal ray 2: through center (undeviated)
+      \draw[->] (-30,18) -- (0,0);
+      \draw[->] (0,0) -- (30,-18);
+      % Back-projections of refracted rays to locate virtual image at s'=-60 cm
+      \draw[dashed] (0,18) -- (-60,36);
+      \draw[dashed] (0,0) -- (-60,36);
+      % Image arrow (virtual, upright, magnified)
+      \draw[thick,->,blue] (-60,0) -- (-60,36) node[left] {virtual image};
+    \end{tikzpicture}
+  \end{center}
+\begin{cheatproblem}
+  An object at $s=30\,\text{cm}$ forms an image at $s'=-60\,\text{cm}$ using a thin lens. Find the focal length $f$ and magnification $m$.
+  \begin{solutionbox}
+  Lens equation: $\tfrac{1}{f}=\tfrac{1}{s}+\tfrac{1}{s'}=\tfrac{1}{30}+\tfrac{1}{-60}=\tfrac{1}{60}$, so $f=60\,\text{cm}$.
+  Magnification: $m=-s'/s = -(-60)/30=2$.
+  Since $f>0$, it is a converging lens. Since $s'<0$, the image is virtual. Since $m>0$, the image is upright.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Interference and Diffraction \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Coherent sources produce interference patterns; finite apertures make the light diffract, establishing angular scales by wavelength/aperture.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{Double-slit maxima: } d\sin\theta=m\lambda,\\
+    &\text{Single-slit minima: } a\sin\theta=m\lambda,\ m=\pm1,\pm2,\dots
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $d$ slit separation; $a$ slit width; $\lambda$ wavelength; $\theta$ diffraction angle.
+
+  \textbf{Prerequisites \& scope:} Small-angle approximations $\sin\theta\approx\theta$ valid near axis; coherence required for stable fringes.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Map angles to screen positions with $y\approx L\tan\theta\approx L\theta$ for small $\theta$.
+    \item To resolve features, compare $\lambda$ to $a$ and $d$ to predict fringe spacing/envelope width.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  For double-slit with spacing $d$ and wavelength $\lambda$, what is the angle of the $m$-th bright fringe?
+  \begin{solutionbox}
+  $d\sin\theta=m\lambda \Rightarrow \theta=\arcsin(m\lambda/d)$ (small-angle: $\theta\approx m\lambda/d$).
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+% (Removed outdated Practice Pointers for Part IV Unit 11)
+
+\Unit[Special relativity ($\gamma$, time dilation, length contraction, $E=mc^2$); photoelectric effect; atomic spectra; nuclear decay/half-life]{Unit 12: Modern Physics}
+
+\begin{KnowledgePoint}{Special Relativity \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} At high speeds, time dilates and lengths contract; energy–mass equivalence relates rest mass to rest energy.
+
+  \textbf{Core formulas (with proper vs observed):}
+  \[
+  \left\{\begin{aligned}
+  &\gamma=\frac{1}{\sqrt{1-v^2/c^2}},\\
+  &\text{Time dilation: } \Delta t=\gamma\,\Delta \tau\ \ (\Delta \tau\text{ proper time in moving clock's frame}),\\
+  &\text{Length contraction: } L=\frac{L_0}{\gamma}\ \ (L_0\text{ proper length measured at rest with the rod}),\\
+  &\text{Relativistic energy: } E=\gamma mc^2\ (E_0=mc^2),\quad p=\gamma mv,\quad E^2=(pc)^2+(mc^2)^2.
+  \end{aligned}\right.
+  \]
+
+\textbf{Variable definitions:} $\gamma$ Lorentz factor; $v$ relative speed; $c$ speed of light; $\Delta \tau$ proper time (clock's rest frame); $L_0$ proper length (object's rest frame); $E$ total energy; $E_0$ rest energy; $p$ relativistic momentum.
+
+  \textbf{Prerequisites \& scope:} Inertial frames; $v$ along one axis for simple forms; proper quantities measured in an object's rest frame.
+  \end{formulabox}
+
+  \KPHeuristics
+\begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Label frames (S, S') and identify proper time/length before applying formulas.
+    \item [\DTwo] Approximation for $v\ll c$: $\gamma\approx1+\tfrac12(v/c)^2$ (derivation and series methods belong to \DTwo).
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A spaceship moves at $0.8c$ relative to Earth. What factor relates proper time to dilated time?
+  \begin{solutionbox}
+  $\gamma=1/\sqrt{1-0.8^2}=\tfrac{5}{3}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Photoelectric Effect \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Electrons emit when photon energy exceeds the work function; the threshold frequency is $f_{th}=\phi/h$.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &K_{\max}=hf-\phi,\quad f_{\text{th}}=\phi/h,\\
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $h$ Planck constant; $\phi$ work function.
+
+  \textbf{Prerequisites \& scope:} Idealized models; surface effects and detector thresholds may alter observed $K_{\max}$.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Stopping potential depends on frequency (threshold via $f_{\text{th}}=\phi/h$), not intensity.
+    \item In a $K_{\max}$--$f$ plot, slope $=h$, vertical intercept $=-\phi$.
+    \item Increasing intensity raises saturation current but does not change stopping potential.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  Light of frequency $f$ hits a metal with work function $\phi$. Write the maximum kinetic energy of ejected electrons.
+  \begin{solutionbox}
+  $K_{\max}=hf-\phi$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Nuclear Decay Basics \DOne}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Core formulas:}
+  \[
+    N(t)=N_0\,2^{-t/T_{1/2}}=N_0 e^{-\lambda t},\ \lambda=\frac{\ln 2}{T_{1/2}}.
+  \]
+  \end{formulabox}
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item For decay chains, use activity $A=\lambda N$; independent branches superpose exponentials.
+    \item Plot $\ln N$ vs $t$ to extract $\lambda$ from the slope.
+  \end{itemize}
+  \end{heuristicsbox}
+\end{KnowledgePoint}
+
+% --- New consolidated Practice Pointers for Part IV ---
+\subsection*{Part IV: Optics \texorpdfstring{\&}{&} Modern Physics Practice Pointers}
+\addcontentsline{toc}{subsection}{Part IV: Optics \& Modern Physics Practice Pointers}
+\begin{itemize}[leftmargin=*]
+  \item Physics Bowl Geometric Optics Problem 21 Page: 22
+  \item Physics Bowl Geometric Optics Problem 25 Page: 26
+  \item Physics Bowl Modern Physics Problem 32 Page: 31
+  \item Physics Bowl Geometric Optics Problem 34 Page: 32
+\end{itemize}
+
+% (Removed redundant KnowledgePoint: Point Charge Field; content covered in Unit 8 Electrostatics)
+
+\end{document}
+
+
+
+

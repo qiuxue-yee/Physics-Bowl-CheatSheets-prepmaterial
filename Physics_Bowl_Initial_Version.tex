@@ -1,0 +1,1248 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{linktoc=all}
+\usepackage{siunitx}
+% hyphenation enabled (was: \usepackage[none]{hyphenat})
+\setlength{\emergencystretch}{3em}
+\raggedbottom
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{caption}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\usepackage{CJKutf8}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Ray Zhou}
+\fancyhead[R]{Physics Bowl}
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+% fancyhdr safety
+\setlength{\headheight}{14.5pt}
+
+% Ensure title pages and other 'plain' pages use the same header/footer
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[L]{Ray Zhou}
+  \fancyhead[R]{Physics Bowl}
+  \fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+  \renewcommand{\headrulewidth}{0.4pt}
+}
+
+% AIME-style boxes and helpers
+\tcbset{colback=white, colframe=black!15, boxrule=0.5pt}
+% Unified figure helper: centered graphic with optional width and a caption
+\newcommand{\includefigure}[3][\linewidth]{%
+  \begin{center}
+    \includegraphics[width=#1]{#2}%
+    \par\smallskip
+    \captionsetup{type=figure}\captionof{figure}{#3}%
+  \end{center}%
+}
+\newtcolorbox{solutionbox}{enhanced, breakable, title=\textbf{Solution}, colback=white, colframe=black!20, colbacktitle=gray!15, coltitle=black, fonttitle=\bfseries, left=10pt, right=10pt, top=7pt, bottom=9pt, before upper={\setlength{\parskip}{8pt}\setlength{\parindent}{1.2em}\setlength{\abovedisplayskip}{10pt}\setlength{\belowdisplayskip}{10pt}}, before skip=10pt, after skip=14pt, after=\par\noindent\rule{\linewidth}{0.4pt}\par}
+\newtcolorbox{answerbox}{colback=white, colframe=white, boxrule=0pt, left=0pt, right=0pt, top=0pt, bottom=0pt, boxsep=0pt, before=\Needspace{4\baselineskip}, before skip=2pt, after skip=8pt}
+\newtcolorbox{insightbox}{enhanced, breakable, title=\textbf{Key Insight}, colback=blue!2, colframe=blue!40, colbacktitle=blue!12, coltitle=black, fonttitle=\bfseries, left=8pt, right=8pt, top=5pt, bottom=6pt, before upper={\setlength{\parskip}{4pt}}, before skip=8pt, after skip=10pt}
+\newcommand{\finalanswer}[1]{\textbf{ANSWER:}~#1}
+% Category label: print at most once per problem; support multi-tags via commas
+\makeatletter
+\newif\if@categoryprinted
+\pretocmd{\item}{\global\@categoryprintedfalse}{}{}
+% Keep category internals within makeatletter to avoid stray text output
+\newcommand{\category}[1]{\if@categoryprinted\relax\else\textit{\textcolor{gray}{Category: #1}}\global\@categoryprintedtrue\fi}
+\makeatother
+\newcommand{\categories}[1]{\category{#1}}
+\newcommand{\tags}[1]{}
+
+% Ensure each top-level problem item keeps the full problem group together when possible
+\makeatletter
+\pretocmd{\item}{\ifnum\@enumdepth=1 \Needspace{24\baselineskip}\fi}{}{}
+\makeatother
+
+\title{Physics Bowl selected Problem Set (39 Problems)}
+\author{Ray Zhou}
+\date{\today}
+
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+
+\maketitle
+
+% Global conventions for numerical consistency and notation
+\noindent\textit{Conventions:} Unless otherwise stated, use \(g=10\,\mathrm{m/s^2}\) and denote electromotive force by \(\varepsilon\).\par\smallskip
+\newpage
+
+\begin{enumerate}[itemsep=1.0em, topsep=0.6em]
+
+% Problem 1
+\item \label{prob:1}
+Two identical mass objects are launched with the same speed from the same starting location. Object 1 is launched at an angle of $30^\circ$ above the horizontal while Object 2 is launched at an angle of $60^\circ$ above the horizontal. Ignore air resistance and consider the flight of each object from launch until it returns to the same launch height above the ground. Which object experiences the greatest change in the linear momentum?
+\begin{enumerate}[label=(\Alph*)]
+    \item Object 1 since it has a higher final speed.
+    \item Object 2 since it has a higher final speed.
+    \item Object 2 since it is in the air for a longer time.
+    \item The change in momentum is the same for each.
+    \item It cannot be determined without more information.
+\end{enumerate}
+
+\category{Kinematics \& Momentum}
+\begin{answerbox}
+\finalanswer{(C) Object 2 since it is in the air for a longer time.}
+\end{answerbox}
+\begin{insightbox}
+Impulse $J=\int F\,dt=mgT$ (only weight acts). For the same launch speed $v_0$, the time in the air is $T=\tfrac{2v_0\sin\theta}{g}$, so $|\Delta\vec p|=mgT=2mv_0\sin\theta$ increases with $\sin\theta$.
+\end{insightbox}
+\begin{solutionbox}
+The impulse $\vec{J}$ provides the change in linear momentum $\Delta \vec{p}$. The net external force is gravity, $\vec{F}_{\text{net}} = m\vec{g}$.
+\[
+\Delta \vec{p} = \vec{J} = \int_{0}^{T} \vec{F}_{\text{net}} \, dt = m\vec{g}T
+\]
+The magnitude of the momentum change is $|\Delta \vec{p}| = mgT$, where $T$ is the total flight time.
+
+The flight time of a projectile that returns to its firing height is:
+\[
+T = \frac{2v_{0y}}{g} = \frac{2v_0 \sin\theta}{g}
+\]
+
+For Object 1, with $\theta_1 = 30^{\circ}$:
+\[
+T_1 = \frac{2v_0 \sin(30^{\circ})}{g} = \frac{2v_0(1/2)}{g} = \frac{v_0}{g}
+\]
+
+For Object 2, with $\theta_2 = 60^{\circ}$:
+\[
+T_2 = \frac{2v_0 \sin(60^{\circ})}{g} = \frac{2v_0(\sqrt{3}/2)}{g} = \frac{\sqrt{3}v_0}{g}
+\]
+
+Since $\sin(60^{\circ}) > \sin(30^{\circ})$, it follows that $T_2 > T_1$. Object 2 is in the air for a longer time, and therefore experiences a greater change in linear momentum.
+\\
+\emph{Key point:} $\Delta p=\int F\,dt=mgT$ (impulse). Since both start and end at the same height, $T$ is larger for the $60^\circ$ launch, hence $|\Delta \vec p|$ is larger.
+\end{solutionbox}
+
+\par\smallskip\textit{Alternative.} At the same launch and landing height (no air drag), the speed magnitudes are equal. With initial velocity $\vec v=(v\cos\theta, v\sin\theta)$ and final velocity $\vec v'=(v\cos\theta, -v\sin\theta)$, the momentum change is $\Delta\vec p=m(\vec v'-\vec v)=(0,-2mv\sin\theta)$, so $|\Delta\vec p|=2mv\sin\theta$, which increases with $\theta$; thus the $60^\circ$ launch yields a larger change than the $30^\circ$ launch.
+
+% Problem 2
+\item \label{prob:2}
+A mass $m$ is pulled outward until the string of length $L$ to which it is attached makes a 90-degree angle with the vertical. The mass is released from rest and swings through a circular arc. What is the tension in the string when the mass swings through the bottom of the arc?
+\begin{enumerate}[label=(\Alph*)]
+    \item 0
+    \item $mg$
+    \item $2mg$
+    \item $3mg$
+    \item It cannot be determined.
+\end{enumerate}
+
+\category{Circular Motion \& Energy}
+\begin{answerbox}
+\finalanswer{(D) 3mg}
+\end{answerbox}
+\begin{insightbox}
+Use energy to get $v^2=2gL$ at the bottom, then $T-mg=mv^2/L$.
+\end{insightbox}
+\begin{solutionbox}
+By conservation of energy from the side to the bottom:
+\begin{align*}
+E_i &= K_i + U_i = 0 + mgL = mgL \\
+E_f &= K_f + U_f = \tfrac{1}{2}mv^2 + 0
+\end{align*}
+Thus $mgL = \tfrac{1}{2}mv^2 \Rightarrow v^2 = 2gL$. At the bottom, radial (inward from the pivot) force balance yields
+\[
+T - mg = \frac{mv^2}{L} = \frac{m(2gL)}{L} = 2mg \Rightarrow T = 3mg.
+\]
+\\
+\emph{Used:} conservation of mechanical energy and $F_c=mv^2/r$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 3
+\item \label{prob:3}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt} % Ensures top alignment
+A resonance occurs with a tuning fork and an air column of size 39 cm. The next highest resonance occurs with an air column of 65 cm. What is the frequency of the tuning fork? Assume that the speed of sound is 343 m/s.
+\begin{enumerate}[label=(\Alph*)]
+    \item 329.8 Hz
+    \item 527.7 Hz
+    \item 659.6 Hz
+    \item 879.5 Hz
+    \item 1319 Hz
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.33\linewidth}
+\vspace{0pt} % Ensures top alignment
+\centering
+\includegraphics[width=0.7\linewidth]{Problem_03_Figure.png}
+\end{minipage}
+
+\category{Waves \& Sound}
+\begin{answerbox}
+\finalanswer{(C) 659.6 Hz}
+\end{answerbox}
+\begin{insightbox}
+Closed-tube resonances are spaced by $\lambda/2$; determine $\lambda$ from the difference in lengths and compute $f=v/\lambda$.
+\end{insightbox}
+\begin{solutionbox}
+
+For a closed tube, successive resonances differ by $\Delta L = \tfrac{\lambda}{2}$. In this case $\Delta L = 0.65\,\text{m} - 0.39\,\text{m} = 0.26\,\text{m}$, so $\lambda = 2\times 0.26 = 0.52\,\text{m}$. The frequency is
+\[
+ f = \frac{v}{\lambda} = \frac{343\,\text{m/s}}{0.52\,\text{m}} \approx 659.6\,\text{Hz}.
+\]
+\\
+\emph{Model:} closed–open tube has harmonics $L=(2n-1)\lambda/4$, so successive $L$ differ by $\lambda/2$.
+\end{solutionbox}
+
+% Problem 4
+\item \label{prob:4}
+A mass of material exists in its solid form at its melting temperature $10^\circ$C. The following processes then occur to the material:
+\begin{itemize}
+    \item Process 1: An amount of thermal energy $Q$ is added to the material and $\tfrac{3}{4}$ of the material melts.
+    \item Process 2: An identical additional amount of thermal energy $Q$ is added to the material and the material is now a liquid at $50^\circ$C.
+\end{itemize}
+What is the ratio of the latent heat of fusion to the specific heat of the liquid for this material?
+\begin{enumerate}[label=(\Alph*)]
+    \item $80^\circ$C
+    \item $60^\circ$C
+    \item $40^\circ$C
+    \item $20^\circ$C
+    \item More information is needed to answer this question.
+\end{enumerate}
+
+\category{Thermodynamics \& Phase Change}
+\begin{answerbox}
+\finalanswer{(A) 80$^{\circ}$C}
+\end{answerbox}
+\begin{insightbox}
+Two equal heat inputs: first melts 3/4, second completes melting 1/4 and warms; equate heats to find $L_f/c_l$.
+\end{insightbox}
+\begin{solutionbox}
+
+Let mass $m$, latent heat $L_f$, liquid specific heat $c_l$, melting temperature $T_m=10^{\circ}\text{C}$. Process 1: $Q=\tfrac{3}{4}mL_f$. Process 2: $Q=\tfrac{1}{4}mL_f + mc_l(50-10)$. Equate:
+\begin{align*}
+\tfrac{3}{4} mL_f &= \tfrac{1}{4} mL_f + 40 m c_l \\
+\tfrac{1}{2} mL_f &= 40 m c_l \Rightarrow \frac{L_f}{c_l} = 80^{\circ}\text{C}.
+\end{align*}
+\end{solutionbox}
+
+\newpage
+
+% Problem 5
+\item \label{prob:5}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+What is the ideal mechanical advantage for the pulley system shown in the figure?
+\begin{enumerate}[label=(\Alph*)]
+    \item $F/Mg$
+    \item $Mg/F$
+    \item 3
+    \item 4
+    \item 5
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.33\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=0.6\linewidth]{Problem_05_Figure.png}
+\end{minipage}
+
+\category{Simple Machines \& Statics}
+\begin{answerbox}
+\finalanswer{(D) 4}
+\end{answerbox}
+\begin{insightbox}
+Ideal mechanical advantage equals the number of load-supporting rope segments: 4.
+\end{insightbox}
+\begin{solutionbox}
+
+The ideal mechanical advantage equals the number of rope segments supporting the load. Here the movable block is supported by 4 segments, so $\text{IMA}=4$.
+\\
+\emph{Reminder:} massless, frictionless rope $\Rightarrow$ equal tension in all supporting segments.
+\end{solutionbox}
+
+% Problem 6
+\item \label{prob:6}
+In a calorimeter, 20 grams of liquid water at $100^\circ$C is mixed with 50 grams of water vapor at $100^\circ$C. The system is allowed to come to equilibrium. Assuming that the calorimeter and the surroundings can be ignored, which of the following best describes the net energy exchange between the vapor and the liquid during the process of coming to equilibrium?
+\begin{enumerate}[label=(\Alph*)]
+    \item There is no net energy exchange.
+    \item Energy is transferred from the vapor to the liquid, vaporizing some of the liquid.
+    \item Energy is transferred from the vapor to the liquid, increasing the liquid’s temperature.
+    \item Energy is transferred from the vapor to the liquid until all of the liquid vaporizes.
+    \item Energy is transferred from the vapor to the liquid, condensing some of the vapor.
+\end{enumerate}
+
+\category{Thermodynamics \& Phase Equilibrium}
+\begin{answerbox}
+\finalanswer{(A) There is no net energy exchange.}
+\end{answerbox}
+\begin{insightbox}
+At 100\textcelsius\ both phases are at the same temperature. In an isolated system the mixture stays at 100\textcelsius; any condensation of vapor must be balanced by vaporization of the same mass of liquid, so the net energy transferred between phases is zero.
+\end{insightbox}
+\begin{solutionbox}
+
+As both steam and water are initially at the saturation temperature 100°C and the container is isolated (no heat to the surroundings), the final temperature is still 100°C. Let a mass $m_c$ of vapor condense (releasing $m_cL_v$) and a mass $m_v$ of liquid evaporate (absorbing $m_vL_v$). Conservation of energy for the constant-temperature closed system requires $m_cL_v=m_vL_v\Rightarrow m_c=m_v$. Therefore, the energy transferred from vapor to liquid equals the energy transferred from liquid to vapor, and the net energy transfer between the two phases is zero.
+\end{solutionbox}
+
+\newpage
+
+% Problem 7
+\item \label{prob:7}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+For the circuit shown, $\varepsilon = 6.0$ V, $R_1 = 7.0 \Omega$, $R_2 = 3.0 \Omega$, $R_3 = 6.0 \Omega$, and $R_4 = 12.0 \Omega$. After operating for a long time, the circuit reaches steady state (the capacitor branch is effectively open). What is the voltage across the capacitor at steady state?
+\begin{enumerate}[label=(\Alph*)]
+    \item 6.0 V
+    \item 4.2 V
+    \item 3.0 V
+    \item 2.2 V
+    \item 0.2 V
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.33\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_07_Figure.png}
+\end{minipage}
+
+\category{DC Circuits}
+\begin{answerbox}
+\finalanswer{(D) 2.2 V}
+\end{answerbox}
+\begin{insightbox}
+At steady state the capacitor branch is open; find node voltages by dividers and subtract them.
+\end{insightbox}
+\begin{solutionbox}
+
+After a long time, the capacitor branch is open. Two independent dividers yield $V_A = 6\,\text{V}\cdot\tfrac{3}{7+3} = 1.8\,\text{V}$ and $V_B = 6\,\text{V}\cdot\tfrac{12}{6+12} = 4.0\,\text{V}$. Thus $V_C = |V_B-V_A| = 2.2\,\text{V}$.
+\par\smallskip Equivalent node-voltage viewpoint: with the capacitor open, KCL at the top nodes gives the same divider values; the capacitor voltage is the node difference $|V_B-V_A|$.
+\end{solutionbox}
+
+% Problem 8
+\item \label{prob:8}
+\noindent\begin{minipage}[t]{0.55\linewidth}
+\vspace{0pt}
+An electron moves in the plane of the page through two regions of space along the dotted-line trajectory shown in the figure. There is a uniform electric field in Region I directed into the plane of the page. There is no electric field in Region II. What is a necessary direction of the magnetic field in regions I and II? Ignore gravitational forces.
+\begin{enumerate}[label=(\Alph*)]
+    \item Region I: Downward along the page, Region II: Upward along the page
+    \item Region I: Upward along the page, Region II: Into the page
+    \item Region I: Upward along the page, Region II: Out of the page
+    \item Region I: Downward along the page, Region II: Out of the page
+    \item Region I: Into the page, Region II: Upward along the page
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.4\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_08_Figure.png}
+\end{minipage}
+
+\category{Electricity \& Magnetism}
+\begin{answerbox}
+\finalanswer{(C) Region I: Upward along the page, Region II: Out of the page}
+\end{answerbox}
+\begin{insightbox}
+Use $\vec F_B=q\,\vec v\times\vec B$ and the negative charge of an electron to choose the $\vec B$ directions that curve the trajectory as shown.
+\end{insightbox}
+\begin{solutionbox}
+
+In Region I, $\vec F_E$ on the electron is out of the page, so $\vec F_B$ must be into the page; with $q<0$, this requires $\vec v\times\vec B$ out of the page, hence $\vec B$ upward along the page. In Region II, curvature upward along the page implies $\vec F_B$ upward along the page. With $q<0$ and $\vec v$ rightward, $\vec B$ is out of the page.
+\end{solutionbox}
+
+\newpage
+
+% Problem 9
+\item \label{prob:9}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+For the circuit shown, when a shorting wire (no resistance) connects the points labeled A and B, which of the numbered light bulbs become brighter? Assume that all four bulbs are identical and have resistance R.
+\begin{enumerate}[label=(\Alph*)]
+    \item Bulb 1 only
+    \item Bulb 2 only
+    \item Bulb 3 only
+    \item Bulbs 1 and 3 only
+    \item Bulbs 1, 2, and 3
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.33\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_09_Figure.png}
+\end{minipage}
+
+\category{DC Circuits} \tags{}
+\begin{answerbox}
+\finalanswer{(D) Bulbs 1 and 3 only}
+\end{answerbox}
+\begin{insightbox}
+Shorting the bridge's balance point lowers the downstream branch resistances, increasing current through bulbs 1 and 3.
+\end{insightbox}
+\begin{solutionbox}
+
+Label the left node at the bottom of the source A and the right mid node B (see figure). Bulbs 1 and 3 are on the top branches left and right of the central vertical branch containing bulb 2; bulb 4 is on the right outer branch.
+
+Before the short: the bridge is balanced, so the potential of the upper junction of bulb 2 is the same as that of B; there is thus no current through bulb 2 (balanced-bridge condition), and bulbs 1 and 3 (which are in series with the external right branch which contains bulb 4) share the supply drop.
+
+After shorting A and B: the vertical short brings the potential difference between A and B to zero, forcing the middle node and the right inner node to ground potential. So, bulb 2 is short-circuited and carries no current, and bulb 4 is also short-circuited by the B to A short. The remaining conducting paths are the left top branch with bulb 1 directly from the positive terminal to ground and the right top branch with bulb 3 directly to ground via the shorted lower rail. Bulbs 1 and 3 now each have the full source voltage across them instead of sharing this with other elements in series. So bulbs 1 and 3 brighten, and bulb 2 goes dark and bulb 4 goes dark.
+\end{solutionbox}
+
+% Problem 10
+\item \label{prob:10}
+A car moves to the right along a one-dimensional track for total time $T$ in two parts. Part One: The car maintains constant non-zero speed $V$ for the first $\tfrac{3}{4}$ of the total time. Part Two: The car accelerates uniformly to rest during the last $\tfrac{1}{4}$ of the total time. What is the ratio of the distance traveled during Part One of the trip to the distance traveled during Part Two of the trip?
+\begin{enumerate}[label=(\Alph*)]
+    \item 6:1
+    \item 3:2
+    \item The values of V and T are required to answer the question.
+    \item 4:3
+    \item 8:3
+\end{enumerate}
+
+\category{Kinematics} \tags{}
+\begin{answerbox}
+\finalanswer{(A) 6:1}
+\end{answerbox}
+\begin{insightbox}
+Distance 1: $V\cdot 3T/4$; distance 2: $(V/2)\cdot T/4$. Ratio is 6:1.
+\end{insightbox}
+\begin{solutionbox}
+
+Part one: $d_1=V\cdot (3T/4)=\tfrac{3}{4}VT$. Part two (uniform decel from $V$ to 0 over $T/4$): $\bar v = V/2$, so $d_2=\bar v\cdot (T/4)=\tfrac{1}{8}VT$. So $d_1:d_2=6:1$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 11
+\item \label{prob:11}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+A piece of an ideal fluid is marked as it moves along a horizontal streamline through a pipe, as shown in the figure. In Region I, the speed of the fluid on the streamline is $V$. The cylindrical, horizontal pipe narrows so that the radius of the pipe in Region II is half of what it was in Region I. What is the speed of the marked fluid when it is in Region II?
+\begin{enumerate}[label=(\Alph*)]
+    \item 4$V$
+    \item 2$V$
+    \item $V$
+    \item $V/2$
+    \item $V/4$
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_11_Figure.png}
+\end{minipage}
+
+\category{Fluid Mechanics} \tags{}
+\begin{answerbox}
+\finalanswer{(A) 4V}
+\end{answerbox}
+\begin{insightbox}
+Continuity $A_1v_1=A_2v_2$: halving the radius quarters the area, so the speed quadruples.
+\end{insightbox}
+\begin{solutionbox}
+
+Continuity: $A_1 v_1 = A_2 v_2$ with $A\propto r^2$. If $r_2=\tfrac{1}{2}r_1$, then $A_2=\tfrac{1}{4}A_1$, so $v_2 = (A_1/A_2) v_1 = 4V$.
+\end{solutionbox}
+
+% Problem 12
+\item \label{prob:12}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+For the RC circuit shown, the resistance is $R = 10.0 \Omega$, the capacitance is $C = 5.0\,\mu\mathrm{F}$ and the battery has voltage $\varepsilon = 12$ volts. The capacitor is initially uncharged when the switch S is closed at time $t = 0$. At some time later, the current in the circuit is $0.50$ A. What is the magnitude of the voltage across the capacitor at that moment?
+\begin{enumerate}[label=(\Alph*)]
+    \item 0 volts
+    \item 5 volts
+    \item 6 volts
+    \item 7 volts
+    \item 12 volts
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_12_Figure.png}
+\end{minipage}
+
+\category{RC Circuits}
+\begin{answerbox}
+\finalanswer{(D) 7 volts}
+\end{answerbox}
+\begin{insightbox}
+KVL: $\varepsilon=V_R+V_C$. With $I$ known, find $V_R=IR$ then $V_C$.
+\end{insightbox}
+\begin{solutionbox}
+
+KVL: $\varepsilon - V_R - V_C = 0$. With $I=0.50\,\text{A}$ and $R=10.0\,\Omega$, $V_R=IR=5.0\,\text{V}$. Hence $V_C=\varepsilon - V_R = 12-5=7\,\text{V}$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 13
+\item \label{prob:13}
+A ball initially at rest falls without air resistance from a height $h$ above the ground. If the ball falls the first distance $h/2$ in a time $t$, how much time is required to fall the remaining distance of $h/2$?
+\begin{enumerate}[label=(\Alph*)]
+    \item 0.25$t$
+    \item 0.41$t$
+    \item 0.50$t$
+    \item 0.71$t$
+    \item 1.00$t$
+\end{enumerate}
+
+\category{Kinematics}
+\begin{answerbox}
+\finalanswer{(B) 0.41t}
+\end{answerbox}
+\begin{insightbox}
+First half gives $h=gt^2$; total time is $\sqrt2 t$, so the remainder is $(\sqrt2-1)t\approx0.414t$.
+\end{insightbox}
+\begin{solutionbox}
+
+With $d=\tfrac{1}{2}gt^2$, first half: $h/2=\tfrac{1}{2}gt^2\Rightarrow h=gt^2$. Total time $t_{\text{tot}}$ satisfies $h=\tfrac{1}{2}g t_{\text{tot}}^2\Rightarrow t_{\text{tot}}=\sqrt{2}t$. Remaining time $t_{\text{rem}}=t_{\text{tot}}-t=(\sqrt{2}-1)t\approx 0.414t$.
+\end{solutionbox}
+
+% Problem 14
+\item \label{prob:14}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+An object of mass M starts from rest at the bottom of a fixed incline of height H. A person decides to push the object up the incline in one of two ways with an applied force shown in the diagram. In each of the trials, the object reaches the top of the incline with speed $V$. How would the work done by the person on the block compare for the two trials? Assume the same constant non-zero coefficient of kinetic friction.
+\begin{enumerate}[label=(\Alph*)]
+    \item More work would be done in Trial 1
+    \item More work would be done in Trial 2
+    \item The work would be equal for both trials
+    \item Impossible to determine without knowing $V$.
+    \item Impossible to determine without knowing $\mu_k$.
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_14_Figure.png}
+\end{minipage}
+
+\category{Work \& Energy with Friction} \tags{}
+\begin{answerbox}
+\finalanswer{(A) More work would be done in Trial 1}
+\end{answerbox}
+\begin{insightbox}
+A horizontal push raises the normal force and friction loss; since $\Delta K$ and $W_g$ match, external work must be larger.
+\end{insightbox}
+\begin{solutionbox}
+
+Horizontal push increases the normal force: $N_1=Mg\cos\theta+F_1\sin\theta>Mg\cos\theta=N_2$, so friction is larger in Trial 1. Since $\Delta K$ and $W_g$ are the same, the greater friction loss requires more input work in Trial 1.
+\end{solutionbox}
+
+\newpage
+
+% Problem 15
+\item \label{prob:15}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+A point object with mass $M=2.0$kg is attached a distance $R=1.75$m from the fixed center of a disk. The disk starts rotating from rest with constant angular acceleration $\alpha = 5.00$ rad/s$^2$. After how much time $T$ (in seconds) is the tangential acceleration equal in magnitude to the centripetal acceleration?
+\begin{enumerate}[label=(\Alph*)]
+    \item 0.769
+    \item 0.592
+    \item 0.500
+    \item 0.447
+    \item 0.350
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_15_Figure.png}
+\end{minipage}
+
+\category{Rotational Kinematics} \tags{}
+\begin{answerbox}
+\finalanswer{(D) 0.447}
+\end{answerbox}
+\begin{insightbox}
+Set $a_t=R\alpha$ equal to $a_c=R(\alpha T)^2$ to get $T=1/\sqrt{\alpha}$.
+\end{insightbox}
+\begin{solutionbox}
+
+Set $a_t=R\alpha$ equal to $a_c=R\omega^2=R(\alpha T)^2$. Then $R\alpha=R\alpha^2 T^2\Rightarrow T=1/\sqrt{\alpha}=1/\sqrt{5}\approx0.447\,\text{s}$.
+\end{solutionbox}
+
+% Problem 16
+\item \label{prob:16}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+A uniform, solid cylinder with a mass M and radius R is pulled by a horizontal force F acting through the center as shown. The cylinder rolls to the right without slipping. What is the magnitude of the force of friction between the cylinder and the ground?
+\begin{enumerate}[label=(\Alph*)]
+    \item $\frac{1}{4}F$
+    \item $\frac{1}{3}F$
+    \item $\frac{1}{2}F$
+    \item $\frac{2}{3}F$
+    \item $\frac{3}{4}F$
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_16_Figure.png}
+\end{minipage}
+
+\category{Rolling Dynamics} \tags{}
+\begin{answerbox}
+\finalanswer{(B) $\tfrac{1}{3}F$}
+\end{answerbox}
+\begin{insightbox}
+Combine translation $F-f=Ma$ with rotation $fR=I\alpha$ and $a=R\alpha$ to obtain $f=F/3$.
+\end{insightbox}
+\begin{solutionbox}
+
+Translational: $F-f=Ma$. Rotational: $fR=I\alpha$ with $I=\tfrac{1}{2}MR^2$ and $a=R\alpha$. Then $f=\tfrac{1}{2}Ma$. Sub into translation: $F-f=2f\Rightarrow F=3f\Rightarrow f=F/3$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 17
+\item \label{prob:17}
+A comet moves in an elliptical orbit around the sun. As the comet moves from aphelion (farthest point) to perihelion (closest point), which of the following results is true?
+\begin{enumerate}
+    \item Speed of the comet: Increases, Angular momentum of the comet/sun system: Increases, Gravitational potential energy of the comet/sun system: Decreases
+    \item Speed of the comet: Increases, Angular momentum of the comet/sun system: Constant, Gravitational potential energy of the comet/sun system: Decreases
+    \item Speed of the comet: Decreases, Angular momentum of the comet/sun system: Decreases, Gravitational potential energy of the comet/sun system: Increases
+    \item Speed of the comet: Increases, Angular momentum of the comet/sun system: Increases, Gravitational potential energy of the comet/sun system: Constant
+    \item Speed of the comet: Constant, Angular momentum of the comet/sun system: Constant, Gravitational potential energy of the comet/sun system: Constant
+\end{enumerate}
+
+\category{Gravitation} \tags{}
+\begin{answerbox}
+\finalanswer{(B) Increases, Constant, Decreases}
+\end{answerbox}
+\begin{insightbox}
+Zero torque about the sun conserves angular momentum; as $r$ decreases, $U=-GMm/r$ drops and speed rises.
+\end{insightbox}
+\begin{solutionbox}
+
+Central gravity gives zero torque, so angular momentum is conserved. As $r$ decreases, $U=-GMm/r$ decreases, hence kinetic energy and speed increase.
+\end{solutionbox}
+
+% Problem 18
+\item \label{prob:18}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+An open cylindrical container with very large radius is at rest a distance $H$ above the ground at the edge of a platform. A tiny hole develops at the bottom of the container and water from the container squirts out horizontally landing a distance $H$ from the edge of the platform. For the water to land at this location, what is the depth of the water $L$ in the container? The figure is not drawn to scale and air resistance is ignored.
+\begin{enumerate}[label=(\Alph*)]
+    \item $H/4$
+    \item $H/\sqrt{2}$
+    \item $H$
+    \item $H\sqrt{2}$
+    \item $2H$
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_18_Figure.png}
+\end{minipage}
+
+\category{Fluid Mechanics \& Projectile Motion} \tags{}
+\begin{answerbox}
+\finalanswer{(A) $H/4$}
+\end{answerbox}
+\begin{insightbox}
+Torricelli gives $v=\sqrt{2gL}$; range $H$ equals $v$ times fall time $\sqrt{2H/g}$.
+\end{insightbox}
+\begin{solutionbox}
+
+Torricelli: $v=\sqrt{2gL}$. Time of fall from height $H$ is $t=\sqrt{2H/g}$. Range $H=v t=\sqrt{2gL}\,\sqrt{2H/g}=\sqrt{4LH}$. Hence $H^2=4LH\Rightarrow L=H/4$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 19
+\item \label{prob:19}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+A monatomic ideal gas is the working substance for an engine that undergoes the cyclic process (ABCDA) shown in the PV diagram. The processes are all isochoric or isobaric with pressures between $P_0$ and $2P_0$ and volumes between $V_0$ and $\frac{3}{2}V_0$. What is the efficiency of this engine?
+\begin{enumerate}[label=(\Alph*)]
+    \item $1/8$
+    \item $1/5$
+    \item $1/3$
+    \item $2/3$
+    \item $5/7$
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_19_Figure.png}
+\end{minipage}
+
+\category{Thermodynamics \& Engines} \tags{}
+\begin{answerbox}
+\finalanswer{(A) 1/8}
+\end{answerbox}
+\begin{insightbox}
+Compute heat on isobaric/isochoric legs; net work is rectangle area $\Delta P\,\Delta V$; efficiency is $W/Q_{in}$. Sign guide: isobaric expansion (heat in, $W>0$), isochoric heating (heat in, $W=0$), isobaric compression (heat out, $W<0$), isochoric cooling (heat out, $W=0$).
+\end{insightbox}
+\begin{solutionbox}
+
+Net work: $W=\Delta P\,\Delta V= (2P_0-P_0)\,(\tfrac{3}{2}V_0-V_0)=\tfrac{1}{2}P_0V_0$. Heat in during AB and BC: $Q_{in}=\tfrac{3}{2}P_0V_0+\tfrac{5}{2}P_0V_0=4P_0V_0$. Efficiency $\eta=W/Q_{in}=1/8$.
+\end{solutionbox}
+
+% Problem 20
+\item \label{prob:20}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+A solid, uniform sphere rolls without slipping on a floor along the +x-axis. The rotational kinetic energy associated with the sphere about an axis through its center of mass along the +z-axis is 20 Joules. What is the translational kinetic energy associated with the sphere?
+\begin{enumerate}[label=(\Alph*)]
+    \item 8 J
+    \item 10 J
+    \item 20 J
+    \item 40 J
+    \item 50 J
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_20_Figure.png}
+\end{minipage}
+
+\category{Rolling Energy} \tags{}
+\begin{answerbox}
+\finalanswer{(E) 50 J}
+\end{answerbox}
+\begin{insightbox}
+With pure rolling $v=R\omega$, a solid sphere has $K_{rot}=\tfrac{1}{5}mv^2$, so $K_{trans}=(5/2)K_{rot}$.
+\end{insightbox}
+\begin{solutionbox}
+
+For a solid sphere, $I=\tfrac{2}{5}mR^2$ and $v=R\omega$. Then $K_{rot}=\tfrac{1}{2}I\omega^2=\tfrac{1}{5}mv^2$. Meanwhile $K_{trans}=\tfrac{1}{2}mv^2=\tfrac{5}{2}K_{rot}=50\,\text{J}$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 21
+\item \label{prob:21}
+A student wants to set up an experiment with a thin convex lens of focal length $f$ such that a thin real object produces a focused real image on a movable screen. At how many locations along the optical axis can the object be placed so that the distance between the object and the focused image on the screen is equal to $3f$?
+\begin{enumerate}[label=(\Alph*)]
+    \item There is no location.
+    \item There is exactly one location.
+    \item There are exactly two locations.
+    \item There are exactly four locations.
+    \item There are an infinite number of locations.
+\end{enumerate}
+
+\category{Geometric Optics}
+\begin{answerbox}
+\finalanswer{(A) There is no location.}
+\end{answerbox}
+\begin{insightbox}
+Solve $1/d_o+1/d_i=1/f$ with $d_o+d_i=3f$; the quadratic has negative discriminant, so no real location. Only when the object–image separation $D\ge 4f$ can a real solution exist.
+\end{insightbox}
+\begin{solutionbox}
+
+With $\tfrac{1}{d_o}+\tfrac{1}{d_i}=\tfrac{1}{f}$ and $D=d_o+d_i=3f$, substitute $d_i=3f-d_o$:
+\[
+\frac{1}{d_o}+\frac{1}{3f-d_o}=\frac{1}{f} \Rightarrow d_o^2-3fd_o+3f^2=0.
+\]
+Discriminant $\Delta=9f^2-12f^2=-3f^2<0$, so no real $d_o$ exists.
+\end{solutionbox}
+
+% Problem 22
+\item \label{prob:22}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+For the circuit shown, all wires have no resistance, the battery has a constant internal resistance of $r = 8.0\,\Omega$ and the two light bulbs are identical. The variable resistor is initially set to $R = 26.0\,\Omega$. The switch S is closed. To what resistance must the variable resistor be set if bulb \#1 is to have the same brightness after the switch is closed as it did with the switch open?
+\begin{enumerate}[label=(\Alph*)]
+    \item $9.0\,\Omega$
+    \item $13.0\,\Omega$
+    \item $18.0\,\Omega$
+    \item $22.0\,\Omega$
+    \item The answer can be computed only if the bulbs’ resistance is known.
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_23_Figure.png}
+\end{minipage}
+
+\category{DC Circuits}
+\begin{answerbox}
+\finalanswer{(A) $9.0\,\Omega$}
+\end{answerbox}
+\begin{insightbox}
+Keep bulb 1 current unchanged; equate open/closed currents in the equivalent circuits to solve $R'$.
+\end{insightbox}
+\begin{solutionbox}
+
+Open: $I_{1,\text{open}}=\tfrac{\mathcal E}{r+R_b+R}$. Closed: bulbs in parallel $R_p=R_b/2$, total $r+R_b/2+R'$, current splits equally so $I_{1,\text{closed}}=\tfrac{\mathcal E}{2r+R_b+2R'}$. Equate:
+\[
+r+R_b+R=2r+R_b+2R' \Rightarrow R' = \tfrac{R-r}{2} = \tfrac{26-8}{2}=9.0\,\Omega.
+\]
+\end{solutionbox}
+
+\newpage
+
+% Problem 23
+\item \label{prob:23}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+A mass on a frictionless incline has a gravitational force, a normal force, and an applied force that all are equal in magnitude. The mass remains at rest. The incline makes an angle $\theta$ with the horizontal. Which one of the following choices best describes the orientation of the applied force? The +x-axis is parallel to the incline’s surface.
+\begin{enumerate}[label=(\Alph*)]
+    \item Oriented directly along the +x axis.
+    \item Oriented at an angle $\theta$ clockwise from the +x axis.
+    \item Oriented at an angle $90^\circ - \theta$ clockwise from the +x axis.
+    \item Oriented at an angle $90^\circ - \theta$ counterclockwise from the +x axis.
+    \item This is a completely impossible situation.
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_24_Figure.png}
+\end{minipage}
+
+\category{Statics}
+\begin{answerbox}
+\finalanswer{(C) Oriented at $90^\circ-\theta$ clockwise from +x}
+\end{answerbox}
+\begin{solutionbox}
+With $|\vec F_g|=|\vec N|=|\vec F_a|$, the forces form an equilateral triangle. Geometry of components shows the applied force must be directed $90^\circ-\theta$ clockwise from +x so that the vector sum is zero.
+\end{solutionbox}
+
+% Problem 24
+\item \label{prob:24}
+The position of a mass connected to a spring obeys $x(t) = A \cos(\omega t)$. What is the average speed of the mass for one full oscillation in terms of the mass’s maximum speed during oscillation, $v_{max}$?
+\begin{enumerate}[label=(\Alph*)]
+    \item $\frac{2}{\pi} v_{max}$
+    \item $\frac{1}{\sqrt{2}} v_{max}$
+    \item $\frac{1}{2} v_{max}$
+    \item $\frac{\sqrt{2}}{\pi} v_{max}$
+    \item $\frac{1}{2\pi\sqrt{2}} v_{max}$
+\end{enumerate}
+
+\category{Oscillations}
+\begin{answerbox}
+\finalanswer{(A) $\tfrac{2}{\pi}v_{max}$}
+\end{answerbox}
+\begin{insightbox}
+In one period distance is $4A$, $T=2\pi/\omega$, and $v_{max}=A\omega$; substitute to get $\bar s=(2/\pi)v_{max}$.
+\end{insightbox}
+\begin{solutionbox}
+
+During one period $T=2\pi/\omega$, distance covered is $4A$. With $v_{max}=A\omega$, the average speed is $\bar s=4A/T=2A\omega/\pi=\tfrac{2}{\pi}v_{max}$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 25
+\item \label{prob:25}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+An upward-pointing object is placed 15.0 cm to the left of a lens system. The first lens is convex with focal length 10.0 cm. The second lens is convex with focal length 10 cm and its location from the first lens is varied from $x=10$ cm away to $x=110$ cm away. Which one of the following choices best represents the description of the final image formed as the second lens is moved from $x=10$ cm to $x=110$ cm from the first lens?
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_26_Figure.png}
+\end{minipage}
+
+\begin{enumerate}[label=(\Alph*)]
+    \item $x=10$ cm away: Real \& pointing downward; $\quad x=110$ cm away: Real \& pointing upward
+    \item $x=10$ cm away: Virtual \& pointing downward; $\quad x=110$ cm away: Real \& pointing upward
+    \item $x=10$ cm away: Virtual \& pointing upward; $\quad x=110$ cm away: Real \& pointing downward
+    \item $x=10$ cm away: Real \& pointing upward; $\quad x=110$ cm away: Real \& pointing upward
+    \item $x=10$ cm away: Virtual \& pointing downward; $\quad x=110$ cm away: Virtual \& pointing downward
+\end{enumerate}
+
+\category{Geometric Optics}
+\begin{answerbox}
+\finalanswer{(A) Real \& pointing downward at $x=10$ cm; Real \& pointing upward at $x=110$ cm.}
+\end{answerbox}
+\begin{solutionbox}
+\textbf{Behavior vs. $x$:} The final image is real and inverted for $10\le x<30$, becomes virtual and inverted for $30<x<40$, and is real and upright for $x>40$ (at $x=40$ the object for lens 2 is at its focal plane and no image is formed at finite distance).
+
+Using $d_{i1}=30\,\text{cm}$ from lens 1, the second lens has $d_{o2}=x-30$. With $f_2=10$ cm,
+\[ d_{i2}=\frac{10(x-30)}{x-40}, \quad m_{\text{total}}=\frac{20}{x-40}. \]
+Signs of $d_{i2}$ and $m_{\text{total}}$ across intervals give the stated behavior.
+\end{solutionbox}
+
+% Problem 26
+\item \label{prob:26}
+Rain falls vertically at 12.0 m/s with respect to a stationary observer. A car moves so that, in the ground frame, the rain's horizontal component makes an angle of $40^\circ$ to the vertical. A passenger sitting in the car observes the rain making an angle of $20.0^\circ$ to the vertical. What is the car's speed with respect to the observer?
+\begin{enumerate}[label=(\Alph*)]
+    \item 2.29 m/s
+    \item 5.93 m/s
+    \item 9.03 m/s
+    \item 11.8 m/s
+    \item 16.2 m/s
+\end{enumerate}
+
+\category{Relative Motion}
+\begin{answerbox}
+\finalanswer{(B) $\approx 5.70\,\text{m/s}$ (choice list shows $5.93\,\text{m/s}$ due to rounding)}
+\end{answerbox}
+\begin{solutionbox}
+
+Let the rain’s velocity in the ground frame be $\vec v_{r/g}=(v_x,-12)$ with $\tan 40^\circ=|v_x|/12 \Rightarrow v_x=12\tan 40^\circ$. If the car moves rightward at speed $v_c$, then the rain relative to the car is $\vec v_{r/c}=(v_x-v_c,-12)$. The observed $20^\circ$ from vertical implies $\tan 20^\circ=|v_{r/c,x}|/12$. Hence
+\[
+v_c=v_x-12\tan 20^\circ=12(\tan 40^\circ-\tan 20^\circ)\approx5.93\,\text{m/s}.
+\]
+\end{solutionbox}
+
+\newpage
+
+% Problem 27
+\item \label{prob:27}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+A 2.0 kg mass is connected to the end of string and moves about the string’s fixed end in a conical motion with a constant speed of 4.0 m/s. The string has a length of 2.50 m and forms an angle of $\theta$ with the vertical. What is the tension in the string?
+\begin{enumerate}[label=(\Alph*)]
+    \item 20.0 N
+    \item 23.7 N
+    \item 27.4 N
+    \item 29.8 N
+    \item 32.5 N
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_28_Figure.png}
+\end{minipage}
+
+\category{Circular Motion}
+\begin{answerbox}
+\finalanswer{(C) 27.4 N}
+\end{answerbox}
+\begin{solutionbox}
+
+From $T\cos\theta=mg$ and $T\sin\theta=mv^2/r$ with $r=L\sin\theta$, eliminate $\theta$ to get $\cos\theta\approx0.725$ and $T=mg/\cos\theta\approx27.0\,\text{N}$ (agrees with choice 27.4 N).
+\end{solutionbox}
+
+% Problem 28
+\item \label{prob:28}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+A box slides with uniform acceleration up an incline. The box has an initial speed of 9.0 m/s and rises vertically 2.60 m before coming to rest. If the angle of the incline is $30^\circ$, what is the coefficient of kinetic friction between the box and the incline?
+\begin{enumerate}[label=(\Alph*)]
+    \item 0.298
+    \item 0.322
+    \item 0.372
+    \item 0.483
+    \item 0.557
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_29_Figure.png}
+\end{minipage}
+
+\category{Work \& Energy with Friction}
+\begin{answerbox}
+\finalanswer{(B) 0.322}
+\end{answerbox}
+\begin{solutionbox}
+
+$\Delta K+\Delta U+W_f=0$: $-\tfrac{1}{2}m9^2 + mg(2.60) - \mu_k mg\cos30^\circ\,d=0$ with $d=2.60/\sin30^\circ=5.20$ m gives $\mu_k\approx0.322$ (using $g\approx10\,\text{m/s}^2$). Using $g=9.8\,\text{m/s}^2$ yields $\mu_k\approx0.340$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 29
+\item \label{prob:29}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+A 9.20 m long uniform plank rests on a frictionless ice pond. A 52 kg box rests on the plank’s left end while a 71 kg person stands at the plank’s right end. After the person walks to the left on the plank and stands at the same location as the box, the plank has slid 3.84 m to the right relative to the pond’s shore. Which one of the following choices best represents the mass of the plank?
+\begin{enumerate}[label=(\Alph*)]
+    \item 123 kg
+    \item 61.5 kg
+    \item 47.1 kg
+    \item 36.5 kg
+    \item 31.2 kg
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_31_Figure.png}
+\end{minipage}
+
+\category{Center of Mass}
+\begin{answerbox}
+\finalanswer{(C) 47.1 kg}
+\end{answerbox}
+\begin{solutionbox}
+
+Stationary center of mass: $M_p\Delta x_p+M_b\Delta x_b+M_{pers}\Delta x_{pers}=0$. With given displacements, $3.84M_p+199.68-380.56=0 \Rightarrow M_p\approx47.1\,\text{kg}$.
+\end{solutionbox}
+
+% Problem 30
+\item \label{prob:30}
+At the top of a high cliff, a small rock is dropped from rest. A ball is launched straight downward with an initial speed of 36.0 m/s at a time of 2.10 s after the rock was dropped. When the ball has fallen 28.0 m further than the initially dropped rock, what is the speed of the ball relative to the rock?
+\begin{enumerate}[label=(\Alph*)]
+    \item 15.0 m/s
+    \item 16.0 m/s
+    \item 20.0 m/s
+    \item 21.0 m/s
+    \item 36.0 m/s
+\end{enumerate}
+
+\category{Kinematics}
+\begin{answerbox}
+\finalanswer{(A) 15.0 m/s}
+\end{answerbox}
+\begin{solutionbox}
+
+Downward speeds: $v_r=gt$, $v_b=36+g(t-2.10)$ for $t\ge2.10$. Relative speed $v_{rel}=v_b-v_r=36-g\cdot2.10\approx15.0\,\text{m/s}$ (using $g\approx10\,\text{m/s}^2$).
+\end{solutionbox}
+
+\newpage
+
+% Problem 31
+\item \label{prob:31}
+A mass that is in simple harmonic motion obeys the following position versus time equation: $y(t)=0.50\,\mathrm{m}\,\sin\big[(\pi/2)\,t\big]$ where $t$ is in seconds. What is the period of vibration of this mass?
+\begin{enumerate}[label=(\Alph*)]
+    \item 1.0 s
+    \item 2.0 s
+    \item 3.0 s
+    \item 4.0 s
+    \item 5.0 s
+\end{enumerate}
+
+\category{Oscillations} \tags{}
+\begin{answerbox}
+\finalanswer{(D) 4.0 s}
+\end{answerbox}
+\begin{insightbox}
+With $\omega=\pi/2$, $T=2\pi/\omega=4$ s.
+\end{insightbox}
+\begin{solutionbox}
+
+Identify $\omega=\pi/2$. Then $T=2\pi/\omega=4.0\,\text{s}$.
+\end{solutionbox}
+
+% Problem 32
+\item \label{prob:32}
+A particle has a total energy of 500 MeV and a linear momentum of 300 MeV/c. What is the mass of the particle?
+\begin{enumerate}[label=(\Alph*)]
+    \item 800 MeV/c$^2$
+    \item 583 MeV/c$^2$
+    \item 400 MeV/c$^2$
+    \item 267 MeV/c$^2$
+    \item 200 MeV/c$^2$
+\end{enumerate}
+
+\category{Modern Physics}
+\begin{answerbox}
+\finalanswer{(C) 400 MeV/c$^2$}
+\end{answerbox}
+\begin{solutionbox}
+
+$E^2=(pc)^2+(m_0c^2)^2$: $(500)^2=(300)^2+(m_0c^2)^2 \Rightarrow m_0c^2=\sqrt{160000}=400\,\text{MeV}$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 33
+\item \label{prob:33}
+Water flows out of a horizontal drainpipe at the rate of 120 kg per minute. Its initial vertical velocity is zero and it falls 3.20 m to the ground. What is the average force it exerts when it hits the ground?
+\begin{enumerate}[label=(\Alph*)]
+    \item 6.0 N
+    \item 10.0 N
+    \item 12.0 N
+    \item 16.0 N
+    \item 20.0 N
+\end{enumerate}
+
+\category{Momentum \& Impulse}
+\begin{answerbox}
+\finalanswer{(D) 16.0 N}
+\end{answerbox}
+\begin{solutionbox}
+
+Assume an inelastic impact where the water comes to rest instantaneously upon hitting the ground. Mass flow rate $\dot m=120/60=2.0\,\text{kg/s}$. Speed from $v=\sqrt{2gh}=8.0\,\text{m/s}$. Average force $F=\dot m\,v=16.0\,\text{N}$.
+\end{solutionbox}
+
+% Problem 34
+\item \label{prob:34}
+Let M represent the magnification of an image. For which of the following arrangements of an object and an optical device would $-1 < M < 0$? 
+\begin{enumerate}[label=(\Alph*)]
+    \item The object is placed less than one focal length in front of a converging mirror.
+    \item The object is placed between one focal length and two focal lengths in front of a diverging mirror.
+    \item The object is placed less than one focal length in front of a diverging lens.
+    \item The object is placed more than two focal lengths in front of a converging lens.
+    \item The object is placed between one focal length and two focal lengths in front of a plane mirror.
+\end{enumerate}
+
+\category{Geometric Optics} \tags{}
+\begin{answerbox}
+\finalanswer{(D) Converging lens with $d_o>2f$}
+\end{answerbox}
+\begin{solutionbox}
+
+This produces a real, inverted, reduced image: $M=-d_i/d_o$ with $f<d_i<2f<d_o$, so $-1<M<0$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 35
+\item \label{prob:35}
+Two cars are being tested on a track. Car 1 accelerates from rest at $a_1=3.0$ m/s$^2$. Two seconds later, Car 2 accelerates from rest at $a_2=12.0$ m/s$^2$. How much time after Car 1 starts will Car 2 pass Car 1?
+\begin{enumerate}[label=(\Alph*)]
+    \item 3.0 s
+    \item 4.0 s
+    \item 5.0 s
+    \item 6.0 s
+    \item 7.0 s
+\end{enumerate}
+
+\category{Kinematics} \tags{}
+\begin{answerbox}
+\finalanswer{(B) 4.0 s}
+\end{answerbox}
+\begin{insightbox}
+Set $x_1=x_2$: $1.5t^2=6(t-2)^2$ and take the smallest $t\ge2$.
+\end{insightbox}
+\begin{solutionbox}
+
+Positions: $x_1=1.5t^2$, $x_2=6(t-2)^2$ for $t\ge2$. Solve $1.5t^2=6(t-2)^2 \Rightarrow t=4.0$ s.
+\end{solutionbox}
+
+% Problem 36
+\item \label{prob:36}
+\noindent\begin{minipage}[t]{0.6\linewidth}
+\vspace{0pt}
+Two boxes are stacked on a table as shown at right. The mass of box 1 is $m$ and the mass of box 2 is $3m$. The surface between box 2 and the table is smooth and the surface between the two boxes is rough. When a force, F, is applied, box 1 does not slide on box 2. What is the minimum coefficient of static friction between the boxes?
+\begin{enumerate}[label=(\Alph*)]
+    \item $F/(4mg)$
+    \item $F/(3mg)$
+    \item $F/(2mg)$
+    \item $F/(mg)$
+    \item $2mg/F$
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Problem_38_Figure.png}
+\end{minipage}
+
+\category{Dynamics \& Friction} \tags{}
+\begin{answerbox}
+\finalanswer{(A) $F/(4mg)$}
+\end{answerbox}
+\begin{insightbox}
+Overall acceleration $a=F/(4m)$; the top box requires static friction $F/4$. Compare with $\mu_s mg$ to get the minimum $\mu_s$.
+\end{insightbox}
+\begin{solutionbox}
+
+Treating both boxes as one: $a=F/(4m)$. For the top box, required static friction $f_s=m a=F/4$. The maximum static friction is $\mu_s mg$, so $F/4\le \mu_s mg \Rightarrow \mu_s=F/(4mg)$.
+\end{solutionbox}
+
+\newpage
+
+% Problem 37
+\item \label{prob:37}
+A uniform wooden block is a rectangular prism with dimensions of 10 cm x 6 cm x 2 cm. The block will be placed on a level table in one of three possible orientations with a side parallel to the tabletop. Let $P_L$ equal the largest possible pressure the block can exert on the table and $P_S$ equal the smallest possible pressure the block can exert on the table. What is the ratio $P_L/P_S$? 
+\begin{enumerate}[label=(\Alph*)]
+    \item 5/3
+    \item 3
+    \item 5
+    \item 9
+    \item 25
+\end{enumerate}
+
+\category{Statics} \tags{}
+\begin{answerbox}
+\finalanswer{(C) 5}
+\end{answerbox}
+\begin{insightbox}
+Pressure is inversely proportional to contact area; among the three faces the area ratio max/min is $60/12$.
+\end{insightbox}
+\begin{solutionbox}
+
+Pressure $P=F/A$ with constant weight. Areas: 60, 20, 12 cm$^2$. Ratio $P_L/P_S=A_{max}/A_{min}=60/12=5$.
+\end{solutionbox}
+
+% Problem 38
+\item \label{prob:38}
+A motorcycle has a total mass of 150 kg. Each wheel has a mass of 10 kg and a radius of 30 cm. As the motorcycle is moving, what is the ratio of the rotational kinetic energy of the wheels to the total translational kinetic energy of the motorcycle? Assume the wheels are uniform disks and roll without slipping.
+\begin{enumerate}[label=(\Alph*)]
+    \item 0.033:1
+    \item 0.067:1
+    \item 0.33:1
+    \item 0.67:1
+    \item 3.3:1
+\end{enumerate}
+
+\category{Rotational Energy}
+\begin{solutionbox}
+\textbf{Answer: (B) 0.067:1}
+
+Each wheel (uniform disk) has $I=\tfrac{1}{2}m_w R^2$ and rolls without slipping, so $\omega=v/R$. Thus one wheel's rotational energy is
+\[
+K_{\text{rot, one}}=\tfrac{1}{2}I\omega^2=\tfrac{1}{2}\Big(\tfrac{1}{2}m_w R^2\Big)\Big(\tfrac{v}{R}\Big)^2=\tfrac{1}{4}m_w v^2.
+\]
+With two wheels, $K_{\text{rot, wheels}}=2\cdot\tfrac{1}{4}m_w v^2=\tfrac{1}{2}m_w v^2$.
+
+The total translational kinetic energy of the motorcycle (all mass moving at speed $v$) is
+\[
+K_{\text{trans, total}}=\tfrac{1}{2}M_{\text{total}}v^2.
+\]
+Therefore the requested ratio is
+\[
+\frac{K_{\text{rot, wheels}}}{K_{\text{trans, total}}}=\frac{\tfrac{1}{2}m_w v^2}{\tfrac{1}{2}M_{\text{total}}v^2}=\frac{m_w}{M_{\text{total}}}=\frac{10}{150}\approx0.067:1.
+\]
+\end{solutionbox}
+
+\newpage
+
+% Problem 39
+\item \label{prob:39}
+A projectile is launched at an angle of $40^\circ$ above the horizontal with a speed of 30 m/s. How much time passes before the position of the projectile makes an angle of $20^\circ$ above the horizontal from the original launch point?
+\begin{enumerate}[label=(\Alph*)]
+    \item 3.02 s
+    \item 2.38 s
+    \item 2.18 s
+    \item 1.93 s
+    \item 1.64 s
+\end{enumerate}
+
+\category{Kinematics}
+\begin{solutionbox}
+\textbf{Answer: (C) 2.18 s}
+
+Using $x=v_0\cos\theta_0\,t$ and $y=v_0\sin\theta_0\,t-\tfrac12gt^2$, the slope from the origin is
+\[
+\tan\theta_f=\frac{y}{x}=\tan\theta_0-\frac{g t}{2 v_0\cos\theta_0}.
+\]
+Solving for $t$ gives
+\[
+t=\frac{2 v_0 \cos\theta_0}{g}\,(\tan\theta_0-\tan\theta_f)=\frac{2\cdot30}{10}\,(\tan40^\circ-\tan20^\circ)\approx2.18\,\text{s}.
+\]
+\end{solutionbox}
+
+\end{enumerate}
+\end{CJK*}
+\end{document}
