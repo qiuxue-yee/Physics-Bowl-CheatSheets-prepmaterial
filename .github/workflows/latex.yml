@@ -1,0 +1,25 @@
+﻿name: build-pdf
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            tex/CheatSheets.tex
+            tex/Physics_Bowl_Initial_Version.tex
+          latexmk_use_xelatex: false
+      - name: Collect PDFs to docs
+        run: |
+          mkdir -p docs
+          cp tex/CheatSheets.pdf docs/CheatSheets.pdf
+          cp tex/Physics_Bowl_Initial_Version.pdf docs/Physics_Bowl_Initial_Version.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdfs
+          path: docs/*.pdf
