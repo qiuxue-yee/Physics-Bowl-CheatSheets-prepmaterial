@@ -1,0 +1,1630 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.10)  24 OCT 2025 06:10
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**./guides/physics/CheatSheets.tex
+(guides/physics/CheatSheets.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+(D:\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(D:\MiKTeX\tex/latex/base\size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(D:\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(D:\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(D:\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (D:\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count283
+\Gm@cntv=\count284
+\c@Gm@tempcnt=\count285
+\Gm@bindingoffset=\dimen149
+\Gm@wd@mp=\dimen150
+\Gm@odd@mp=\dimen151
+\Gm@even@mp=\dimen152
+\Gm@layoutwidth=\dimen153
+\Gm@layoutheight=\dimen154
+\Gm@layouthoffset=\dimen155
+\Gm@layoutvoffset=\dimen156
+\Gm@dimlist=\toks18
+ (D:\MiKTeX\tex/latex/geometry\geometry.cfg))
+(D:\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2025/06/16 v2.17y AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(D:\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(D:\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen157
+))
+(D:\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen158
+)
+(D:\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count286
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count287
+\leftroot@=\count288
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count289
+\DOTSCASE@=\count290
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen159
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count291
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count292
+\dotsspace@=\muskip17
+\c@parentequation=\count293
+\dspbrk@lvl=\count294
+\tag@help=\toks20
+\row@=\count295
+\column@=\count296
+\maxfields@=\count297
+\andhelp@=\toks21
+\eqnshift@=\dimen160
+\alignsep@=\dimen161
+\tagshift@=\dimen162
+\tagwidth@=\dimen163
+\totwidth@=\dimen164
+\lineht@=\dimen165
+\@envbody=\toks22
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2949.
+LaTeX Info: Redefining \] on input line 2950.
+)
+(D:\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(D:\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(D:\MiKTeX\tex/latex/lm\lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (D:\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+(D:\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(D:\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(D:\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(D:\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen166
+\Gin@req@width=\dimen167
+)
+(D:\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip54
+\enit@outerparindent=\dimen168
+\enit@toks=\toks24
+\enit@inbox=\box55
+\enit@count@id=\count298
+\enitdp@description=\count299
+)
+(D:\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(D:\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(D:\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(D:\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
+Package: tcolorbox 2025/09/09 version 6.8.0 text color boxes
+
+(D:\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty
+(D:\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(D:\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty
+(D:\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+\pgfutil@everybye=\toks25
+\pgfutil@tempdima=\dimen169
+\pgfutil@tempdimb=\dimen170
+)
+(D:\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+\pgfutil@abb=\box56
+)
+(D:\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex
+(D:\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(D:\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty
+(D:\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty
+(D:\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(D:\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks26
+\pgfkeys@temptoks=\toks27
+
+(D:\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks28
+))
+\pgf@x=\dimen171
+\pgf@y=\dimen172
+\pgf@xa=\dimen173
+\pgf@ya=\dimen174
+\pgf@xb=\dimen175
+\pgf@yb=\dimen176
+\pgf@xc=\dimen177
+\pgf@yc=\dimen178
+\pgf@xd=\dimen179
+\pgf@yd=\dimen180
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count300
+\c@pgf@countb=\count301
+\c@pgf@countc=\count302
+\c@pgf@countd=\count303
+\t@pgf@toka=\toks29
+\t@pgf@tokb=\toks30
+\t@pgf@tokc=\toks31
+\pgf@sys@id@count=\count304
+
+(D:\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(D:\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(D:\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(D:\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count305
+\pgfsyssoftpath@bigbuffer@items=\count306
+)
+(D:\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(D:\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+\pgfmath@dimen=\dimen181
+\pgfmath@count=\count307
+\pgfmath@box=\box57
+\pgfmath@toks=\toks32
+\pgfmath@stack@operand=\toks33
+\pgfmath@stack@operation=\toks34
+)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex)
+(D:\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count308
+))
+(D:\MiKTeX\tex/generic/pgf/math\pgfint.code.tex)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen182
+\pgf@picmaxx=\dimen183
+\pgf@picminy=\dimen184
+\pgf@picmaxy=\dimen185
+\pgf@pathminx=\dimen186
+\pgf@pathmaxx=\dimen187
+\pgf@pathminy=\dimen188
+\pgf@pathmaxy=\dimen189
+\pgf@xx=\dimen190
+\pgf@xy=\dimen191
+\pgf@yx=\dimen192
+\pgf@yy=\dimen193
+\pgf@zx=\dimen194
+\pgf@zy=\dimen195
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen196
+\pgf@path@lasty=\dimen197
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen198
+\pgf@shorten@start@additional=\dimen199
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box58
+\pgf@hbox=\box59
+\pgf@layerbox@main=\box60
+\pgf@picture@serial@count=\count309
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen256
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen257
+\pgf@pt@y=\dimen258
+\pgf@pt@temp=\dimen259
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen260
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen261
+\pgf@sys@shading@range@num=\count310
+\pgf@shadingcount=\count311
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box61
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(D:\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(D:\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box62
+)
+(D:\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(D:\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen262
+\pgf@nodesepend=\dimen263
+)
+(D:\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(D:\MiKTeX\tex/latex/pgf/utilities\pgffor.sty
+(D:\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty
+(D:\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex))
+(D:\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(D:\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex))
+(D:\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen264
+\pgffor@skip=\dimen265
+\pgffor@stack=\toks35
+\pgffor@toks=\toks36
+))
+(D:\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(D:\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count312
+\pgfplotmarksize=\dimen266
+)
+\tikz@lastx=\dimen267
+\tikz@lasty=\dimen268
+\tikz@lastxsaved=\dimen269
+\tikz@lastysaved=\dimen270
+\tikz@lastmovetox=\dimen271
+\tikz@lastmovetoy=\dimen272
+\tikzleveldistance=\dimen273
+\tikzsiblingdistance=\dimen274
+\tikz@figbox=\box63
+\tikz@figbox@bg=\box64
+\tikz@tempbox=\box65
+\tikz@tempbox@bg=\box66
+\tikztreelevel=\count313
+\tikznumberofchildren=\count314
+\tikznumberofcurrentchild=\count315
+\tikz@fig@count=\count316
+
+(D:\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count317
+\pgfmatrixcurrentcolumn=\count318
+\pgf@matrix@numberofcolumns=\count319
+)
+\tikz@expandcount=\count320
+
+(D:\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code
+.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (D:\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks37
+\verbatim@line=\toks38
+\verbatim@in@stream=\read3
+)
+(D:\MiKTeX\tex/latex/environ\environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(D:\MiKTeX\tex/latex/trimspaces\trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+(D:\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count321
+)
+\tcb@titlebox=\box67
+\tcb@upperbox=\box68
+\tcb@lowerbox=\box69
+\tcb@phantombox=\box70
+\c@tcbbreakpart=\count322
+\c@tcblayer=\count323
+\c@tcolorbox@number=\count324
+\l__tcobox_tmpa_box=\box71
+\l__tcobox_tmpa_dim=\dimen275
+\tcb@temp=\box72
+\tcb@temp=\box73
+\tcb@temp=\box74
+\tcb@temp=\box75
+
+(D:\MiKTeX\tex/latex/tcolorbox\tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '6.8.0'
+\c@tcbrastercolumn=\count325
+\c@tcbrasterrow=\count326
+\c@tcbrasternum=\count327
+\c@tcbraster=\count328
+) (D:\MiKTeX\tex/latex/tcolorbox\tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.8.0'
+(D:\MiKTeX\tex/latex/tikzfill\tikzfill.image.sty
+Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
+
+(D:\MiKTeX\tex/latex/tikzfill\tikzfill-common.sty
+Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
+)
+(D:\MiKTeX\tex/latex/tikzfill\tikzlibraryfill.image.code.tex
+File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
+\l__tikzfill_img_box=\box76
+))
+(D:\MiKTeX\tex/latex/tcolorbox\tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.8.0'
+)) (D:\MiKTeX\tex/latex/tcolorbox\tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.8.0'
+(D:\MiKTeX\tex/latex/pdfcol\pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+
+(D:\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(D:\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+))
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box77
+\tcb@totalupperbox=\box78
+\tcb@totallowerbox=\box79
+)
+(D:\MiKTeX\tex/latex/tcolorbox\tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.8.0'
+) (D:\MiKTeX\tex/latex/tcolorbox\tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.8.0'
+) (D:\MiKTeX\tex/latex/tcolorbox\tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.8.0'
+\tcbfitdim=\dimen276
+\tcb@lowerfitdim=\dimen277
+\tcb@upperfitdim=\dimen278
+\tcb@cur@hbadness=\count329
+) (D:\MiKTeX\tex/latex/tcolorbox\tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.8.0'
+(D:\MiKTeX\tex/latex/tcolorbox\tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '6.8.0'
+(D:\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count330
+\lst@gtempboxa=\box80
+\lst@token=\toks39
+\lst@length=\count331
+\lst@currlwidth=\dimen279
+\lst@column=\count332
+\lst@pos=\count333
+\lst@lostspace=\dimen280
+\lst@width=\dimen281
+\lst@newlines=\count334
+\lst@lineno=\count335
+\lst@maxwidth=\dimen282
+
+(D:\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
+)
+(D:\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
+\c@lstnumber=\count336
+\lst@skipnumbers=\count337
+\lst@framebox=\box81
+)
+(D:\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2024/09/23 1.10c listings configuration
+))
+Package: listings 2024/09/23 1.10c (Carsten Heinz)
+
+(D:\MiKTeX\tex/latex/tcolorbox\tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '6.8.0'
+(D:\MiKTeX\tex/latex/tcolorbox\tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '6.8.0'
+)
+\c@tcblisting=\count338
+)) (D:\MiKTeX\tex/latex/listingsutf8\listingsutf8.sty
+Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
+
+(D:\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(D:\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+
+(D:\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+))))
+(D:\MiKTeX\tex/latex/tcolorbox\tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '6.8.0'
+) (D:\MiKTeX\tex/latex/tcolorbox\tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '6.8.0'
+) (D:\MiKTeX\tex/latex/tcolorbox\tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '6.8.0'
+
+(D:\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryfadings.code
+.tex
+File: tikzlibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+ (D:\MiKTeX\tex/generic/pgf/libraries\pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(D:\MiKTeX\tex/latex/tcolorbox\tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '6.8.0'
+)) (D:\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
+
+(D:\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(D:\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(D:\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(D:\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
+
+(D:\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(D:\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(D:\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count339
+)
+\@linkdim=\dimen283
+\Hy@linkcounter=\count340
+\Hy@pagecounter=\count341
+
+(D:\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(D:\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count342
+
+(D:\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4195.
+Package hyperref Info: Link nesting OFF on input line 4200.
+Package hyperref Info: Hyper index ON on input line 4203.
+Package hyperref Info: Plain pages OFF on input line 4210.
+Package hyperref Info: Backreferencing OFF on input line 4215.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4462.
+\c@Hy@tempcnt=\count343
+ (D:\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4801.
+\XeTeXLinkMargin=\dimen284
+
+(D:\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(D:\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count344
+\Field@Width=\dimen285
+\Fld@charsize=\dimen286
+Package hyperref Info: Hyper figures OFF on input line 6078.
+Package hyperref Info: Link nesting OFF on input line 6083.
+Package hyperref Info: Hyper index ON on input line 6086.
+Package hyperref Info: backreferencing OFF on input line 6093.
+Package hyperref Info: Link coloring OFF on input line 6098.
+Package hyperref Info: Link coloring with OCG OFF on input line 6103.
+Package hyperref Info: PDF/A mode OFF on input line 6108.
+\Hy@abspage=\count345
+\c@Item=\count346
+\c@Hfootnote=\count347
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(D:\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
+\Fld@listcount=\count348
+\c@bookmark@seq@number=\count349
+
+(D:\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(D:\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip55
+)
+(D:\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip56
+\f@nch@offset@elh=\skip57
+\f@nch@offset@erh=\skip58
+\f@nch@offset@olh=\skip59
+\f@nch@offset@orh=\skip60
+\f@nch@offset@elf=\skip61
+\f@nch@offset@erf=\skip62
+\f@nch@offset@olf=\skip63
+\f@nch@offset@orf=\skip64
+\f@nch@height=\skip65
+\f@nch@footalignment=\skip66
+\f@nch@widthL=\skip67
+\f@nch@widthC=\skip68
+\f@nch@widthR=\skip69
+\@temptokenb=\toks40
+)
+(D:\MiKTeX\tex/latex/lastpage\lastpage.sty
+Package: lastpage 2025/08/14 v2.1h lastpage: 2.09 or 2e? (HMM)
+
+(D:\MiKTeX\tex/latex/lastpage\lastpage2e.sty
+Package: lastpage2e 2025/08/14 v2.1h Decide which 2e lastpage version to use (H
+MM)
+
+(D:\MiKTeX\tex/latex/lastpage\lastpagemodern.sty
+Package: lastpagemodern 2025-08-14 v2.1h Refers to last page's name (HMM; JPG)
+\c@lastpagecount=\count350
+) 
+)) (D:\MiKTeX\tex/latex/microtype\microtype.sty
+Package: microtype 2025/07/09 v3.2b Micro-typographical refinements (RS)
+\MT@toks=\toks41
+\MT@tempbox=\box82
+\MT@count=\count351
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1087.
+LaTeX Info: Redefining \leftprotrusion on input line 1088.
+\MT@prot@toks=\toks42
+LaTeX Info: Redefining \rightprotrusion on input line 1107.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen287
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count352
+
+(D:\MiKTeX\tex/latex/microtype\microtype-pdftex.def
+File: microtype-pdftex.def 2025/07/09 v3.2b Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 944.
+LaTeX Info: Redefining \lslig on input line 944.
+\MT@outer@space=\skip70
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(D:\MiKTeX\tex/latex/microtype\microtype.cfg
+File: microtype.cfg 2025/07/09 v3.2b microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
+)
+(D:\MiKTeX\tex/latex/needspace\needspace.sty
+Package: needspace 2025/03/13 v1.3e reserve vertical space
+)
+(D:\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
+(D:\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2025-09-02 L3 programming layer (loader) 
+
+(D:\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count353
+))
+Package: xparse 2024-08-16 L3 Experimental document command parser
+)
+(D:\MiKTeX\tex/latex/xstring\xstring.sty
+(D:\MiKTeX\tex/generic/xstring\xstring.tex
+\xs_counta=\count354
+\xs_countb=\count355
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+)
+(D:\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(D:\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen288
+\captionmargin=\dimen289
+\caption@leftmargin=\dimen290
+\caption@rightmargin=\dimen291
+\caption@width=\dimen292
+\caption@indent=\dimen293
+\caption@parindent=\dimen294
+\caption@hangindent=\dimen295
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count356
+\c@continuedfloat=\count357
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+)
+(D:\MiKTeX\tex/latex/siunitx\siunitx.sty
+Package: siunitx 2025-07-09 v3.4.14 A comprehensive (SI) units package
+\l__siunitx_number_uncert_offset_int=\count358
+\l__siunitx_number_exponent_fixed_int=\count359
+\l__siunitx_number_min_decimal_int=\count360
+\l__siunitx_number_min_integer_int=\count361
+\l__siunitx_number_round_precision_int=\count362
+\l__siunitx_number_lower_threshold_int=\count363
+\l__siunitx_number_upper_threshold_int=\count364
+\l__siunitx_number_group_first_int=\count365
+\l__siunitx_number_group_size_int=\count366
+\l__siunitx_number_group_minimum_int=\count367
+\l__siunitx_angle_tmp_dim=\dimen296
+\l__siunitx_angle_marker_box=\box83
+\l__siunitx_angle_unit_box=\box84
+\l__siunitx_compound_count_int=\count368
+
+(D:\MiKTeX\tex/latex/translations\translations.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
+ (CN)
+)
+\l__siunitx_table_tmp_box=\box85
+\l__siunitx_table_tmp_dim=\dimen297
+\l__siunitx_table_column_width_dim=\dimen298
+\l__siunitx_table_integer_box=\box86
+\l__siunitx_table_decimal_box=\box87
+\l__siunitx_table_uncert_box=\box88
+\l__siunitx_table_before_box=\box89
+\l__siunitx_table_after_box=\box90
+\l__siunitx_table_before_dim=\dimen299
+\l__siunitx_table_carry_dim=\dimen300
+\l__siunitx_unit_tmp_int=\count369
+\l__siunitx_unit_position_int=\count370
+\l__siunitx_unit_total_int=\count371
+
+(D:\MiKTeX\tex/latex/tools\array.sty
+Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
+\col@sep=\dimen301
+\ar@mcellbox=\box91
+\extrarowheight=\dimen302
+\NC@list=\toks43
+\extratabsurround=\skip71
+\backup@length=\skip72
+\ar@cellbox=\box92
+))
+(D:\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowinset=\dimen303
+\pgfarrowlength=\dimen304
+\pgfarrowwidth=\dimen305
+\pgfarrowlinewidth=\dimen306
+)
+\c@unitproblem=\count372
+Package translations Info: No language package found. I am going to use `englis
+h' as default language. on input line 117.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+17.
+
+(D:\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) (CheatSheets.aux)
+\openout1 = `CheatSheets.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=452.9679pt
+* \textheight=700.50687pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=14.5pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(D:\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count373
+\scratchdimen=\dimen307
+\scratchbox=\box93
+\nofMPsegments=\count374
+\nofMParguments=\count375
+\everyMPshowfont=\toks44
+\MPscratchCnt=\count376
+\MPscratchDim=\dimen308
+\MPnumerator=\count377
+\makeMPintoPDFobject=\count378
+\everyMPtoPDFconversion=\toks45
+) (D:\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(D:\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+\c@lstlisting=\count379
+
+(D:\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks46
+\inpenc@posthook=\toks47
+)
+Package hyperref Info: Link coloring OFF on input line 117.
+ (CheatSheets.out) (CheatSheets.out)
+\@outlinefile=\write4
+\openout4 = `CheatSheets.out'.
+
+LaTeX Info: Redefining \microtypecontext on input line 117.
+Package microtype Info: Applying patch `item' on input line 117.
+Package microtype Info: Applying patch `toc' on input line 117.
+Package microtype Info: Applying patch `eqnum' on input line 117.
+Package microtype Info: Applying patch `footnote' on input line 117.
+Package microtype Info: Applying patch `verbatim' on input line 117.
+LaTeX Info: Redefining \microtypesetup on input line 117.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+Package microtype Info: Patching command `\showhyphens'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(D:\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+(D:\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-english.t
+rsl
+File: translations-basic-dictionary-english.trsl (english translation file `tra
+nslations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' f
+or `english'. on input line 117.
+
+
+[1
+
+{C:/Users/Ray/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{D:/MiKTeX/fonts
+/enc/dvips/lm/lm-rm.enc}]
+
+[1]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+67.
+ (D:\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
+79.
+ (D:\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+179.
+
+(D:\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+179.
+ (D:\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 179.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 179.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 179.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 179
+.
+
+(D:\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(D:\MiKTeX\tex/latex/microtype\mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 179
+.
+
+(D:\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(D:\MiKTeX\tex/latex/microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
+203.
+ (D:\MiKTeX\tex/latex/lm\ot1lmtt.fd
+File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 203.
+
+
+[2
+
+{D:/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{D:/MiKTeX/fonts/enc/dvips/lm/lm-mathi
+t.enc}{D:/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{D:/MiKTeX/fonts/enc/dvips/lm
+/lm-mathex.enc}]
+
+[3{D:/MiKTeX/fonts/enc/dvips/lm/lm-rmtt.enc}] (CheatSheets.toc
+
+[4
+
+])
+\tf@toc=\write5
+\openout5 = `CheatSheets.toc'.
+
+
+
+[5]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14.4> on input line 227.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 227.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 227.
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.260   R
+         esolve velocity vector $\vec v=(30\,\text{m/s},40\,\text{m/s})$ int...
+[1
+
+]
+
+[2]
+
+[3]
+
+[4]
+
+[5]
+
+[6]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.524   A
+          $5\,\text{kg}$ block rests on a horizontal surface. A horizontal f...
+
+
+[7]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.530   A
+          $2\,\text{kg}$ block hangs from a string. Find the tension in the ...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.559   A
+          $3\,\text{kg}$ block on a horizontal surface has $\mu_k=0.2$. Find...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.565   A
+          spring with constant $k=200\,\text{N/m}$ is compressed by $x=0.1\,...
+
+
+[8]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.5
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.589   A
+          car of mass $m$ rounds a curve of radius $r=50\,\text{m}$ at $v=20...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.6
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.595   A
+          ball on a string swings in a vertical circle of radius $r$. At the...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.7
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.619   A
+          constant force $F=10\,\text{N}$ acts on a mass for $\Delta t=3\,\t...
+
+
+[9]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.8
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.625   A
+          particle's momentum changes from $\vec p_i=(5,0)\,\text{kgÂ·m/s}$ ...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.657   A
+          $10\,\text{kg}$ block is pushed $5\,\text{m}$ horizontally by a co...
+
+
+[10]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.663   A
+          net force of $50\,\text{N}$ accelerates a $5\,\text{kg}$ mass from...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.688   A
+          $2\,\text{kg}$ block falls $h=5\,\text{m}$ from rest. Find its spe...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.694   A
+          spring ($k=100\,\text{N/m}$) is compressed by $x=0.2\,\text{m}$. C...
+
+
+[11]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.5
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.717   A
+          mass moves in a potential $U(x)=\tfrac12 kx^2$. Find the force act...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.6
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.723   S
+         how that gravitational potential $U=-\dfrac{GMm}{r}$ gives force $F...
+
+
+[12]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.767   A
+          $4\,\text{kg}$ object moves with velocity $\vec v=(6,8)\,\text{m/s...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.773   A
+          force $F(t)=10t\,\text{N}$ acts on a particle from $t=0$ to $t=2\,...
+
+
+[13]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.816   T
+         wo carts collide elastically in 1D. Mass $m_1=2\,\text{kg}$ at $u_1...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.822   I
+         n a perfectly inelastic collision, $m_1=4\,\text{kg}$ at $u_1=6\,\t...
+
+
+[14]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.5
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.863   T
+         wo masses $m_1=3\,\text{kg}$ at $x_1=0$ and $m_2=2\,\text{kg}$ at $...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.6
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.869   A
+          system has two equal masses $m$ moving at velocities $\vec v_1=(2,...
+
+
+[15]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.7
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.911   A
+          rocket has initial mass $m_i=1000\,\text{kg}$, final mass $m_f=400...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.8
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.917   A
+          rocket ejects mass at rate $\dot m=10\,\text{kg/s}$ with effective...
+
+
+[16]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.961   A
+          disk of radius $r=0.5\,\text{m}$ and moment of inertia $I=2\,\text...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.967   A
+          flywheel rotating at $\omega=20\,\text{rad/s}$ has $I=5\,\text{kgÂ...
+
+
+[17]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1006   A
+           disk of radius $R$ rolls without slipping at $v_{cm}=5\,\text{m/s...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1012   A
+           solid sphere ($I=\tfrac25 mR^2$) rolls at $\omega=10\,\text{rad/s...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.5
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1054   A
+           thin rod of mass $m$ and length $L$ rotates about one end. Find i...
+
+
+[18]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.6
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1060   A
+           disk of mass $M$ and radius $R$ has $I_{cm}=\tfrac12 MR^2$. Using...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.7
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1093   A
+           solid cylinder of mass $m$ and radius $R$ is released from rest t...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.8
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1099   A
+           rolling sphere moves to the right and speeds up. Determine the di...
+
+
+[19]
+
+[20]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1177   A
+           mass on a spring follows SHM with amplitude $A$ and period $T$. W...
+
+
+[21
+
+]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1218   A
+           wave has wavelength $\lambda=2\,\text{m}$ and frequency $f=50\,\t...
+
+
+[22]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1243   A
+           string of length $L=1.2\,\text{m}$ fixed at both ends has fundame...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1263   A
+          n acoustic source emits $f=440\,\text{Hz}$ in air with $v=340\,\te...
+
+
+[23]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.5
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1304   F
+          or $x''+\omega^2x=0$ with $x(0)=0$ and $\dot x(0)=v_0$, find $x(t)...
+
+
+[24]
+
+[25]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1355   A
+           block of volume $V$ and density $\rho_b$ floats in a liquid of de...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1398   W
+          ater flows through a horizontal pipe from diameter $D_1=0.1\,\text...
+
+
+[26]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1404   A
+          t point 1 in a pipe, $P_1=1.0\times10^5\,\text{Pa}$, $v_1=2\,\text...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1451   A
+          n ideal gas undergoes an isothermal expansion from volume $V_1$ to...
+
+
+[27]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.5
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1457   A
+          n ideal gas at $P=2\times10^5\,\text{Pa}$ and $V=0.01\,\text{m}^3$...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.6
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1498   A
+           Carnot engine operates between $T_h=500\,\text{K}$ and $T_c=300\,...
+
+
+[28]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.7
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1504   A
+          n ideal gas expands reversibly at constant $T=400\,\text{K}$ from ...
+
+
+[29]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1580   T
+          wo point charges $+Q$ are at $(\pm a,0)$. Find the electric field ...
+
+
+[30
+
+]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1627   T
+          wo capacitors $C_1=2\,\mu\text{F}$ and $C_2=3\,\mu\text{F}$ are in...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1633   A
+           capacitor with $C=10\,\mu\text{F}$ is charged to $V=50\,\text{V}$...
+
+
+[31]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1671   U
+          sing Gauss's law, find $E(r)$ outside a uniformly charged sphere o...
+
+
+[32]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1715   T
+          hree resistors of $R$ are in parallel; find the equivalent resista...
+
+
+[33]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1762   A
+          n $RC$ circuit with $V$ applied at $t=0$ has $R=2\,\Omega$, $C=1\,...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1768   Q
+          uick check for limits: For any first-order $RC$ with step to $V_\i...
+
+
+[34]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1790   A
+          n $RC$ circuit with $V$ applied at $t=0$ has $R=2\,\Omega$, $C=1\,...
+
+
+[35]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1832   A
+           particle of charge $q$ enters a uniform magnetic field $\vec B$ p...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1858   A
+           wire of length $L$ carries current $I$ in a uniform field $\vec B...
+
+
+[36]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1901   I
+          n a loop of area $A$, the magnetic field increases as $B(t)=B_0+kt...
+
+
+[37]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1948   L
+          ight in vacuum has wavelength $\lambda=600\,\text{nm}$ and speed $...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.5
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1954   R
+          ank the following by increasing photon energy: radio, visible, X-ray.
+
+
+[38]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2008   L
+          ight travels from air ($n_1=1$) into water ($n_2=1.33$) at inciden...
+
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2014   L
+          ight moves from glass ($n=1.5$) to air ($n=1$). Find the critical ...
+
+
+[39
+
+]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.3
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2074   A
+          n object at $s=30\,\text{cm}$ forms an image at $s'=-60\,\text{cm}...
+
+
+[40]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2111   F
+          or double-slit with spacing $d$ and wavelength $\lambda$, what is ...
+
+
+[41]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2152   A
+           spaceship moves at $0.8c$ relative to Earth. What factor relates ...
+
+
+[42]
+pdfTeX warning (ext4): destination with the same identifier (name{unitproblem.2
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2187   L
+          ight of frequency $f$ hits a metal with work function $\phi$. Writ...
+
+
+[43] 
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+(CheatSheets.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+Package rerunfilecheck Info: File `CheatSheets.out' has not changed.
+(rerunfilecheck)             Checksum: 56887CB2BB769E6641C832E935463473;15472.
+ ) 
+Here is how much of TeX's memory you used:
+ 36785 strings out of 468130
+ 765561 string characters out of 5447473
+ 1198831 words of memory out of 5000000
+ 64457 multiletter control sequences out of 15000+600000
+ 721127 words of font info for 238 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 98i,17n,101p,1025b,1496s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<D:/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><D:/MiKTeX/fonts/type1/public/lm/
+lmbx12.pfb><D:/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><D:/MiKTeX/fonts/type1/pu
+blic/lm/lmbxi10.pfb><D:/MiKTeX/fonts/type1/public/lm/lmex10.pfb><D:/MiKTeX/font
+s/type1/public/lm/lmmi10.pfb><D:/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><D:/Mi
+KTeX/fonts/type1/public/lm/lmmi6.pfb><D:/MiKTeX/fonts/type1/public/lm/lmmi8.pfb
+><D:/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><D:/MiKTeX/fonts/type1/public/lm/
+lmr10.pfb><D:/MiKTeX/fonts/type1/public/lm/lmr12.pfb><D:/MiKTeX/fonts/type1/pub
+lic/lm/lmr17.pfb><D:/MiKTeX/fonts/type1/public/lm/lmr6.pfb><D:/MiKTeX/fonts/typ
+e1/public/lm/lmr8.pfb><D:/MiKTeX/fonts/type1/public/lm/lmri10.pfb><D:/MiKTeX/fo
+nts/type1/public/lm/lmri12.pfb><D:/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><D:/
+MiKTeX/fonts/type1/public/lm/lmsy6.pfb><D:/MiKTeX/fonts/type1/public/lm/lmsy8.p
+fb><D:/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><D:/MiKTeX/fonts/type1/public/am
+sfonts/symbols/msam10.pfb>
+Output written on CheatSheets.pdf (49 pages, 664513 bytes).
+PDF statistics:
+ 899 PDF objects out of 1000 (max. 8388607)
+ 133 named destinations out of 1000 (max. 500000)
+ 52453 words of extra memory for PDF output out of 61914 (max. 10000000)
+
