@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / ".build" / "pdf"
 BOOKS = [
     ("CheatSheets", "guides/physics/CheatSheets.tex"),
-    ("Physics_Bowl_Initial_Version", "Physics_Bowl_Initial_Version.tex"),
+    ("Physics_Bowl_Initial_Version", "problems/Physics_Bowl_Initial_Version.tex"),
 ]
 
 

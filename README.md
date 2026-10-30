@@ -68,7 +68,10 @@ subject-matter review. Found a mistake? [Open an issue](https://github.com/qiuxu
 | :--- | :--- |
 | `guides/physics/CheatSheets.tex` | Study-guide entry point |
 | `guides/physics/units/` | One source file per unit |
-| `Physics_Bowl_Initial_Version.tex` and `problems/` | Problem-set entry point and question groups |
+| `problems/Physics_Bowl_Initial_Version.tex` | Problem-set entry point |
+| `problems/01-10.tex`, etc. | Selected questions and solutions, grouped by number |
+| `problems/figures/` | Original question figures; see the folder's notes |
+| `Physics_Bowl_Initial_Version.tex` | Compatibility entry point for the previous source path |
 | `tex/` and `data/` | Shared styles, conventions, topic map and source records |
 | `docs/` | Download page, previews and the two PDFs |
 | `scripts/` and `tests/` | Build, integrity, calculation and PDF checks |

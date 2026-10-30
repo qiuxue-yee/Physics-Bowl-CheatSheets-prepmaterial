@@ -74,7 +74,7 @@ class MaterialIntegrityTests(unittest.TestCase):
         for number, block in problems.items():
             for filename in re.findall(r"\\includegraphics(?:\[[^]]+\])?\{([^}]+)\}", block):
                 with self.subTest(problem=number, filename=filename):
-                    self.assertTrue((ROOT / filename).is_file())
+                    self.assertTrue((ROOT / "problems/figures" / filename).is_file())
         expected = {
             22: "Problem_21_Figure.png",
             23: "Problem_23_Figure.png",
