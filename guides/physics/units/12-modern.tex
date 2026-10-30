@@ -1,0 +1,96 @@
+\Unit[Special relativity ($\gamma$, time dilation, length contraction, $E=mc^2$); photoelectric effect; atomic spectra; nuclear decay/half-life]{Modern Physics}
+\label{unit:modern}
+
+\begin{KnowledgePoint}{Special Relativity \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} At high speeds, time dilates and lengths contract; energy–mass equivalence relates rest mass to rest energy.
+
+  \textbf{Core formulas (with proper vs observed):}
+  \[
+  \left\{\begin{aligned}
+  &\gamma=\frac{1}{\sqrt{1-v^2/c^2}},\\
+  &\text{Time dilation: } \Delta t=\gamma\,\Delta \tau\ \ (\Delta \tau\text{ proper time in moving clock's frame}),\\
+  &\text{Length contraction: } L=\frac{L_0}{\gamma}\ \ (L_0\text{ proper length measured at rest with the rod}),\\
+  &\text{Relativistic energy: } E=\gamma mc^2\ (E_0=mc^2),\quad p=\gamma mv,\quad E^2=(pc)^2+(mc^2)^2.
+  \end{aligned}\right.
+  \]
+
+\textbf{Variable definitions:} $\gamma$ Lorentz factor; $v$ relative speed; $c$ speed of light; $\Delta \tau$ proper time (clock's rest frame); $L_0$ proper length (object's rest frame); $E$ total energy; $E_0$ rest energy; $p$ relativistic momentum.
+
+  \textbf{Prerequisites \& scope:} Inertial frames; $v$ along one axis for simple forms; proper quantities measured in an object's rest frame.
+  \end{formulabox}
+
+  \KPHeuristics
+\begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Label frames (S, S') and identify proper time/length before applying formulas.
+    \item [\Extension] Approximation for $v\ll c$: $\gamma\approx1+\tfrac12(v/c)^2$ (derivation and series methods belong to \Extension).
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A spaceship moves at $0.8c$ relative to Earth. What factor relates proper time to dilated time?
+  \begin{solutionbox}
+  $\gamma=1/\sqrt{1-0.8^2}=\tfrac{5}{3}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Photoelectric Effect \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Electrons emit when photon energy exceeds the work function; the threshold frequency is $f_{th}=\phi/h$.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &K_{\max}=hf-\phi,\quad f_{\text{th}}=\phi/h,\\
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $h$ Planck constant; $\phi$ work function.
+
+  \textbf{Prerequisites \& scope:} Idealized models; surface effects and detector thresholds may alter observed $K_{\max}$.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Stopping potential depends on frequency (threshold via $f_{\text{th}}=\phi/h$), not intensity.
+    \item In a $K_{\max}$--$f$ plot, slope $=h$, vertical intercept $=-\phi$.
+    \item Increasing intensity raises saturation current but does not change stopping potential.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  Light of frequency $f$ hits a metal with work function $\phi$. Write the maximum kinetic energy of ejected electrons.
+  \begin{solutionbox}
+  If $hf\ge\phi$, then $K_{\max}=hf-\phi$. If $hf<\phi$, no photoelectrons are emitted in the ideal model.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Nuclear Decay Basics \Core}
+  \KPFormulas
+  \begin{formulabox}
+  For a constant decay rate, the number of undecayed nuclei decreases exponentially:
+  \textbf{Core formulas:}
+  \[
+    N(t)=N_0\,2^{-t/T_{1/2}}=N_0 e^{-\lambda t},\ \lambda=\frac{\ln 2}{T_{1/2}}.
+  \]
+  $N_0$ is the initial number, $T_{1/2}$ is the half-life, and $\lambda$ is the decay constant.
+  \end{formulabox}
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item For decay chains, use activity $A=\lambda N$; independent branches superpose exponentials.
+    \item Plot $\ln N$ vs $t$ to extract $\lambda$ from the slope.
+  \end{itemize}
+  \end{heuristicsbox}
+\end{KnowledgePoint}
+
+
+\UnitProblemLinks{modern}

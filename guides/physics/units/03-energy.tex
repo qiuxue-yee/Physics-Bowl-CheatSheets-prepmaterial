@@ -1,0 +1,103 @@
+\Unit[Work $W=\int \vec F\cdot d\vec r$; Work--Energy theorem; potential energies (gravity, spring); mechanical energy conservation; power (instantaneous vs average); conservative fields ($F_x=-\,dU/dx$)]{Work, Energy, Power}
+\label{unit:energy}
+
+\begin{KnowledgePoint}{Work and the Work--Energy Theorem \Core}
+  \KPFormulas
+\begin{formulabox}
+  Work transfers energy through a force acting over a displacement; the net work equals the change in kinetic energy.
+  \[
+  \left\{\begin{aligned}
+    &\text{For constant }F\text{ and displacement }d\text{ at angle }\theta:\ \ W=Fd\cos\theta,\\
+    &\text{Work--Energy: }\Delta K=W_{\text{net}},\\
+    &\text{Power: instantaneous }P=\vec F\cdot\vec v,\quad \text{average over }\Delta t:\ \bar P=\dfrac{W}{\Delta t}.
+  \end{aligned}\right.
+  \]
+\end{formulabox}
+
+  \KPHeuristics
+\begin{heuristicsbox}
+\begin{itemize}[leftmargin=*]
+  \item Choose the system first. Account for energy transferred across its boundary and for internal energy changes within it.
+  \item Include nonconservative work explicitly (friction, thrust). For rolling without slipping, static friction often does no work on the rolling body.
+  \item Check for indications by comparing the endpoints: $K_i+U_i$ vs. $K_f+U_f$.
+\end{itemize}
+\end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $10\,\text{kg}$ block is pushed $5\,\text{m}$ horizontally by a constant force $F=30\,\text{N}$ in the direction of motion. Find the work done by that force.
+\begin{solutionbox}
+  $W=Fd\cos\theta=30\cdot5\cdot\cos0=150\,\text{J}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A net force of $50\,\text{N}$ accelerates a $5\,\text{kg}$ mass from rest over $10\,\text{m}$. Find the final kinetic energy and speed.
+\begin{solutionbox}
+  $W_{\text{net}}=50\cdot10=500\,\text{J}$. By work-energy theorem, $\Delta K=W_{\text{net}}=500\,\text{J}$. Then $\tfrac12mv^2=500\Rightarrow v=\sqrt{200}=10\sqrt2\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Potential Energy and Conservation \Core}
+  \KPFormulas
+\begin{formulabox}
+  When nonconservative work is zero, kinetic plus potential energy is conserved.
+  \[
+  \left\{\begin{aligned}
+    &U_g=mgh\ \text{(near-Earth)},\quad U_s=\tfrac12 kx^2,\\
+    &\text{Conservation (when nonconservative work zero): }K_i+U_i=K_f+U_f.
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  Use reference $U=0$ conveniently; only differences matter.
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $2\,\text{kg}$ block falls $h=5\,\text{m}$ from rest. Find its speed at the bottom using energy conservation.
+\begin{solutionbox}
+  $K_i+U_i=K_f+U_f\Rightarrow0+mgh=\tfrac12mv^2+0\Rightarrow v=\sqrt{2gh}=\sqrt{2\cdot9.8\cdot5}=\sqrt{98}\approx9.9\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A spring ($k=100\,\text{N/m}$) is compressed by $x=0.2\,\text{m}$. Compute the stored elastic potential energy.
+\begin{solutionbox}
+  $U_s=\tfrac12 kx^2=\tfrac12\cdot100\cdot0.04=2\,\text{J}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Conservative Fields \Extension}
+  \KPFormulas
+\begin{formulabox}
+  In one dimension, a conservative force is the negative spatial derivative of its potential energy:
+  \[
+  F_x=-\,\dfrac{dU}{dx}
+  \]
+  Path independence in conservative fields; use energy methods when applicable.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  Use energy methods if forces are conservative. In a simply connected region, a continuously differentiable force field with zero curl is conservative.
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A mass moves in a potential $U(x)=\tfrac12 kx^2$. Find the force acting on it.
+\begin{solutionbox}
+  $\vec F=-\dfrac{dU}{dx}\,\hat\imath=-kx\,\hat\imath$ (Hooke's law in 1D).
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  Show that gravitational potential $U=-\dfrac{GMm}{r}$ gives force $F=-\dfrac{GMm}{r^2}$ (radial).
+\begin{solutionbox}
+  First compute $\dfrac{dU}{dr}=\dfrac{d}{dr}\Big(-GMm\,r^{-1}\Big)=+\dfrac{GMm}{r^2}$. Therefore the radial force is $\vec F=-\dfrac{dU}{dr}\,\hat{\mathbf r}=-\dfrac{GMm}{r^2}\,\hat{\mathbf r}$ (attractive, inward).
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\UnitProblemLinks{energy}

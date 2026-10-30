@@ -1,0 +1,314 @@
+{
+  "1": {
+    "year": 2007,
+    "question": 16,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2007.pdf",
+    "pdf_page": 4,
+    "official_answer": "C",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2007_Solutions.pdf"
+  },
+  "2": {
+    "year": 2007,
+    "question": 22,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2007.pdf",
+    "pdf_page": 5,
+    "official_answer": "D",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2007_Solutions.pdf"
+  },
+  "3": {
+    "year": 2007,
+    "question": 24,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2007.pdf",
+    "pdf_page": 6,
+    "official_answer": "C",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2007_Solutions.pdf"
+  },
+  "4": {
+    "year": 2007,
+    "question": 39,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2007.pdf",
+    "pdf_page": 10,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2007_Solutions.pdf"
+  },
+  "5": {
+    "year": 2008,
+    "question": 13,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2008_Exam.pdf",
+    "pdf_page": 3,
+    "official_answer": "D",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2008_Solutions.pdf"
+  },
+  "6": {
+    "year": 2008,
+    "question": 22,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2008_Exam.pdf",
+    "pdf_page": 4,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2008_Solutions.pdf"
+  },
+  "7": {
+    "year": 2008,
+    "question": 31,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2008_Exam.pdf",
+    "pdf_page": 6,
+    "official_answer": "D",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2008_Solutions.pdf"
+  },
+  "8": {
+    "year": 2008,
+    "question": 36,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2008_Exam.pdf",
+    "pdf_page": 7,
+    "official_answer": "C",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2008_Solutions.pdf"
+  },
+  "9": {
+    "year": 2009,
+    "question": 26,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2009_Exam.pdf",
+    "pdf_page": 5,
+    "official_answer": "D",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2009_Solutions.pdf"
+  },
+  "10": {
+    "year": 2009,
+    "question": 31,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2009_Exam.pdf",
+    "pdf_page": 6,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2009_Solutions.pdf"
+  },
+  "11": {
+    "year": 2009,
+    "question": 35,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2009_Exam.pdf",
+    "pdf_page": 7,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2009_Solutions.pdf"
+  },
+  "12": {
+    "year": 2009,
+    "question": 36,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2009_Exam.pdf",
+    "pdf_page": 7,
+    "official_answer": "D",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2009_Solutions.pdf"
+  },
+  "13": {
+    "year": 2010,
+    "question": 29,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010.pdf",
+    "pdf_page": 7,
+    "official_answer": "B",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010_Solutions.pdf"
+  },
+  "14": {
+    "year": 2010,
+    "question": 31,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010.pdf",
+    "pdf_page": 7,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010_Solutions.pdf"
+  },
+  "15": {
+    "year": 2010,
+    "question": 35,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010.pdf",
+    "pdf_page": 8,
+    "official_answer": "D",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010_Solutions.pdf"
+  },
+  "16": {
+    "year": 2010,
+    "question": 40,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010.pdf",
+    "pdf_page": 9,
+    "official_answer": "B",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010_Solutions.pdf"
+  },
+  "17": {
+    "year": 2010,
+    "question": 42,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010.pdf",
+    "pdf_page": 10,
+    "official_answer": "B",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010_Solutions.pdf"
+  },
+  "18": {
+    "year": 2010,
+    "question": 47,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010.pdf",
+    "pdf_page": 11,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010_Solutions.pdf"
+  },
+  "19": {
+    "year": 2010,
+    "question": 49,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010.pdf",
+    "pdf_page": 11,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2010_Solutions.pdf"
+  },
+  "20": {
+    "year": 2012,
+    "question": 33,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2012.pdf",
+    "pdf_page": 8,
+    "official_answer": "E",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2012_Solutions.pdf"
+  },
+  "21": {
+    "year": 2012,
+    "question": 35,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2012.pdf",
+    "pdf_page": 8,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2012_Solutions.pdf"
+  },
+  "22": {
+    "year": 2012,
+    "question": 39,
+    "url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2012.pdf",
+    "pdf_page": 9,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/programs/physicsbowl/upload/PhysicsBowl_2012_Solutions.pdf"
+  },
+  "23": {
+    "year": 2015,
+    "question": 24,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2015-PhysicsBowl-Final.pdf",
+    "pdf_page": 6,
+    "official_answer": "C",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2015_Solutions.pdf"
+  },
+  "24": {
+    "year": 2015,
+    "question": 26,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2015-PhysicsBowl-Final.pdf",
+    "pdf_page": 7,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2015_Solutions.pdf"
+  },
+  "25": {
+    "year": 2015,
+    "question": 34,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2015-PhysicsBowl-Final.pdf",
+    "pdf_page": 8,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2015_Solutions.pdf"
+  },
+  "26": {
+    "year": 2015,
+    "question": 36,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2015-PhysicsBowl-Final.pdf",
+    "pdf_page": 9,
+    "official_answer": "B",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2015_Solutions.pdf"
+  },
+  "27": {
+    "year": 2015,
+    "question": 40,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2015-PhysicsBowl-Final.pdf",
+    "pdf_page": 9,
+    "official_answer": "C",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2015_Solutions.pdf"
+  },
+  "28": {
+    "year": 2017,
+    "question": 25,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2017.pdf",
+    "pdf_page": 6,
+    "official_answer": "B",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2017_Solutions.pdf"
+  },
+  "29": {
+    "year": 2017,
+    "question": 34,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2017.pdf",
+    "pdf_page": 8,
+    "official_answer": "C",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2017_Solutions.pdf"
+  },
+  "30": {
+    "year": 2018,
+    "question": 28,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2018-PhysicsBowl-Exam-2.pdf",
+    "pdf_page": 5,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PB-answers-with-solutions_Updated-2.pdf"
+  },
+  "31": {
+    "year": 2018,
+    "question": 39,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2018-PhysicsBowl-Exam-2.pdf",
+    "pdf_page": 6,
+    "official_answer": "D",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PB-answers-with-solutions_Updated-2.pdf"
+  },
+  "32": {
+    "year": 2018,
+    "question": 49,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2018-PhysicsBowl-Exam-2.pdf",
+    "pdf_page": 7,
+    "official_answer": "C",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PB-answers-with-solutions_Updated-2.pdf"
+  },
+  "33": {
+    "year": 2019,
+    "question": 16,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2019-PhysicsBowl-Exam.pdf",
+    "pdf_page": 5,
+    "official_answer": "D",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2019-PhysicsBowl-Answers-with-solutions_Revised-2.pdf"
+  },
+  "34": {
+    "year": 2019,
+    "question": 21,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2019-PhysicsBowl-Exam.pdf",
+    "pdf_page": 5,
+    "official_answer": "D",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2019-PhysicsBowl-Answers-with-solutions_Revised-2.pdf"
+  },
+  "35": {
+    "year": 2019,
+    "question": 33,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2019-PhysicsBowl-Exam.pdf",
+    "pdf_page": 7,
+    "official_answer": "B",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2019-PhysicsBowl-Answers-with-solutions_Revised-2.pdf"
+  },
+  "36": {
+    "year": 2019,
+    "question": 43,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2019-PhysicsBowl-Exam.pdf",
+    "pdf_page": 9,
+    "official_answer": "A",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2019-PhysicsBowl-Answers-with-solutions_Revised-2.pdf"
+  },
+  "37": {
+    "year": 2021,
+    "question": 16,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2021-PhysicsBowl-Exam-2.pdf",
+    "pdf_page": 4,
+    "official_answer": "C",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2021-Answers-with-solutions-2.pdf"
+  },
+  "38": {
+    "year": 2021,
+    "question": 35,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2021-PhysicsBowl-Exam-2.pdf",
+    "pdf_page": 8,
+    "official_answer": "B",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/2021-Answers-with-solutions-2.pdf"
+  },
+  "39": {
+    "year": 2017,
+    "question": 32,
+    "url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2017.pdf",
+    "pdf_page": 7,
+    "official_answer": "C",
+    "solutions_url": "https://www.aapt.org/Programs/PhysicsBowl/upload/PhysicsBowl_2017_Solutions.pdf"
+  }
+}

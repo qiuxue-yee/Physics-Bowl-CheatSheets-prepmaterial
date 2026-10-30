@@ -1,0 +1,196 @@
+\Unit[Momentum $\vec p=m\vec v$; impulse; momentum conservation; elastic/inelastic/fully inelastic collisions; center of mass; rocket equation]{Momentum \& Collisions}
+\label{unit:momentum}
+
+\begin{KnowledgePoint}{Momentum and Impulse \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Momentum measures motion; impulse is the total effect of force over time and is equal to the change in momentum.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\vec p=m\,\vec v,\\
+    &\vec J=\int_{t_1}^{t_2} \vec F\,dt=\Delta\vec p,\\
+    &\text{System: }\ \vec P=\sum_i m_i\vec v_i,\quad \Delta\vec P=\vec J_{\text{ext}}.\ (\text{If }\vec J_{\text{ext}}=0,\ \vec P\ \text{conserved})
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\vec p$ momentum; $\vec P$ total momentum; $\vec J$ impulse; $\vec F$ external force; $m$ mass; $\vec v$ velocity.
+
+  
+
+  \textbf{Prerequisites \& scope:} Valid for Newtonian mechanics; for varying mass systems, take care with momentum flux (see rockets).
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Identify a closed system (no external impulse) to use momentum conservation immediately.
+    \item For short-duration large forces (collisions), use impulse–momentum rather than force–time details.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Treating internal forces as external. Fix: define the system to include interacting bodies so internal forces cancel.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $4\,\text{kg}$ object moves with velocity $\vec v=(6,8)\,\text{m/s}$. Find its momentum vector and magnitude.
+\begin{solutionbox}
+  $\vec p=m\vec v=4(6,8)=(24,32)\,\text{kg·m/s}$, so $|\vec p|=\sqrt{24^2+32^2}=40\,\text{kg·m/s}$ and the direction matches $\vec v$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A force $F(t)=10t\,\text{N}$ acts on a particle from $t=0$ to $t=2\,\text{s}$. Find the impulse delivered.
+\begin{solutionbox}
+  $J=\int_0^2 10t\,dt=\left[5t^2\right]_0^2=20\,\text{N}\cdot\text{s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Elastic and Inelastic Collisions \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} When the net external impulse is negligible, collisions conserve total momentum; elastic ones also conserve kinetic energy. The center-of-mass (COM) frame makes algebra simpler.
+
+  \textbf{Core formulas (1D):}
+  \[
+  \left\{\begin{aligned}
+    &\text{Momentum: } m_1u_1+m_2u_2=m_1v_1+m_2v_2,\\
+    &\text{Elastic energy: } \tfrac12 m_1u_1^2+\tfrac12 m_2u_2^2=\tfrac12 m_1v_1^2+\tfrac12 m_2v_2^2,\\
+    &\text{Result (elastic): } v_1=\frac{(m_1-m_2)u_1+2m_2u_2}{m_1+m_2},\ \ v_2=\frac{2m_1u_1+(m_2-m_1)u_2}{m_1+m_2},\\
+    &\text{Completely inelastic: stick }(v_1=v_2=v)=\frac{m_1u_1+m_2u_2}{m_1+m_2}.\\
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $u_i$ initial, $v_i$ final velocities; $m_i$ masses; all along one line (1D).
+
+  
+
+  \textbf{Prerequisites \& scope:} For oblique/2D, conserve vector momentum and use geometry; kinetic energy changes via deformation/heat in inelastic cases.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Switch to the COM frame where total momentum is zero; velocities reverse in elastic 1D collisions.
+    \item For 2D glancing collisions, conserve components along orthogonal axes; use restitution or geometry for angles.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Enforcing kinetic energy conservation in inelastic impact. Fix: only momentum is guaranteed; account for energy loss.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Two carts collide elastically in 1D. Mass $m_1=2\,\text{kg}$ at $u_1=5\,\text{m/s}$ hits mass $m_2=3\,\text{kg}$ at rest. Find $v_1$ and $v_2$.
+\begin{solutionbox}
+  $v_1=\dfrac{(2-3)\cdot5+2\cdot3\cdot0}{5}=\dfrac{-5}{5}=-1\,\text{m/s}$. $v_2=\dfrac{2\cdot2\cdot5+(3-2)\cdot0}{5}=\dfrac{20}{5}=4\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  In a perfectly inelastic collision, $m_1=4\,\text{kg}$ at $u_1=6\,\text{m/s}$ collides with $m_2=2\,\text{kg}$ at rest. Find the final velocity.
+\begin{solutionbox}
+  $v=\dfrac{m_1u_1+m_2u_2}{m_1+m_2}=\dfrac{4\cdot6+0}{6}=4\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Center of Mass and System Dynamics \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Conceptual explanation:} The center of mass (COM) is an average of the mass distribution of a system; external forces accelerate the COM as if all the mass were centered at the COM.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\vec R=\frac{\sum m_i\vec r_i}{\sum m_i},\quad \vec V=\dot{\vec R}=\frac{\sum m_i\vec v_i}{M},\\
+    &M\,\ddot{\vec R}=\sum \vec F_{\text{ext}}.\ (\text{Internal forces cancel in pairs})
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\vec r_i,\vec v_i$ positions/velocities; $M=\sum m_i$ total mass; $\vec R$ COM position.
+
+  
+
+  \textbf{Prerequisites \& scope:} Requires Newton's third law in internal pairs; for variable mass, include momentum flux.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Compute COM motion to track overall translation, then analyze internal relative motion separately.
+    \item In explosions/fragmentation, the COM continues with pre-event velocity if external forces are negligible.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Treating internal impulses as changing COM momentum. Fix: only external impulse changes total momentum.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Two masses $m_1=3\,\text{kg}$ at $x_1=0$ and $m_2=2\,\text{kg}$ at $x_2=5\,\text{m}$ lie on a line. Find the COM position.
+\begin{solutionbox}
+  $X=\dfrac{m_1x_1+m_2x_2}{m_1+m_2}=\dfrac{0+10}{5}=2\,\text{m}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A system has two equal masses $m$ moving at velocities $\vec v_1=(2,0)$ and $\vec v_2=(-1,3)$ m/s. Find the velocity of the COM.
+\begin{solutionbox}
+  $\vec V=\dfrac{m\vec v_1+m\vec v_2}{2m}=\dfrac{(1,3)}{2}=(0.5,1.5)\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Variable Mass and Rockets \Extension}
+  \KPFormulas
+\begin{formulabox}
+  \textbf{Concept explanation:} For mass-exchange systems (rockets), momentum conservation for rocket+exhaust yields logarithmic change in velocity.
+  
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{Continuous: } m\,d\vec v=\vec v_e\,dm,\\
+    &\text{where } dm<0\text{ and }\vec v_e\text{ is the backward exhaust velocity relative to the rocket},\\
+    &\text{Ideal Tsiolkovsky (1D): } \Delta v=v_e\ln\frac{m_i}{m_f}.\\
+  \end{aligned}\right.
+  \]
+  
+  \textbf{Variable definitions:} $\vec v_e$ is the backward exhaust velocity relative to the rocket; $v_e=|\vec v_e|$ is its positive magnitude. $m_i,m_f$ are initial/final mass and $m$ is instantaneous mass.
+  
+  
+  
+  \textbf{Prerequisites \& scope:} Neglect external forces (or include gravity drag separately); $v_e$ constant; exhaust ejected at steady relative speed.
+\end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Include gravity losses by subtracting $g\,\Delta t$ from $\Delta v$ when appropriate (vertical ascent approximation).
+    \item Use staging by summing $v_e\ln(m_i/m_f)$ per stage.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using exhaust speed relative to Earth instead of rocket. Fix: $v_e$ is defined relative to the rocket.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A rocket has initial mass $m_i=1000\,\text{kg}$, final mass $m_f=400\,\text{kg}$, and exhaust speed $v_e=2000\,\text{m/s}$. Find $\Delta v$ in space (ignoring gravity).
+\begin{solutionbox}
+  $\Delta v=v_e\ln\dfrac{m_i}{m_f}=2000\ln\dfrac{1000}{400}=2000\ln2.5\approx1833\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A rocket ejects mass at rate $\dot m=10\,\text{kg/s}$ with effective exhaust speed $v_e=1500\,\text{m/s}$. Find the instantaneous thrust force.
+\begin{solutionbox}
+  Thrust $=\dot m\,v_e=10\cdot1500=15000\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\UnitProblemLinks{momentum}

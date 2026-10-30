@@ -1,0 +1,212 @@
+\Unit[Hydrostatics (pressure/buoyancy); continuity; Bernoulli; ideal gas; First Law and engines; entropy]{Fluids \& Thermodynamics}
+\label{unit:fluids-thermo}
+
+\begin{KnowledgePoint}{Hydrostatics and Buoyancy \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Static fluids exert pressure that increases with depth; the buoyant force equals the weight of displaced fluid (Archimedes).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &P=P_0+\rho g h\ (\text{hydrostatic pressure}),\\
+    &F_b=\rho g V_{\text{disp}}\ (\text{buoyancy}).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $P_0$ reference pressure (often atmospheric at $h=0$); $\rho$ fluid density; $h$ depth; $V_{\text{disp}}$ displaced volume.
+
+  
+
+  \textbf{Prerequisites \& scope:} Fluid at rest (no flow), constant $\rho$ with depth (or integrate if varying); neglect surface tension unless specified.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Draw free-body diagrams (FBD) of floating/sinking bodies: set $F_b$ vs weight vs any tension to solve equilibrium.
+    \item Choose a definite reference level for $h$ and keep $P_0$ the same when comparing points.
+    \item Submerged fraction for floating: $\dfrac{V_{sub}}{V}=\dfrac{\rho_b}{\rho}$ (with $0<\rho_b\le\rho$).
+    \item If $\rho_b>\rho$ and the object is released freely, the initial net force is downward: $mg-F_b>0$.
+    \item If later supported from below or by upward tension, static equilibrium requires $N+T+F_b=mg$, omitting forces that are absent.
+    \item Gauge vs absolute pressure: $\Delta P=\rho g h$ is a \emph{gauge} difference; absolute pressure is $P= P_{\text{atm}}+\rho g h$ when the surface is open to atmosphere.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using object's volume instead of displaced volume for $F_b$. Fix: use actual displaced fluid volume (submerged part only).
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A block of volume $V$ and density $\rho_b$ floats in a liquid of density $\rho$. What fraction of its volume is submerged?
+  \begin{solutionbox}
+  At equilibrium $\rho g V_{sub}=\rho_b g V$, so $V_{sub}/V=\rho_b/\rho$.
+  \end{solutionbox}
+  \end{cheatproblem}
+% (duplicate problem removed)
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Continuity and Bernoulli \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} In steady incompressible flow, mass conservation gives $Av=\text{const}$; along a streamline with negligible viscosity, mechanical energy per volume is constant (Bernoulli).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{Continuity: } A_1 v_1=A_2 v_2\ (\rho \ \text{constant}).\\
+    &\text{Bernoulli: } P+\tfrac12\rho v^2+\rho g y=\text{const}\ (\text{along a streamline}).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $A$ cross-sectional area; $v$ speed; $P$ pressure; $y$ elevation; $\rho$ density.
+
+  
+
+  \textbf{Prerequisites \& scope:} Steady, incompressible, non-viscous flow; apply Bernoulli along a streamline, not across shocks or with pumps/turbines unaccounted.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Along a streamline, check steady, incompressible, inviscid flow before using Bernoulli. An irrotational flow also permits the same constant across streamlines.
+    \item Combine continuity with Bernoulli to eliminate speeds or pressures efficiently.
+  \item Use stagnation points: where $v=0$, the total (stagnation) pressure is $P_0=P+\tfrac12\rho v^2$ upstream along a streamline.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using Bernoulli across different streamlines where viscous losses or pumps exist. Fix: apply along a single streamline and include head gains/losses when needed.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Water flows through a horizontal pipe from diameter $D_1=0.1\,\text{m}$ to $D_2=0.05\,\text{m}$. If $v_1=2\,\text{m/s}$, find $v_2$ using continuity.
+\begin{solutionbox}
+  $A_1v_1=A_2v_2\Rightarrow\pi(D_1/2)^2v_1=\pi(D_2/2)^2v_2\Rightarrow v_2=v_1\dfrac{D_1^2}{D_2^2}=2\dfrac{0.01}{0.0025}=8\,\text{m/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  At point 1 in a pipe, $P_1=1.0\times10^5\,\text{Pa}$, $v_1=2\,\text{m/s}$, $y_1=0$. At point 2, $v_2=5\,\text{m/s}$, $y_2=3\,\text{m}$. Find $P_2$ for water ($\rho=1000\,\text{kg/m}^3$).
+\begin{solutionbox}
+  Bernoulli: $P_1+\tfrac12\rho v_1^2+\rho gy_1=P_2+\tfrac12\rho v_2^2+\rho gy_2$.
+  Compute in SI with scientific notation:
+  $\tfrac12\rho(v_1^2-v_2^2)=0.5\times10^3\,(4-25)=-1.05\times10^4\,\text{Pa}$ and
+  $\rho g(y_2-y_1)=10^3\times9.8\times3=2.94\times10^4\,\text{Pa}$.
+  Hence $P_2=1.00\times10^5-1.05\times10^4-2.94\times10^4=6.01\times10^4\,\text{Pa}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Ideal Gas and First Law \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} $PV=nRT$ holds for ideal gases; the First Law links changes in internal energy to heat and work with clear sign conventions.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+      &PV=nRT,\quad U=\tfrac{f}{2}nRT,\\
+      &\text{where } f\ \text{is dof (e.g., }f=3\ \text{monatomic},\ 5\ \text{diatomic at room T)},\\
+    &\Delta U=Q+W_{\text{on}}\ \ (W_{\text{on}}=\text{work done on the system}),\\
+    &W_{\text{on}}=-\int P_{\rm ext}\,dV,\quad W_{\text{by}}=-W_{\text{on}}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $P,V,T$ pressure/volume/temperature; $n$ moles; $R$ gas constant; $Q$ heat into system; $W_{\text{on}}$ work on system; $W_{\text{by}}$ work done by the gas; $U$ internal energy.
+
+  
+
+  \textbf{Prerequisites \& scope:} Ideal gas approximation; $U$ depends only on $T$ for ideal gases. The stated $f$ values use classical equipartition. For quasistatic expansion $P_{\rm ext}=P$; in general use the external pressure for boundary work.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Identify process (isochoric/isobaric/isothermal/adiabatic) to pick $W,\,Q,\,\Delta U$ quickly.
+    \item Draw $P$–$V$ diagrams: areas give work; direction indicates sign.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Mixing sign conventions for work. Fix: adopt $\Delta U=Q+W_{\text{on}}$ (work on system positive) consistently; then $W_{\text{by}}=-W_{\text{on}}$.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  An ideal gas undergoes an isothermal expansion from volume $V_1$ to $V_2$ at temperature $T$. Find the work done by the gas.
+  \begin{solutionbox}
+  $W=\int_{V_1}^{V_2} \frac{nRT}{V}\,dV=nRT\ln\!\frac{V_2}{V_1}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\begin{cheatproblem}
+  An ideal gas at $P=2\times10^5\,\text{Pa}$ and $V=0.01\,\text{m}^3$ has $n=1\,\text{mol}$. Find the temperature $T$ using $PV=nRT$ with $R=8.314\,\text{J/(mol·K)}$.
+\begin{solutionbox}
+  $T=\dfrac{PV}{nR}=\dfrac{2\times10^5\cdot0.01}{1\cdot8.314}\approx240\,\text{K}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Entropy and Carnot \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} The total entropy of an isolated system increases in an irreversible process; the entropy of a subsystem can decrease. Carnot gives the maximum efficiency of engines operating between two reservoirs.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\Delta S=\int_{\text{rev}} \frac{\delta Q}{T},\\
+    &\text{Carnot bound: } \eta_{\max}=1-\frac{T_c}{T_h}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $S$ entropy; $T_h,T_c$ hot/cold absolute temperatures; $\delta Q$ infinitesimal heat (reversible path).
+
+  
+
+  \textbf{Prerequisites \& scope:} Absolute temperatures (Kelvin); reversible paths for definition; real engines achieve less than Carnot due to irreversibilities.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Compute $\Delta S$ along a convenient reversible path (e.g., isothermal + isochoric steps).
+    \item For engine limits, compare cycle temperatures to $T_h,T_c$ to bound $\eta$ quickly.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using Celsius in $\eta=1-T_c/T_h$. Fix: convert to Kelvin.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A Carnot engine operates between $T_h=500\,\text{K}$ and $T_c=300\,\text{K}$. Find its maximum efficiency.
+\begin{solutionbox}
+  $\eta_{\max}=1-\dfrac{T_c}{T_h}=1-\dfrac{300}{500}=0.4=40\%$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  An ideal gas expands reversibly at constant $T=400\,\text{K}$ from $V_1=1\,\text{m}^3$ to $V_2=2\,\text{m}^3$. Find the entropy change if $n=1\,\text{mol}$.
+\begin{solutionbox}
+  $\Delta S=\dfrac{Q_{rev}}{T}=\dfrac{nRT\ln(V_2/V_1)}{T}=nR\ln2=8.314\ln2\approx5.76\,\text{J/K}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Heat Engines and Efficiency \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &W_{\text{by}}=\int P_{\rm ext}\,dV,\quad W_{\text{on}}=-W_{\text{by}},\quad \eta=\frac{W_{\text{net,by}}}{Q_h}.
+  \end{aligned}\right.
+  \]
+  \textbf{Variable definitions:} $Q_h$ is heat absorbed from the hot reservoir; $W_{\text{net,by}}$ is net work per cycle. The Carnot bound is given in the preceding section. For quasistatic steps, $P_{\rm ext}=P$.
+  \end{formulabox}
+\end{KnowledgePoint}
+
+
+\UnitProblemLinks{fluids-thermo}

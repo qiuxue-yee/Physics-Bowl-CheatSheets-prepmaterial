@@ -1,0 +1,167 @@
+\Unit[Lorentz force (charges/wires); Faraday-Lenz induction; EM spectrum; Ampere law]{Magnetism \& Induction}
+\label{unit:magnetism}
+
+\begin{KnowledgePoint}{Lorentz Force \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} A moving charge feels $q\vec E$ and $q\,\vec v\times\vec B$; the magnetic force stays perpendicular to velocity, so it deflects direction without changing speed.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\vec F=q\,(\vec E+\vec v\times\vec B)
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $q$ charge; $\vec v$ particle velocity; $\vec E,\vec B$ fields.
+
+\textbf{Prerequisites \& scope:} Nonrelativistic; right-hand rule for cross products.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Use right-hand rule consistently; reverse direction for negative charges.
+    \item Magnetic force does no work (always perpendicular to $\vec v$), so magnetic fields alone cannot change particle speed.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using $q$'s sign incorrectly in $q\,\vec v\times\vec B$. Fix: compute direction for positive charge, then flip if $q<0$.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A particle of charge $q$ enters a uniform magnetic field $\vec B$ perpendicular to its velocity with speed $v$. Find the radius and period of its circular motion (neglect $\vec E$).
+  \begin{solutionbox}
+  Magnetic force provides the centripetal force: $|q|vB=\dfrac{mv^2}{r}\Rightarrow r=\dfrac{mv}{|q|B}$. The period is $T=\dfrac{2\pi m}{|q|B}$; the sign of $q$ determines the direction of rotation.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Magnetic Force on Wires \Core}
+  \KPFormulas
+  \begin{formulabox}
+  A straight current-carrying wire in a uniform magnetic field experiences a force perpendicular to both current and field.
+  \textbf{Core formulas:}
+  \[
+    \vec F=I\,\vec L\times\vec B,\quad |\vec F|=ILB\sin\theta.
+  \]
+  \textbf{Variable definitions:} $I$ current; $\vec L$ directed along the current segment with magnitude $L$; $\vec B$ magnetic field; $\theta$ angle between $\vec L$ and $\vec B$.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item For loops, integrate $d\vec F=I\,d\vec l\times\vec B$ and exploit symmetry.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A wire of length $L$ carries current $I$ in a uniform field $\vec B$ perpendicular to the wire. Find the magnitude of magnetic force.
+  \begin{solutionbox}
+  $F=ILB$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Faraday-Lenz \Core}
+  \KPFormulas
+\begin{formulabox}
+  \textbf{Concept explanation:} Changing magnetic flux induces an emf that opposes the change (Lenz); steady currents set magnetic fields constrained by Amp\`ere's law.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\mathcal E=\oint_{\partial S}\vec E\cdot d\vec l=-\frac{d\Phi_B}{dt},\ \ \Phi_B=\iint_S \vec B\cdot d\vec A,\ \ \Phi_E=\iint_S \vec E\cdot d\vec A,\\
+    &\text{(see Amp\`ere/Maxwell--Amp\`ere for magnetic circulation)}
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\mathcal E$ induced emf (scalar, $\mathcal E=\oint_{\partial S}\vec E\cdot d\vec l$); $\Phi_B=\iint_S \vec B\cdot d\vec A$ magnetic flux; $\Phi_E=\iint_S \vec E\cdot d\vec A$ electric flux; $I_{enc}$ enclosed current.
+  
+  \textbf{Prerequisites \& scope:} The displayed electric-field circulation applies to a stationary loop; a moving loop also requires the motional contribution. For time-varying fields use Maxwell--Amp\`ere with displacement current.
+  \end{formulabox}
+
+  \begin{insightbox}
+  \textbf{Terminology note}: \emph{Electric circulation} refers to the line integral of the electric field that defines emf, $\mathcal E=\oint_{\partial S}\vec E\cdot d\vec l$. \emph{Magnetic circulation} refers to $\oint\vec B\cdot d\vec l$ as used in Amp\`ere/Maxwell--Amp\`ere. These are distinct: $\mathcal E$ is a scalar (emf), while $\vec E$ and $\vec B$ are fields.
+  \end{insightbox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Sketch the loop and determine the positive normal; apply Lenz's rule to deduce the direction of the induced current.
+    \item Apply circular/rectangular Amperian loops along symmetry for infinite wires/solenoids.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Missing displacement current for charging capacitors. Fix: include $\varepsilon_0\,d\Phi_E/dt$ in Maxwell–Amp\`ere when fields vary.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  Through a stationary loop of area $A$, a uniform perpendicular magnetic field changes as $B(t)=B_0+kt$. Find the magnitude of the induced emf.
+  \begin{solutionbox}
+  $|\mathcal E|=\left|\dfrac{d\Phi}{dt}\right|=\left|\dfrac{d(BA)}{dt}\right|=|k|A$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Ampere and Maxwell--Ampere \Extension}
+  \KPFormulas
+  \begin{formulabox}
+  Magnetic circulation is related to enclosed current and, for time-varying fields, to electric-flux change.
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\oint \vec B\cdot d\vec l=\mu_0 I_{enc}\ (\text{steady currents}),\\
+    &\text{Maxwell--Ampere (general): }\oint \vec B\cdot d\vec l=\mu_0 I_{enc}+\mu_0\varepsilon_0\,\frac{d\Phi_E}{dt}.
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{EM Spectrum and Maxwell (Concept) \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Electromagnetic waves range from radio to gamma; Maxwell's equations couple $\vec E$ and $\vec B$ and give wave speed $c$ in vacuum.
+
+  \textbf{Formulas \& Concepts:}
+  \[
+  \left\{\begin{aligned}
+    &c=\frac{1}{\sqrt{\mu_0\varepsilon_0}},\\
+      &\text{Spectrum ordering by frequency: radio }\to\ \text{microwave }\to\ \text{IR }\to\ \text{visible},\\
+      &\text{then }\ \text{UV }\to\ \text{X }\to\ \text{gamma}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Prerequisites \& scope:} Vacuum relations shown; material dispersion alters speed and wavelength.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Recall typical sources: antennas (radio), thermal radiation (IR), electronic transitions (visible/UV), inner-shell transitions (X-rays), and nuclear transitions (gamma rays).
+    \item In a medium use $v=f\lambda$ and $v=c/n$; $c=f\lambda$ applies to the vacuum wavelength.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Light in vacuum has wavelength $\lambda=600\,\text{nm}$ and speed $c=3\times10^8\,\text{m/s}$. Find its frequency.
+\begin{solutionbox}
+  $f=\dfrac{c}{\lambda}=\dfrac{3\times10^8}{600\times10^{-9}}=5\times10^{14}\,\text{Hz}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  Rank the following by increasing photon energy: radio, visible, X-ray.
+\begin{solutionbox}
+  Higher frequency means higher photon energy $E=hf$. Ordering: radio $<$ visible $<$ X-ray.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+
+\UnitProblemLinks{magnetism}
