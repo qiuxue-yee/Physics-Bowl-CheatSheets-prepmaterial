@@ -1,4 +1,6 @@
 .build/
+.playwright-cli/
+output/playwright/
 __pycache__/
 *.py[cod]
 *.aux
