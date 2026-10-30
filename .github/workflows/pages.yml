@@ -44,16 +44,16 @@ jobs:
             docs/CheatSheets.pdf
             docs/Physics_Bowl_Initial_Version.pdf
       - name: Configure Pages
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && github.event.repository.has_pages
         uses: actions/configure-pages@v6
       - name: Upload Pages artifact
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && github.event.repository.has_pages
         uses: actions/upload-pages-artifact@v5
         with:
           path: docs
 
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && github.event.repository.has_pages
     needs: build
     runs-on: ubuntu-24.04
     environment:

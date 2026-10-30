@@ -4,7 +4,7 @@
   An independent study guide and problem set by <strong>Ray Zhou</strong>.
 </p>
 <p align="center">
-  <a href="https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/">Explore the collection</a>
+  <a href="#the-collection">Explore the collection</a>
   &nbsp;·&nbsp;
   <a href="docs/CheatSheets.pdf">Study guide PDF</a>
   &nbsp;·&nbsp;
@@ -87,7 +87,9 @@ The build alternates LaTeX passes to resolve references between books. The PDF
 inspection checks page bounds, companion destinations and source links.
 When editing the topic map or sources, update the JSON files in `data/` and
 run `python scripts/generate_crossrefs.py` before building. GitHub Actions
-builds the PDFs and publishes the `docs/` folder on pushes to `main`.
+builds the PDFs on pushes to `main`. The `docs/` reading page is published
+when GitHub Pages is enabled for the repository and configured to use GitHub
+Actions; otherwise the build still produces the PDF artifacts.
 
 ## Sources & attribution
 
