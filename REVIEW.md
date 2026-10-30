@@ -65,6 +65,8 @@ occurrence.
 
 ## Outstanding items
 
+- Original figure files are kept in `problems/figures/`. Two are not used in
+  the current problem set; they are retained rather than discarded.
 - The question statements and several figures originate with AAPT. The
   repository documents their provenance but does not claim ownership or grant
   a license for AAPT material.
