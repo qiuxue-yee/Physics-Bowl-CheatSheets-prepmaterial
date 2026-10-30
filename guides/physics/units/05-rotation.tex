@@ -1,0 +1,185 @@
+\Unit[Angular kinematics; torque ($|\boldsymbol{\tau}|=rF\sin\theta$); moment of inertia; $\tau_{\text{net}}=I\alpha$; rotational kinetic energy; angular momentum and conservation; rolling without slipping; inertia integrals]{Rotational Motion}
+\label{unit:rotation}
+
+\begin{KnowledgePoint}{Angular Kinematics and Dynamics \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept description:} Rotational motion is analog to linear motion: torque is the rotational analog to force, and moment of inertia of mass.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\omega=\frac{d\theta}{dt},\quad \alpha=\frac{d\omega}{dt},\ \text{with constant-}\alpha\ \text{kinematics}.\\
+&\boldsymbol{\tau}=\vec r\times\vec F,\quad |\boldsymbol{\tau}|=r_\perp F=rF\sin\theta,\quad \sum \tau=I\alpha,\\
+    &K_r=\tfrac12 I\omega^2,\quad P=\tau\,\omega.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\theta,\omega,\alpha$ angular position/velocity/acceleration; $\tau$ torque; $I$ moment of inertia.
+
+  
+  
+  \textbf{Prerequisites \& scope:} Rigid body about a fixed axis; $I$ constant in time.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Use the perpendicular lever arm $r_\perp$ for torques; sum about convenient pivots to kill unknown forces.
+    \item Prefer energy when forces are complicated but conservative; otherwise use $\sum \tau=I\alpha$ about the COM or a fixed axis.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Mixing signs of torques from different reference senses. Fix: choose a positive rotation sense and stick with it.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A disk of radius $r=0.5\,\text{m}$ and moment of inertia $I=2\,\text{kg·m}^2$ experiences a net torque $\tau=10\,\text{N·m}$. Find its angular acceleration.
+\begin{solutionbox}
+  $\alpha=\dfrac{\tau}{I}=\dfrac{10}{2}=5\,\text{rad/s}^2$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A flywheel rotating at $\omega=20\,\text{rad/s}$ has $I=5\,\text{kg·m}^2$. Find its rotational kinetic energy.
+\begin{solutionbox}
+  $K_r=\tfrac12 I\omega^2=\tfrac12\cdot5\cdot400=1000\,\text{J}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Angular Momentum and Conservation \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Explanation of concept:} Angular momentum is conserved when no external torque is applied.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &L_{\rm axis}=I\omega\ (\text{about a fixed axis}),\quad \sum\vec\tau_{\text{ext}}=\frac{d\vec L}{dt}.\\
+    &\text{If }\sum \tau_{\text{ext}}=0,\ \vec L\ \text{conserved}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\vec L$ angular momentum; $I$ moment of inertia.
+
+  \textbf{Prerequisites \& scope:} Axis and point of reference must be specified; rolling applies at instantaneous point of contact.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item For isolated systems with negligible external torques, apply $\vec L$ conservation about a fixed axis.
+    \item Choose the reference point wisely to eliminate unknown torques.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Forgetting that static friction can act either way in rolling. Fix: determine its direction from torque/acceleration requirements.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A disk of radius $R$ rolls without slipping at $v_{cm}=5\,\text{m/s}$. Find $\omega$.
+\begin{solutionbox}
+  $v_{cm}=\omega R\Rightarrow\omega=\dfrac{v_{cm}}{R}=\dfrac{5}{R}\,\text{rad/s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A solid sphere ($I=\tfrac25 mR^2$) rolls without slipping at $\omega=10\,\text{rad/s}$ and $v_{cm}=2\,\text{m/s}$. Find its total kinetic energy if $m=3\,\text{kg}$.
+\begin{solutionbox}
+  Using no-slip $v_{cm}=\omega R$, we have $I\omega^2=\tfrac25 mR^2\omega^2=\tfrac25 m v_{cm}^2$. Thus
+  $K=\tfrac12 m v_{cm}^2+\tfrac12 I\omega^2=\Big(\tfrac12+\tfrac15\Big)m v_{cm}^2=\tfrac{7}{10}\,m v_{cm}^2=\tfrac{7}{10}\cdot3\cdot4=8.4\,\text{J}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Moments of Inertia \Extension}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept description:} Moment of inertia is a measure of resistance to angular acceleration; composition rules and standard shapes allow for rapid calculation.
+  
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &I=\int r^2\,dm\ (\text{axis distance }r),\\
+    &\text{Parallel axis: } I=I_{\text{cm}}+Md^2,\\
+    &\text{Perpendicular axis (planar lamina): } I_z=I_x+I_y.
+  \end{aligned}\right.
+  \]
+  
+  \textbf{Variable definitions:} $I_{\text{cm}}$ about COM axis; $d$ offset; $M$ total mass.
+  
+  
+  \textbf{Prerequisites \& scope:} Perpendicular-axis requires lamina in the plane; parallel-axis requires fixed, parallel axes.
+  \end{formulabox}
+  
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Decompose into standard shapes and sum moments about the same axis.
+    \item Use symmetry to eliminate products of inertia; choose axes through COM when possible.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Applying perpendicular-axis to 3D bodies. Fix: valid only for planar laminae.
+  \end{itemize}
+  \end{heuristicsbox}
+  
+  \KPProblems
+\begin{cheatproblem}
+  A thin rod of mass $m$ and length $L$ rotates about one end. Find its moment of inertia.
+\begin{solutionbox}
+  $I=\int_0^L x^2\,dm=\int_0^L x^2\dfrac{m}{L}\,dx=\dfrac{m}{L}\dfrac{L^3}{3}=\dfrac{mL^2}{3}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A disk of mass $M$ and radius $R$ has $I_{cm}=\tfrac12 MR^2$. Using the parallel-axis theorem, find $I$ about a point on its rim.
+\begin{solutionbox}
+  $I=I_{cm}+MR^2=\tfrac12 MR^2+MR^2=\tfrac32 MR^2$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Rolling Without Slipping \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept description:} Rolling is a mixture of translation of the center of mass and rotation; the no-slip condition ties them together.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &v_{\text{cm}}=\omega R,\\
+    &K=\tfrac12 M v_{\text{cm}}^2+\tfrac12 I\omega^2.\\
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $R$ radius; $M$ mass; $I$ moment of inertia; $v_{\text{cm}}$ center-of-mass speed.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Static friction can accelerate or decelerate a rolling body. For a rigid body rolling without slipping on a stationary surface, the contact point is instantaneously at rest and static friction does no work on the body.
+    \item Use energy for ramp problems; use $\sum \tau=I\alpha$ when forces/accelerations are requested.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A solid cylinder of mass $m$ and radius $R$ is released from rest to roll without slipping down an incline of height $h$. Find its speed at the bottom.
+  \begin{solutionbox}
+  Energy: $mgh=\tfrac12 m v_{cm}^2+\tfrac12 I\omega^2=\tfrac12 m v_{cm}^2+\tfrac12(\tfrac12 mR^2)(v_{cm}^2/R^2)=\tfrac12 m v_{cm}^2+\tfrac14 m v_{cm}^2=\tfrac34 m v_{cm}^2$, so $v_{cm}=\sqrt{\tfrac{4}{3}gh}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+  \begin{cheatproblem}
+  A solid sphere rolls without slipping down a rough incline under gravity. Determine the direction of static friction on the sphere.
+  \begin{solutionbox}
+  Gravity acts through the center, so static friction supplies the torque needed for rolling. It points up the incline, producing rotation in the direction of motion. In a different driven-rolling situation the friction direction can differ; velocity alone does not determine it.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+
+\UnitProblemLinks{rotation}

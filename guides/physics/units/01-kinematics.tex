@@ -1,0 +1,282 @@
+\Unit[Vectors vs scalars; constant-acceleration (SUVAT); projectile motion (same-level range/time/height); uniform circular motion ($a_c=v^2/r$, $T=2\pi r/v$); relative motion; calculus forms $v=dx/dt$, $a=dv/dt$ {\Extension}; areas under $v$--$t$ and $a$--$t$ graphs {\Extension}]{Kinematics}
+\label{unit:kinematics}
+
+\begin{KnowledgePoint}{Vectors \& Components \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Vectors have both magnitude and direction. The decomposition of a vector into orthogonal components translates geometric relations into algebraic relations such that calculations are simple component arithmetic.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\vec v=(v_x,v_y)\ (\text{2D}),\quad v=\|\vec v\|=\sqrt{v_x^2+v_y^2},\\
+    &\text{Unit vectors: }\hat\imath=(1,0),\ \hat\jmath=(0,1),\ \vec v=v_x\hat\imath+v_y\hat\jmath.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $v_x,v_y$ scalar components; $v$ speed (magnitude of velocity); $\hat\imath,\hat\jmath$ orthonormal basis.
+
+
+  \textbf{Prerequisites \& scope:} Axes must be orthogonal for Pythagorean magnitude; extend to 3D with $\hat k$ and $v=\sqrt{v_x^2+v_y^2+v_z^2}$.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Align axes with directions of steepest slopes and launch angles to reduce components.
+    \item Separate vectors before writing equations (Newton's laws, kinematics) to prevent late trigonometry.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Mixing magnitude and component equations. Solution: write separate equations for $x$ and $y$ and add if applicable.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Resolve velocity vector $\vec v=(30\,\text{m/s},40\,\text{m/s})$ into magnitude and direction.
+\begin{solutionbox}
+  $v=\sqrt{30^2+40^2}=50\,\text{m/s}$. Direction $\theta=\arctan(40/30)\approx53.1^\circ$ above the horizontal.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A force of $100\,\text{N}$ acts at $30^\circ$ above the positive horizontal axis. Find its horizontal and vertical components.
+\begin{solutionbox}
+  $F_x=100\cos30^\circ=50\sqrt3\,\text{N}$, $F_y=100\sin30^\circ=50\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Constant Acceleration (SUVAT) \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Position and velocity are quadratic/linear in time with constant acceleration, providing closed-form relations (SUVAT equations).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &x=x_0+v_0 t+\tfrac12 a t^2,\\
+    &v=v_0+at,\\
+    &v^2=v_0^2+2a\,(x-x_0).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $x$ position; $v$ velocity; $a$ constant acceleration; subscript $0$ initial value; $t$ time; $\Delta x=x-x_0$.
+
+
+  \textbf{Prerequisites \& scope:} Acceleration must be constant over the interval; otherwise use calculus forms.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Choose the equation that excludes the unknown you lack (e.g., use $v^2$-form when time is absent).
+    \item Work symbolically until the end to avoid compounding rounding errors.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Applying constant-$a$ formulas when $a=a(t)$ or $a=a(v)$. Fix: switch to calculus forms or energy methods.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  The velocity of a cart is given by the piecewise function $v(t)=\begin{cases} a t, & 0\le t\le T/2,\\ aT/2, & T/2< t\le T,\end{cases}$ with constant $a>0$. Find the total displacement in time $T$.
+  \begin{solutionbox}
+  Area under $v$--$t$: first triangle area $\tfrac12(a\,T/2)(T/2)=\tfrac{aT^2}{8}$; second rectangle area $(aT/2)(T/2)=\tfrac{aT^2}{4}$. Total $\Delta x=\tfrac{3aT^2}{8}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\begin{cheatproblem}
+  A car accelerates uniformly from rest to $20\,\text{m/s}$ in $4\,\text{s}$. Find the acceleration and distance traveled.
+\begin{solutionbox}
+  $a=\dfrac{v-v_0}{t}=\dfrac{20-0}{4}=5\,\text{m/s}^2$. Distance $\Delta x=v_0 t+\tfrac12 a t^2=0+\tfrac12\cdot5\cdot16=40\,\text{m}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Projectile (Equal Heights) \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Horizontal and vertical motions independent in uniform gravity. Decomposition into components provides closed-form solutions for flight time, range, and peak height at the same launch/landing height.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &T=\frac{2v_0\sin\theta}{g},\\
+    &R=\frac{v_0^2\sin2\theta}{g},\\
+    &H=\frac{v_0^2\sin^2\theta}{2g}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $v_0$ launch speed; $\theta$ launch angle; $g$ gravitational acceleration; $T$ flight time; $R$ range; $H$ apex height.
+
+  \textbf{Prerequisites \& scope:} Launch/landing at equal heights; neglect air resistance; for unequal heights, solve quadratic in $t$.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  % (title removed per style unification)
+  \begin{itemize}[leftmargin=*]
+    \item Separate $x$ and $y$ equations; eliminate $t$ or use symmetry about the apex for time splits.
+    \item For maximum range at equal heights, use $\theta=45^\circ$.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using $R$ formula when launch and landing heights differ. Fix: solve general quadratic and then compute $x(T)$.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A projectile is launched at speed $v_0$ and angle $\theta$ from flat ground and lands at the same height. Express the time of flight $T$, the maximum height $H$, and the range $R$ in terms of $v_0,\theta,g$.
+  \begin{solutionbox}
+  $T=\dfrac{2v_0\sin\theta}{g}$, $H=\dfrac{v_0^2\sin^2\theta}{2g}$, $R=\dfrac{v_0^2\sin2\theta}{g}$, by separating vertical and horizontal components and using constant-$g$ kinematics.
+  \end{solutionbox}
+  \end{cheatproblem}
+
+  \begin{cheatproblem}
+  Two projectiles launched with the same $v_0$ at angles $\theta$ and $90^\circ-\theta$ have equal ranges. What is the ratio of their maximum heights $H_\theta/H_{90^\circ-\theta}$?
+  \begin{solutionbox}
+  $H=\dfrac{v_0^2\sin^2\theta}{2g}$. Hence $\dfrac{H_\theta}{H_{90^\circ-\theta}}=\dfrac{\sin^2\theta}{\cos^2\theta}=\tan^2\theta$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Uniform Circular Motion \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept description:} In uniform speed circular motion, the acceleration is centripetal (centerwards) with magnitude $v^2/r$; period and speed are related by circumference.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &a_c=\frac{v^2}{r}=\frac{4\pi^2 r}{T^2},\\
+    &T=\frac{2\pi r}{v}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $r$ radius; $v$ speed; $T$ period; $a_c$ centripetal acceleration.
+
+  \textbf{Prerequisites \& scope:} Speed constant; acceleration direction changes; for non-uniform circular motion add tangential component.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  % (title removed per style unification)
+  \begin{itemize}[leftmargin=*]
+    \item Draw radial/tangential components explicitly; set $a_t=0$ for UCM.
+    \item Vertical circle normals: at the top, $T+mg=mv^2/r$; at the bottom, $T-mg=mv^2/r$.
+    \item At the top, a taut-string circular path requires $v_{\text{top}}\ge \sqrt{gr}$; equality is the limiting case $T=0$. Below this speed the string cannot supply the required inward force.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Treating centripetal force as an extra force. Fix: centripetal is the net radial component of existing forces.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A bead moves in a circle of radius $r$ with period $T$. Compute its speed and centripetal acceleration.
+  \begin{solutionbox}
+  $v=\dfrac{2\pi r}{T}$ and $a_c=\dfrac{v^2}{r}=\dfrac{4\pi^2 r}{T^2}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Relative Motion \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Relative velocity cancels observer motion: the velocity of $A$ relative to $B$ is $\vec v_A-\vec v_B$.
+
+  \textbf{Core formula:}
+  \[
+  \vec v_{A/B}=\vec v_A-\vec v_B.
+  \]
+
+  \textbf{Variable definitions:} $\vec v_{A/B}$ velocity of $A$ relative to $B$; $\vec v_A,\vec v_B$ velocities in an inertial frame.
+
+  \textbf{Prerequisites \& scope:} Within Galilean (non-relativistic) regime; in 2D/3D apply component-wise.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Move to the target's rest frame to align directions and simplify timing.
+    \item For winds/rivers, remove drift by aiming to oppose the current component.
+    \item For boat speed $v$ relative to the water and current speed $u$, direct crossing requires $v>u$. If $v=u$, canceling the current leaves no speed across the river; if $v<u$, the current cannot be canceled.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Superposing speeds scalarly when directions are different. Remedy: take difference of vectors component-wise.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A river of width $W$ flows east at speed $u$. A boat of speed $v$ relative to water aims at angle $\alpha$ north of west to land directly across. Find $\alpha$ and the crossing time, assuming $v>u$.
+  \begin{solutionbox}
+  Require zero east drift: west component equals current, so $v\cos\alpha=u$ and $\alpha=\arccos(u/v)$. North component is $v\sin\alpha=\sqrt{v^2-u^2}$, so time $t=\dfrac{W}{\sqrt{v^2-u^2}}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Calculus Forms \& Graph Areas \Extension}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} With acceleration varying, kinematics is found by integrating velocity and acceleration; graph areas are summaries of change.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &v=\frac{dx}{dt},\quad a=\frac{dv}{dt}=\frac{d^2x}{dt^2}.\\
+    &v(t)=v(t_0)+\int_{t_0}^t a(\tau)\,d\tau,\quad x(t)=x(t_0)+\int_{t_0}^t v(\tau)\,d\tau.\\
+    &\Delta x=\int v\,dt\ (\text{area under }v\text{--}t),\quad \Delta v=\int a\,dt\ (\text{area under }a\text{--}t).\\
+    &\text{Chain rule: } a=\frac{dv}{dt}=\frac{dv}{dx}\,v\ \Rightarrow\ v\,dv=a(x)\,dx.\\
+    &\text{If }a=\text{const: } v^2=v_0^2+2a\,(x-x_0).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $x,v,a$ position/velocity/acceleration; $t$ time; integrals are definite over the time interval.
+
+  \textbf{Prerequisites \& scope:} Differentiability over interval; interpret signed areas for direction-sensitive quantities.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Read slopes of $x$--$t$ as $v$ and slopes of $v$--$t$ as $a$; use areas for accumulated change.
+    \item When $a=a(v)$ or $a=a(x)$, separate variables via $v\,dv=a\,dx$ to avoid time explicitly.
+    \item If motion crosses turning points where $v=0$, integrate piecewise and track signs to avoid taking an incorrect branch.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Confusing displacement with distance on $v$--$t$ when $v$ changes sign. Fix: integrate absolute value for distance.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  An object has acceleration $a(t)=a_0+bt$ with constants $a_0,b$. If $x(0)=0$ and $v(0)=v_0$, find $x(t)$.
+  \begin{solutionbox}
+  Integrate: $v(t)=v_0+\int_0^t(a_0+b\tau)\,d\tau=v_0+a_0 t+\tfrac12 b t^2$. Then $x(t)=\int_0^t v(\tau)\,d\tau=v_0 t+\tfrac12 a_0 t^2+\tfrac16 b t^3$.
+  \end{solutionbox}
+  \end{cheatproblem}
+
+  \Needspace{18\baselineskip}
+  \begin{cheatproblem}
+  A particle obeys $\dfrac{dx}{dt}=k\sqrt{x}$ with $k>0$ and $x(0)=0$. Find all solutions for $t\ge0$.
+  \begin{solutionbox}
+  Separation is valid only where $x>0$. The particle can remain at $x=0$ until any $t_0\ge0$ and then move:
+  \[
+  x(t)=\begin{cases}0,&0\le t\le t_0,\\
+  \dfrac{k^2}{4}(t-t_0)^2,&t>t_0.\end{cases}
+  \]
+  The identically zero solution also works. The initial value alone does not select a unique solution.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+
+% -------- Placeholders for remaining Mechanics Units (skeletons only) --------
+
+\UnitProblemLinks{kinematics}

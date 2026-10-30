@@ -1,0 +1,76 @@
+% Shared preamble for both books. Compile from the repository root.
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+% xr-hyper must precede hyperref so external labels carry PDF destinations.
+\usepackage{xr-hyper}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{linktoc=all}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{needspace}
+\usepackage{xparse}
+\usepackage{xstring}
+\usepackage{caption}
+\usepackage{siunitx}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\setlength{\headheight}{14.5pt}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+
+\newcommand{\bookheader}{Physics Bowl}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Ray Zhou}
+\fancyhead[R]{\bookheader}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\colorlet{ThemeFrame}{black!20}
+\colorlet{ThemeTitle}{gray!15}
+\newcommand{\setcheattheme}[2]{\colorlet{ThemeFrame}{#1}\colorlet{ThemeTitle}{#2}}
+\newcommand{\parttheme}[1]{%
+  \IfStrEqCase{#1}{%
+    {mech}{\setcheattheme{teal!30}{teal!12}}%
+    {waves}{\setcheattheme{yellow!35}{yellow!12}}%
+    {em}{\setcheattheme{magenta!30}{magenta!12}}%
+    {optics}{\setcheattheme{cyan!35}{cyan!12}}%
+  }[\setcheattheme{black!20}{gray!15}]}
+\tcbset{colback=white, boxrule=0.5pt, coltitle=black}
+\newtcolorbox{formulabox}{enhanced, breakable, colframe=ThemeFrame,
+  colbacktitle=ThemeTitle, title=\textbf{Concepts and Formulas},
+  fonttitle=\bfseries, left=10pt, right=10pt, top=7pt, bottom=8pt,
+  before skip=8pt, after skip=8pt}
+\newtcolorbox{heuristicsbox}{enhanced, breakable, colframe=ThemeFrame,
+  colbacktitle=ThemeTitle, title=\textbf{Methods and Pitfalls},
+  fonttitle=\bfseries, left=10pt, right=10pt, top=7pt, bottom=8pt,
+  before skip=8pt, after skip=8pt}
+\newtcolorbox{solutionbox}{enhanced, breakable, colframe=black!25,
+  colbacktitle=gray!12, title=\textbf{Solution}, fonttitle=\bfseries,
+  left=10pt, right=10pt, top=7pt, bottom=8pt, before skip=6pt, after skip=8pt}
+\newtcolorbox{insightbox}{enhanced, breakable, colback=blue!2,
+  colframe=blue!35, colbacktitle=blue!12, title=\textbf{Key Insight},
+  fonttitle=\bfseries, left=8pt, right=8pt, top=5pt, bottom=6pt,
+  before skip=6pt, after skip=6pt}
+\newtcolorbox{answerbox}{colback=white, colframe=white, boxrule=0pt,
+  left=0pt, right=0pt, top=0pt, bottom=0pt, boxsep=0pt,
+  before skip=2pt, after skip=4pt}
+\newtcolorbox{disclaimerbox}{enhanced, breakable, colback=gray!6,
+  colframe=gray!45, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  before skip=6pt, after skip=8pt, fontupper=\small}
+\newcommand{\finalanswer}[1]{\textbf{Answer:}~#1}
+
+% Internal learning labels; these are not official competition divisions.
+\newcommand{\Core}{\texorpdfstring{\textsuperscript{\textbf{Core}}}{ [Core]}}
+\newcommand{\Extension}{\texorpdfstring{\textsuperscript{\textbf{Extension}}}{ [Extension]}}

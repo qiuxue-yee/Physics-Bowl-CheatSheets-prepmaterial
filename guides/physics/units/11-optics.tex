@@ -1,0 +1,143 @@
+\Unit[Reflection; refraction (Snell); thin lens and magnification; interference/diffraction]{Optics}
+\label{unit:optics}
+
+\begin{KnowledgePoint}{Reflection and Refraction \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Light reflects with equal incident and reflected angles; refraction across media obeys Snell's law.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\theta_i=\theta_r,\\
+    &n_1\sin\theta_1=n_2\sin\theta_2,\quad \text{TIR when }\theta_1>\theta_c=\arcsin(n_2/n_1)\ (n_1>n_2).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $n$ refractive index; $\theta$ angles measured to the normal.
+
+  \textbf{Prerequisites \& scope:} Geometric optics regime; isotropic media; polarization effects ignored here.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Draw the normal and principal rays first; search for total internal reflection when going to a lower-$n$ medium.
+    \item Use reversibility of light to validate constructions.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Light travels from air ($n_1=1$) into water ($n_2=1.33$) at incidence angle $\theta_1=40^\circ$. Find the refraction angle $\theta_2$.
+\begin{solutionbox}
+  Snell: $n_1\sin\theta_1=n_2\sin\theta_2\Rightarrow\sin\theta_2=\dfrac{\sin40^\circ}{1.33}\Rightarrow\theta_2\approx28.9^\circ$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  Light moves from glass ($n=1.5$) to air ($n=1$). Find the critical angle for total internal reflection.
+\begin{solutionbox}
+  $\theta_c=\arcsin\dfrac{n_2}{n_1}=\arcsin\dfrac{1}{1.5}\approx41.8^\circ$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Thin Lenses and Sign Conventions \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Thin lens imaging follows the lens equation with sign conventions; magnification uses image and object sizes/orientations.
+  
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\frac{1}{f}=\frac{1}{s}+\frac{1}{s'},\quad m=-\frac{s'}{s}=\frac{h'}{h}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $f$ focal length; $s$ object distance; $s'$ image distance; $m$ magnification; $h',h$ image/object heights.
+
+  \textbf{Prerequisites \& scope:} Use consistent sign convention (e.g., real is positive); paraxial approximation.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Combine equation + ray diagram: draw two principal rays to confirm the algebraic image location.
+    \item Remember that negative $m$ indicates inversion; $|m|>1$ indicates magnification.
+    \item Sign convention (real-is-positive): take $s>0$ for real objects and $s'>0$ for real images on the opposite side of the lens from the object; $s'<0$ indicates a virtual image on the object side (then $m>0$ and the image is upright).
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  % Simple principal-ray diagram (converging lens, object inside f -> virtual image)
+  \begin{center}
+    \begin{tikzpicture}[x=0.06cm,y=0.06cm,>=Latex]
+      % Optical axis
+      \draw[-] (-60,0) -- (80,0);
+      % Lens at x=0
+      \draw[thick] (0,-25) -- (0,25);
+      % Focal points at ±60 cm (f=60 cm)
+      \fill (-60,0) circle (1.2pt) node[below=2pt] {$F$};
+      \fill (60,0) circle (1.2pt) node[below=2pt] {$F'$};
+      % Object (arrow) at s=30 cm left of lens (inside focal length)
+      \draw[thick,->] (-30,0) -- (-30,18) node[left] {object};
+      % Principal ray 1: parallel to axis, refracted as if through F'
+      \draw[->] (-30,18) -- (0,18);      % incident
+      \draw[->] (0,18) -- (60,0);         % refracted
+      % Principal ray 2: through center (undeviated)
+      \draw[->] (-30,18) -- (0,0);
+      \draw[->] (0,0) -- (30,-18);
+      % Back-projections of refracted rays to locate virtual image at s'=-60 cm
+      \draw[dashed] (0,18) -- (-60,36);
+      \draw[dashed] (0,0) -- (-60,36);
+      % Image arrow (virtual, upright, magnified)
+      \draw[thick,->,blue] (-60,0) -- (-60,36) node[left] {virtual image};
+    \end{tikzpicture}
+  \end{center}
+\begin{cheatproblem}
+  An object at $s=30\,\text{cm}$ forms an image at $s'=-60\,\text{cm}$ using a thin lens. Find the focal length $f$ and magnification $m$.
+  \begin{solutionbox}
+  Lens equation: $\tfrac{1}{f}=\tfrac{1}{s}+\tfrac{1}{s'}=\tfrac{1}{30}+\tfrac{1}{-60}=\tfrac{1}{60}$, so $f=60\,\text{cm}$.
+  Magnification: $m=-s'/s = -(-60)/30=2$.
+  Since $f>0$, it is a converging lens. Since $s'<0$, the image is virtual. Since $m>0$, the image is upright.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Interference and Diffraction \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Coherent sources produce interference patterns; finite apertures make the light diffract, establishing angular scales by wavelength/aperture.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{Double-slit maxima: } d\sin\theta=m\lambda,\\
+    &\text{Single-slit minima: } a\sin\theta=m\lambda,\ m=\pm1,\pm2,\dots
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $d$ slit separation; $a$ slit width; $\lambda$ wavelength; $\theta$ diffraction angle.
+
+  \textbf{Prerequisites \& scope:} Small-angle approximations $\sin\theta\approx\theta$ valid near axis; coherence required for stable fringes.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Map angles to screen positions with $y\approx L\tan\theta\approx L\theta$ for small $\theta$.
+    \item To resolve features, compare $\lambda$ to $a$ and $d$ to predict fringe spacing/envelope width.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  For double-slit with spacing $d$ and wavelength $\lambda$, what is the angle of the $m$-th bright fringe?
+  \begin{solutionbox}
+  $d\sin\theta=m\lambda \Rightarrow \theta=\arcsin(m\lambda/d)$ (small-angle: $\theta\approx m\lambda/d$).
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+
+\UnitProblemLinks{optics}

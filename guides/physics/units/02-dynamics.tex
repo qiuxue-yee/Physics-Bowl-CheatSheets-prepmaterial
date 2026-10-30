@@ -1,0 +1,141 @@
+\Unit[Newton's laws; common forces (weight, spring, friction, normal); free-body diagrams; non-uniform circular motion; variable force and impulse]{Newtonian Dynamics}
+\label{unit:dynamics}
+
+\begin{KnowledgePoint}{Newton's Laws and Free-Body Diagrams \Core}
+  \KPFormulas
+  \begin{formulabox}
+  In an inertial frame, the net external force on a body of constant mass determines its acceleration.
+  \[
+  \left\{\begin{aligned}
+    &\sum \vec F=m\vec a\ \text{; action--reaction pairs on separate bodies}.
+  \end{aligned}\right.
+  \]
+  Here $m$ is the body's mass, $\vec a$ its acceleration, and the sum contains forces acting on that body.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Split each body; sketch clean FBDs and project along convenient directions.
+    \item Don't place action--reaction pairs on the same drawing; they're on separate bodies and cancel only at the system level.
+    \item Use radial/tangential axes for curves or inclined axes on ramps; use friction direction as unknown and solve for its sign.
+    \item For connected bodies, derive the displacement and acceleration constraints from constant string length; an ideal massless string has uniform tension.
+    \item In non-inertial frames (elevators, speeding cars), add $-m\,\vec a_{\text{frame}}$ only if you change frames explicitly.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $5\,\text{kg}$ block rests on a horizontal surface. A horizontal force $F=20\,\text{N}$ is applied. Find its acceleration if friction is negligible.
+\begin{solutionbox}
+  $\sum F=ma\Rightarrow 20=5a\Rightarrow a=4\,\text{m/s}^2$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A $2\,\text{kg}$ block hangs from a string. Find the tension in the string when the block is at rest.
+\begin{solutionbox}
+  $\sum F_y=0\Rightarrow T-mg=0\Rightarrow T=2\cdot9.8=19.6\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Friction and Springs \Core}
+  \KPFormulas
+  \begin{formulabox}
+  Static friction adjusts to prevent slipping up to its limiting value; kinetic friction opposes sliding. An ideal spring's force points toward equilibrium.
+  \[
+  \left\{\begin{aligned}
+    &\text{Friction: } f_s\le \mu_s N\ \text{(variable up to max)},\quad f_k=\mu_k N,\\
+    &\text{Spring force: } F=-kx\ \text{(Hooke) within elastic limit}.
+  \end{aligned}\right.
+  \]
+  $N$ is the normal force, $\mu_s,\mu_k$ are friction coefficients, $k$ is the spring constant and $x$ is signed displacement from equilibrium.
+  \end{formulabox}
+
+  \KPHeuristics
+\begin{heuristicsbox}
+\begin{itemize}[leftmargin=*]
+  \item Assume the direction of static friction to be unknown; solve and interpret its sign from the solution.
+  \item Apply $f_s\le \mu_s N$; on the verge of sliding, take $f_{s,\max}=\mu_s N$. For steady sliding, use $f_k=\mu_k N$.
+  \item For springs in series, use $k_{\text{eq}}$: in series $\tfrac{1}{k_{\text{eq}}}=\sum \tfrac{1}{k_i}$, in parallel $k_{\text{eq}}=\sum k_i$.
+\end{itemize}
+\end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A $3\,\text{kg}$ block on a horizontal surface has $\mu_k=0.2$. Find the kinetic friction force when the block slides.
+\begin{solutionbox}
+  $N=mg=3\cdot9.8=29.4\,\text{N}$. $f_k=\mu_k N=0.2\cdot29.4=5.88\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A spring with constant $k=200\,\text{N/m}$ is compressed by $x=0.1\,\text{m}$. Find the restoring force.
+\begin{solutionbox}
+  The restoring force has magnitude $k|x|=200\cdot0.1=20\,\text{N}$ and points opposite to the compression.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Non-uniform Circular Motion \Core}
+  \KPFormulas
+  \begin{formulabox}
+  For a path of instantaneous radius $r$, choose the radial positive direction toward the center. The tangential component changes speed.
+  \[
+  \left\{\begin{aligned}
+    &\text{Radial: } \sum F_r=m v^2/r\ ;\ \text{tangential: } \sum F_t=m a_t.
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  Split radial and tangential components explicitly; centripetal is net radial.
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A car of mass $m$ rounds a curve of radius $r=50\,\text{m}$ at $v=20\,\text{m/s}$. Find the required centripetal force.
+\begin{solutionbox}
+  $F_c=\dfrac{mv^2}{r}=m\dfrac{400}{50}=8m\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A ball on a string swings in a vertical circle of radius $r$. At the top, the tension is $T$ and speed is $v$. Write the centripetal force equation.
+\begin{solutionbox}
+  At the top, $T+mg=\dfrac{mv^2}{r}$ (both point inward).
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Impulse and Variable Forces \Extension}
+  \KPFormulas
+\begin{formulabox}
+  Impulse is the net force integrated over a time interval; it equals the change in momentum.
+  \[
+  \left\{\begin{aligned}
+    &\text{Impulse: } \vec J=\int \vec F\,dt=\Delta \vec p.
+  \end{aligned}\right.
+  \]
+\end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  Extrapolate force-time profiles for varying forces; examine external impulses for system imparted momentum changes.
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  A constant force $F=10\,\text{N}$ acts on a mass for $\Delta t=3\,\text{s}$. Find the impulse delivered.
+\begin{solutionbox}
+  $J=F\Delta t=10\cdot3=30\,\text{N}\cdot\text{s}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A particle's momentum changes from $\vec p_i=(5,0)\,\text{kg·m/s}$ to $\vec p_f=(5,10)\,\text{kg·m/s}$ in $2\,\text{s}$. Find the average force.
+\begin{solutionbox}
+  $\vec J=\Delta\vec p=(0,10)\,\text{kg·m/s}$. $\vec F_{\text{avg}}=\dfrac{\vec J}{\Delta t}=(0,5)\,\text{N}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\UnitProblemLinks{dynamics}

@@ -1,0 +1,112 @@
+\Unit[Ohm's law and power; series/parallel reductions; Kirchhoff (KCL/KVL); RC qualitative; RC exact]{DC Circuits}
+\label{unit:circuits}
+
+\begin{KnowledgePoint}{Ohm's Law and Reductions \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Ohm's law relates voltage, current, and resistance; power forms help rank dissipation; series/parallel laws simplify networks.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &V=IR,\quad P=IV=I^2R=\frac{V^2}{R},\\
+    &R_s=\sum R_i,\quad \frac{1}{R_p}=\sum \frac{1}{R_i}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $V$ voltage; $I$ current; $R$ resistance; $P$ power.
+
+  \textbf{Prerequisites \& scope:} Ohmic elements only; temperature dependence ignored unless specified.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+\begin{itemize}[leftmargin=*]
+  \item Reduce networks with series/parallel and symmetry; then solve KCL/KVL for the rest of unknowns alone.
+  \item Equate power by using $I^2 R$ or $V^2/R$ based on conditions of fixed current/voltage.
+  \item In bridge-type circuits, look for equal potentials in a branch (through symmetry or KCL) to remove it.
+\end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Mixing fixed-voltage and fixed-current contexts when comparing brightness. Fix: pick the power form consistent with constraints.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Three resistors of $R$ are in parallel; find the equivalent resistance.
+  \begin{solutionbox}
+  $\dfrac{1}{R_{eq}}=\dfrac{1}{R}+\dfrac{1}{R}+\dfrac{1}{R}$ so $R_{eq}=R/3$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Kirchhoff Laws (KCL/KVL) \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Kirchhoff's current law expresses charge conservation at a node; Kirchhoff's voltage law tracks potential changes around a loop.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{KCL: } \sum I_{\text{in}}=\sum I_{\text{out}}\ (\text{at a node}),\\
+    &\text{KVL: } \sum \Delta V=0\ (\text{around a loop}).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Prerequisites \& scope:} The simple loop-voltage rule assumes negligible changing magnetic flux through the loop; choose current directions and voltage signs consistently.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+\begin{itemize}[leftmargin=*]
+  \item Label nodes and choose current directions before writing equations.
+  \item Reduce simple series and parallel branches before solving the remaining equations.
+\end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Mixing voltage rises and drops around a loop. Fix: traverse the loop in one direction and use a consistent sign convention.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A 12 V ideal battery drives two resistors of $2\,\Omega$ and $4\,\Omega$ in series. Find the current and both voltage drops.
+  \begin{solutionbox}
+  KVL gives $12-I(2+4)=0$, so $I=2\,\mathrm A$. The voltage drops are $4\,\mathrm V$ and $8\,\mathrm V$, whose sum is 12 V.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{RC Transients (First Order) \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Core results:}
+  \[
+  \left\{\begin{aligned}
+    &\tau=RC,\\
+    &\text{Charge to }V:\ V_C(t)=V+\big(V_0-V\big)e^{-t/RC},\\
+    &\text{Discharge to 0: } V_C(t)=V_0 e^{-t/RC},\\
+    &\text{General: } V_C(t)=V_\infty+(V_0-V_\infty)e^{-t/\tau}.
+  \end{aligned}\right.
+  \]
+  For these basic circuits $\tau=RC$; in a general linear first-order network use the resistance seen by the capacitor with independent sources suppressed. Capacitor voltage is continuous at switching.
+  \end{formulabox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  An initially uncharged capacitor in a series $RC$ circuit has $V$ applied at $t=0$, with $R=2\,\Omega$ and $C=1\,\text{F}$. Find $V_C(t)$.
+  \begin{solutionbox}
+  $V_C(t)=V(1-e^{-t/RC})=V(1-e^{-t/(2\,\mathrm s)})$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\begin{cheatproblem}
+  A capacitor initially charged to $V_0$ discharges through $R=2\,\Omega$ with $C=1\,\mathrm F$. Find $V_C(t)$.
+  \begin{solutionbox}
+    The time constant is $RC=2\,\mathrm s$. Thus $V_C(t)=V_0e^{-t/(2\,\mathrm s)}$, which starts at $V_0$ and tends to zero.
+  \end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+
+\UnitProblemLinks{circuits}

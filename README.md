@@ -1,39 +1,116 @@
-# Physics-Bowl-CheatSheets-prematerial
+<img src="docs/assets/readme-banner.svg" alt="Physics Bowl Study Collection: physics, one idea at a time." width="100%">
 
-**Open-source Physics Bowl D1 + D2 study guide by 🌸🐟: 47-page cheat sheets with formulas, heuristics, and solutions for mechanics, waves/EM, optics. CC BY-NC-SA 4.0 for educational use only.**
+<p align="center">
+  An independent study guide and problem set by <strong>Ray Zhou</strong>.
+</p>
+<p align="center">
+  <a href="#the-collection">Explore the collection</a>
+  &nbsp;·&nbsp;
+  <a href="docs/CheatSheets.pdf">Study guide PDF</a>
+  &nbsp;·&nbsp;
+  <a href="docs/Physics_Bowl_Initial_Version.pdf">Problem set PDF</a>
+  &nbsp;·&nbsp;
+  <a href="#中文说明">中文说明</a>
+</p>
 
-GitHub Pages: https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/
-Direct PDF: [CheatSheets.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/CheatSheets.pdf)
+---
 
-- [CheatSheets.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/CheatSheets.pdf)
-- [Physics Bowl Initial Version.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/Physics_Bowl_Initial_Version.pdf)
+## A better way back to the idea
 
-## 中文版
-**🌸🐟 著的Physics Bowl D1 + D2备考开源指南：47页备忘单，包含力学、波/EM、光学公式、启发式和解决方案。CC BY-NC-SA 4.0，仅供教育使用。**
+When a physics problem goes wrong, knowing the right formula is only part of
+the answer. Which conditions made it useful? What did the diagram leave out?
+And where can you go to revisit that idea?
 
-GitHub Pages: https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/
-PDF: [CheatSheets.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/CheatSheets.pdf)
+This collection connects **concepts, conditions, worked examples, and practice**
+in two companion books. Start with a topic, try a problem, and follow the links
+back to the reasoning you want to revisit.
 
-- [CheatSheets.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/CheatSheets.pdf)
-- [Physics Bowl Initial Version.pdf](https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/Physics_Bowl_Initial_Version.pdf)
+## The collection
 
-## Contents Overview
-- **Part I: Mechanics** – Kinematics (SUVAT, projectiles, circular motion), Dynamics (Newton's laws, friction), Work/Energy, Momentum/Collisions, Rotational Motion.
-- **Part II: Oscillations/Waves/Thermodynamics/Fluids** – SHM, waves, heat, fluids (Bernoulli).
-- **Part III: Electricity & Magnetism** – Circuits, fields (Gauss, Ampere), induction (Faraday-Lenz).
-- **Part IV: Optics & Modern Physics** – Lenses, interference, relativity, quantum basics.
+| **01 / Study guide** | **02 / Selected problems** |
+| :--- | :--- |
+| Concepts, formulas, methods and worked examples across **12 units**. | **39 questions** with a topic index, key insights, worked solutions and source citations. |
+| [Open the study guide →](docs/CheatSheets.pdf) | [Open the problem set →](docs/Physics_Bowl_Initial_Version.pdf) |
+| ![A revised study-guide page on vectors and components](docs/previews/guide-after.png) | ![The problem set's topic index](docs/previews/problem-set.png) |
 
-## 中文版内容概述
-- **Part I: 力学** – 运动学 (SUVAT, 抛体, 圆周运动), 动力学 (牛顿定律, 摩擦), 功/能量, 动量/碰撞, 转动运动。
-- **Part II: 振动/波/热力学/流体** – 简谐运动, 波, 热, 流体 (伯努利)。
-- **Part III: 电学与磁学** – 电路, 场 (高斯, 安培), 感应 (法拉第-伦次)。
-- **Part IV: 光学与现代物理** – 透镜, 干涉, 相对论, 量子基础。
+The guide has four parts and 71 worked examples. Its **Core** and
+**Extension** labels are reading cues, not official PhysicsBowl division
+classifications. Download the two PDFs into the same folder for their
+cross-document links; support for these links varies by PDF viewer.
 
-## AAPT Disclaimer (免责声明：关于AAPT)
-This guide is **independent and non-official**. It draws inspiration from publicly available AAPT Physics Bowl past papers (free PDFs for practice at [aapt.org/programs/physicsbowl](https://www.aapt.org/programs/physicsbowl)), but includes only metadata references (e.g., Contest/Year/Division/Problem/Page) and original solutions/heursitics. Full problem statements, diagrams, and official answers must be obtained directly from AAPT sources.
+## From notes to a connected resource
 
-- **Images & Fair Use**: PNG diagrams in `/src/images/` are educational screenshots from AAPT past papers PDFs, used under U.S. Fair Use doctrine (Section 107) for transformative, non-commercial study aids (limited quantity, no market harm). They are not reproductions of full exams. AAPT copyrights all materials (intended for members/educators' personal use; no photocopying or redistribution per contest rules). This guide does not endorse or substitute official resources—verify all content independently.
-- **No AAPT Endorsement**: AAPT has not reviewed, approved, or endorsed this guide. Users assume responsibility for compliance with AAPT terms.
-- **Recommendation**: Download complete past papers directly from AAPT for accurate practice.
+This revision began with a practical problem: useful material was spread
+across long source files, some figures and explanations did not match, and a
+reader had no direct path from a question back to its concept.
 
-**本指南为独立、非官方材料**。它受AAPT Physics Bowl历史试卷公开PDF启发（免费练习下载：[aapt.org/programs/physicsbowl](https://www.aapt.org/programs/physicsbowl)），但仅包含元数据引用
+1. **Organize.** Split the guide into 12 maintainable units and the problem set
+   into four groups; keep the original problem numbers and PDF paths.
+2. **Connect.** Add a topic index, reading route, and links between the two
+   books.
+3. **Check.** Trace the 39 selected questions to AAPT exams, compare their
+   answers with the official keys, and correct mismatched figures and
+   derivations.
+4. **Keep improving.** Build both PDFs from source and record corrections and
+   open questions in [REVIEW.md](REVIEW.md).
+
+| Earlier guide | Revised guide |
+| :--- | :--- |
+| ![Earlier kinematics page](docs/previews/guide-before.png) | ![Revised kinematics page](docs/previews/guide-after.png) |
+
+The project does not claim unmeasured readership or learning outcomes. The
+review is documented, but it is not a substitute for an independent
+subject-matter review. Found a mistake? [Open an issue](https://github.com/qiuxue-yee/Physics-Bowl-CheatSheets-prepmaterial/issues).
+
+## For contributors
+
+| Path | What it contains |
+| :--- | :--- |
+| `guides/physics/CheatSheets.tex` | Study-guide entry point |
+| `guides/physics/units/` | One source file per unit |
+| `Physics_Bowl_Initial_Version.tex` and `problems/` | Problem-set entry point and question groups |
+| `tex/` and `data/` | Shared styles, conventions, topic map and source records |
+| `docs/` | Download page, previews and the two PDFs |
+| `scripts/` and `tests/` | Build, integrity, calculation and PDF checks |
+
+Install Python 3 and TeX Live with pdfLaTeX, TikZ, tcolorbox and siunitx. From
+the repository root:
+
+```sh
+python -m pip install PyMuPDF
+python -m unittest discover -s tests -v
+python scripts/build.py --write-docs
+python scripts/inspect_pdfs.py
+```
+
+The build alternates LaTeX passes to resolve references between books. The PDF
+inspection checks page bounds, companion destinations and source links.
+When editing the topic map or sources, update the JSON files in `data/` and
+run `python scripts/generate_crossrefs.py` before building. GitHub Actions
+builds the PDFs on pushes to `main`. The `docs/` reading page is published
+when GitHub Pages is enabled for the repository and configured to use GitHub
+Actions; otherwise the build still produces the PDF artifacts.
+
+## Sources & attribution
+
+This is an independent, non-official guide and is not endorsed by AAPT. The
+selected question statements and some figures originate in AAPT materials;
+each problem cites a source paper. The [AAPT exam archive](https://www.aapt.org/Programs/PhysicsBowl/printexams.cfm)
+provides complete exams and official solutions.
+
+Original explanatory material is shared under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+That license does not grant rights to AAPT's questions or figures.
+
+---
+
+## 中文说明
+
+这是 Ray Zhou 整理的独立 PhysicsBowl 学习资料，包括一本知识手册和一本
+精选习题册。项目希望把**概念、适用条件、解题思路和练习**连接起来：
+先理解知识点，再通过习题发现问题，并回到对应内容复习。
+
+- [知识手册](docs/CheatSheets.pdf)：四个部分、12 个单元、71 道例题。
+- [精选习题](docs/Physics_Bowl_Initial_Version.pdf)：39 道题，附主题索引、解答和原题来源。
+- [校对记录](REVIEW.md)：记录本次修正、依据及仍需注意的事项。
+
+本项目与 AAPT 无官方隶属关系；AAPT 题目和图片的来源已逐题注明。

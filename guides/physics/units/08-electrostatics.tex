@@ -1,0 +1,136 @@
+\Unit[Coulomb force; electric field/potential; capacitors and energy; Gauss's law]{Electrostatics}
+\label{unit:electrostatics}
+
+\begin{KnowledgePoint}{Coulomb, Field and Potential \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Point charges interact by an inverse-square law; electric field and potential describe force per unit charge and energy per unit charge.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &|\vec F|=k\,\frac{|q_1 q_2|}{r^2}\ (\text{along the line of centers}),\\
+    &\vec E=\frac{\vec F}{q},\quad V=\frac{U}{q},\quad \Delta U=-q\int \vec E\cdot d\vec r,\\
+    &\text{Point charge: } \vec E=\frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2}\hat{\mathbf r},\quad V=\frac{1}{4\pi\varepsilon_0}\frac{Q}{r}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $q,Q$ charges; $r$ separation; $k=1/(4\pi\varepsilon_0)$; $U$ potential energy.
+
+  \textbf{Prerequisites \& scope:} Electrostatics (charges at rest); superposition holds; signs determine directions.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Apply symmetry (dipoles, rings, infinite sheets) to cancel parts before integrating.
+    \item Apply potential for conservative additions first, then differentiate to get fields.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Not remembering vector directions for $\vec E$ and $\vec F$. Fix: graph direction first, calculate magnitude second.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Two point charges $+Q$ are at $(\pm a,0)$. Find the electric field on the $y$-axis at $(0,y)$.
+  \begin{solutionbox}
+  Horizontal components cancel; vertical add: $E_y=2\,kQ\,\dfrac{y}{(a^2+y^2)^{3/2}}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+% Constants and units quick reference (placed near EM section for convenience)
+\begin{insightbox}
+\textbf{Constants/units:} $\varepsilon_0=8.85\times10^{-12}\,\mathrm{F/m}$, $\mu_0=4\pi\times10^{-7}\,\mathrm{H/m}$, $c=3.00\times10^8\,\mathrm{m/s}$, $e=1.60\times10^{-19}\,\mathrm{C}$. Use SI unless specified.
+\end{insightbox}
+
+% (Removed redundant KnowledgePoint: Point Charge Field; content covered in Unit 8 Electrostatics)
+
+\begin{KnowledgePoint}{Capacitors and Energy \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} A capacitor is a device that holds equal and opposite charge on two conductors with a gap or dielectric between them. The stored charge at a given potential difference will be proportional to the geometry and material. Networks simplify by simple series/parallel formulas and energy can be traced by $U=\tfrac12 C V^2$.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &C=\varepsilon_0\,\frac{A}{d}\ \text{(parallel plates in vacuum)},\quad C=\varepsilon_r\varepsilon_0\,\frac{A}{d}\ \text{(uniform dielectric)},\\
+    &\text{Series: } \frac{1}{C_s}=\sum \frac{1}{C_i},\quad \text{Parallel: } C_p=\sum C_i,\\
+    &U=\tfrac12 C V^2=\tfrac12 QV=\frac{Q^2}{2C}.
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $A$ plate area; $d$ separation; $\varepsilon_0$ vacuum permittivity; $\varepsilon_r$ relative permittivity; $Q$ charge; $V$ voltage.
+
+  \textbf{Prerequisites \& scope:} Edge effects neglected; linear dielectrics; use equivalent capacitance to reduce networks.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Use series and parallel combinations or symmetry to simplify a network before writing node or loop equations.
+    \item Use $U=\tfrac12 CV^2$ to compare energy storage or redistribution after reconfiguration.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Assuming charge conservation on each plate when switches change connectivity. Fix: conserve charge on isolated conductors only.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Two capacitors $C_1=2\,\mu\text{F}$ and $C_2=3\,\mu\text{F}$ are in series. Find the equivalent capacitance.
+\begin{solutionbox}
+  $\dfrac{1}{C_s}=\dfrac{1}{C_1}+\dfrac{1}{C_2}=\dfrac{1}{2}+\dfrac{1}{3}=\dfrac{5}{6}\Rightarrow C_s=\dfrac{6}{5}=1.2\,\mu\text{F}$.
+\end{solutionbox}
+\end{cheatproblem}
+\begin{cheatproblem}
+  A capacitor with $C=10\,\mu\text{F}$ is charged to $V=50\,\text{V}$. Find the energy stored.
+\begin{solutionbox}
+  $U=\tfrac12 CV^2=\tfrac12\cdot10\times10^{-6}\cdot2500=12.5\times10^{-3}=12.5\,\text{mJ}$.
+\end{solutionbox}
+\end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Gauss's Law \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} The flux of $\vec E$ through a closed surface equals enclosed charge over $\varepsilon_0$; symmetry lets you get fields without integration.
+
+  \textbf{Core formula:}
+  \[
+  \oint \vec E\cdot d\vec A=\frac{Q_{enc}}{\varepsilon_0}.
+  \]
+
+  \textbf{Variable definitions:} $Q_{enc}$ charge enclosed; $d\vec A$ outward area element; choose Gaussian surface aligned to symmetry.
+
+  
+
+  \textbf{Prerequisites \& scope:} Use for infinite planes/cylinders/spheres; for conductors, $E=0$ inside and charges reside on surfaces. Within uniform dielectrics/insulators with embedded charge, fields may exist inside the material (i.e., $E$ need not vanish). \textit{Under \Core: memorize the integral statement; derivations are not required.}
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Pick surfaces where $E$ is constant and parallel to $d\vec A$ over large patches (sphere/cylinder/plane).
+    \item For conductors in electrostatics, set $E_{\text{inside}}=0$ and use boundary conditions for surface charge; for dielectrics, prefer symmetry and superposition without advanced $\vec D$ formalism.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Choosing a Gaussian surface that doesn't match symmetry, forcing difficult integrals. Fix: reselect surface to exploit symmetry.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  Using Gauss's law, find $E(r)$ outside a uniformly charged sphere of radius $R$ and total charge $Q$.
+  \begin{solutionbox}
+  Gaussian sphere: $E_r\cdot4\pi r^2=Q/\varepsilon_0$, so $\vec E(r)=\dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r^2}\hat{\mathbf r}$ for $r\ge R$. The magnitude uses $|Q|$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+
+\UnitProblemLinks{electrostatics}

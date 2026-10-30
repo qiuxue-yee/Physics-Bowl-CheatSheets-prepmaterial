@@ -1,18 +1,318 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Physics Bowl CheatSheets</title>
-  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:2rem;line-height:1.6} a{color:#0366d6;text-decoration:none} a:hover{text-decoration:underline}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A PhysicsBowl study guide and selected problem set, built around concepts, conditions and clear reasoning.">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <title>Physics Bowl Study Collection · Ray Zhou</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #142f2d;
+      --ink-deep: #102826;
+      --paper: #f7f5ef;
+      --white: #fffefa;
+      --soft: #e5ede3;
+      --line: #cad5c9;
+      --muted: #526962;
+      --accent: #d78d67;
+      --display: Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.65 var(--sans); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:focus-visible { outline: 3px solid #d37748; outline-offset: 4px; }
+    .wrap { width: min(100% - 3rem, 1180px); margin-inline: auto; }
+    .skip { position: absolute; z-index: 20; top: -5rem; left: 1rem; background: white; color: var(--ink); padding: .5rem .8rem; }
+    .skip:focus { top: 1rem; }
+    .site-head { background: var(--ink-deep); color: #f5f6ee; }
+    .nav { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; border-bottom: 1px solid #ffffff24; }
+    .brand { display: inline-flex; align-items: center; gap: .8rem; text-decoration: none; font-size: .73rem; font-weight: 750; letter-spacing: .13em; line-height: 1.3; text-transform: uppercase; }
+    .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #c7d7c9; border-radius: 50%; font: italic 21px var(--display); text-transform: none; letter-spacing: 0; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; font-size: .78rem; font-weight: 650; }
+    .nav-links a { color: #dce9db; text-decoration: none; }
+    .nav-links a:hover, .footer a:hover { color: #eeb58e; }
+    .nav-links .nav-github { border: 1px solid #8ca69a; padding: .55rem .9rem; border-radius: 3px; }
+    .hero { overflow: hidden; background: var(--ink-deep); color: #f8f6ee; }
+    .hero-grid { min-height: 600px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 2rem; align-items: center; }
+    .hero-copy { position: relative; z-index: 2; padding: 5rem 0 5.5rem; }
+    .eyebrow { display: flex; align-items: center; gap: .65rem; margin: 0 0 1.55rem; color: #abd0bb; font-size: .67rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--accent); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; }
+    h1 { margin-bottom: 1.5rem; font-size: clamp(4rem, 6.7vw, 6.7rem); letter-spacing: -.045em; }
+    h1 em { color: #bad9c4; font-weight: 400; }
+    h1 span { color: var(--accent); }
+    .hero-copy > p:not(.eyebrow) { max-width: 29rem; color: #c7d8ca; font-size: 1rem; line-height: 1.8; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.6rem; margin-top: 2rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 1.3rem; min-height: 50px; padding: .75rem 1.05rem; border: 1px solid transparent; border-radius: 3px; background: #e8bf9d; color: #16322d; font-size: .78rem; font-weight: 800; text-decoration: none; }
+    .button:hover { background: #f5d2b4; }
+    .text-link { display: inline-flex; align-items: center; gap: .7rem; font-size: .79rem; font-weight: 750; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: .15rem; }
+    .hero-visual { position: relative; height: 520px; align-self: end; }
+    .hero-visual::before { content: ""; position: absolute; inset: 3rem -9rem -4rem -3rem; background-image: linear-gradient(#d2e6d20d 1px, transparent 1px), linear-gradient(90deg, #d2e6d20d 1px, transparent 1px); background-size: 32px 32px; }
+    .orbit { position: absolute; width: 455px; height: 455px; left: 4%; top: 6%; border: 1px solid #95b7a94a; border-radius: 50%; }
+    .orbit::before, .orbit::after { content: ""; position: absolute; border: 1px solid #95b7a92b; border-radius: 50%; }
+    .orbit::before { inset: 35px; }
+    .orbit::after { inset: 80px; }
+    .hero-page { position: absolute; overflow: hidden; background: white; border: 6px solid #f8f8f3; box-shadow: 0 18px 45px #071b1b75; }
+    .hero-page img { width: 100%; }
+    .hero-page.guide { width: 245px; top: 78px; left: 19%; transform: rotate(-6deg); }
+    .hero-page.problems { width: 210px; top: 145px; left: 52%; transform: rotate(7deg); }
+    .hero-note { position: absolute; bottom: 30px; left: 0; color: #b4cec0; font: italic 1rem var(--display); }
+    .hero-note::before { content: "↗"; margin-right: .5rem; color: var(--accent); font-style: normal; }
+    .hero-foot { display: flex; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; border-top: 1px solid #ffffff24; color: #adbfaf; font-size: .68rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    .stats { background: #e6eee3; }
+    .stats-inner { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .stat { display: flex; align-items: center; gap: 1rem; padding: 2rem 1.5rem; border-right: 1px solid #becfc0; }
+    .stat:first-child { padding-left: 0; }
+    .stat:last-child { border: 0; }
+    .stat strong { font: 2.6rem/1 var(--display); letter-spacing: -.04em; }
+    .stat span { max-width: 9rem; color: #506b5d; font-size: .69rem; font-weight: 750; letter-spacing: .1em; line-height: 1.45; text-transform: uppercase; }
+    section { scroll-margin-top: 1rem; }
+    .intro { display: grid; grid-template-columns: 1fr .8fr; gap: 5rem; padding: 7rem 0 5rem; align-items: end; }
+    .section-label { margin-bottom: 1.3rem; color: #a85d3e; font-size: .68rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    h2 { font-size: clamp(2.8rem, 4.5vw, 4.3rem); letter-spacing: -.04em; }
+    .intro h2 { margin-bottom: 0; }
+    .intro-copy { max-width: 30rem; color: var(--muted); }
+    .intro-copy p:last-child { margin-bottom: 0; }
+    .books { padding-bottom: 7rem; }
+    .book { display: grid; grid-template-columns: 1fr 1fr; min-height: 490px; overflow: hidden; background: var(--white); border: 1px solid #d6ded3; }
+    .book + .book { margin-top: 1.25rem; }
+    .book-copy { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(2rem, 4.5vw, 4.25rem); }
+    .book-number { margin-bottom: auto; color: #b36e4b; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .book h3 { margin: 2.7rem 0 1rem; font-size: clamp(2.5rem, 4vw, 3.5rem); letter-spacing: -.04em; }
+    .book-copy > p:not(.book-number) { max-width: 26rem; color: var(--muted); }
+    .book-meta { display: flex; flex-wrap: wrap; gap: .55rem; margin: .5rem 0 1.7rem; }
+    .book-meta span { padding: .35rem .6rem; background: #eef3eb; color: #426454; font-size: .66rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+    .book .button { background: var(--ink); color: #fff; }
+    .book .button:hover { background: #28544a; }
+    .book-art { position: relative; min-height: 400px; overflow: hidden; background: #dce8dc; }
+    .book-art::before { content: ""; position: absolute; width: 340px; height: 340px; border: 1px solid #769c83a0; border-radius: 50%; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+    .book-art::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid #769c8360; }
+    .book-art img { position: absolute; z-index: 1; width: min(63%, 292px); left: 50%; top: 50%; transform: translate(-50%, -47%) rotate(3deg); box-shadow: 0 16px 40px #30443a36; }
+    .book--problems .book-art { order: -1; background: #eaded2; }
+    .book--problems .book-art::before { border-color: #b9867180; }
+    .book--problems .book-art::after { border-color: #b9867150; }
+    .book--problems .book-art img { transform: translate(-50%, -47%) rotate(-3deg); }
+    .book--problems .book-meta span { background: #f8eee7; color: #8b5a45; }
+    .download-note { margin: 1.2rem 0 0; color: var(--muted); font-size: .8rem; }
+    .route { background: #193a34; color: #f7f6ef; padding: 6.5rem 0; }
+    .route .section-label { color: #e7ab87; }
+    .route-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; }
+    .route h2 { margin-bottom: 0; }
+    .route-intro { max-width: 20rem; margin-bottom: .3rem; color: #c0d2c1; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 0; margin: 3.75rem 0 0; list-style: none; }
+    .steps li { border-top: 1px solid #829e8d; padding-top: 1.3rem; }
+    .step-number { display: block; color: #e7ab87; font: 1.15rem var(--display); }
+    .steps h3 { margin: 2rem 0 .8rem; font-size: 1.9rem; }
+    .steps p { max-width: 19rem; color: #c3d3c5; font-size: .92rem; }
+    .revision { padding: 7rem 0; }
+    .revision-top { display: grid; grid-template-columns: .9fr 1fr; gap: 5rem; align-items: start; }
+    .revision-top h2 { margin-bottom: 0; }
+    .revision-copy { color: var(--muted); }
+    .revision-copy .text-link { color: var(--ink); }
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 3rem; }
+    .compare-card { margin: 0; background: #e8eee5; padding: 1.5rem 1.5rem 0; overflow: hidden; }
+    .compare-card:last-child { background: #eddfd4; }
+    .compare-caption { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 1.2rem; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .compare-caption span:last-child { color: #668073; font-weight: 600; letter-spacing: 0; text-transform: none; }
+    .compare-card img { width: min(100%, 390px); margin: auto; box-shadow: 0 10px 28px #263d3020; }
+    .closing { padding: 3rem 0; background: #e4ece1; border-top: 1px solid #d2dfd1; }
+    .closing-inner { display: flex; justify-content: space-between; gap: 2rem; align-items: center; }
+    .closing h2 { margin-bottom: .45rem; font-size: 2.35rem; }
+    .closing p { margin-bottom: 0; color: var(--muted); }
+    .closing .button { flex-shrink: 0; background: var(--ink); color: white; }
+    .closing .button:hover { background: #28544a; }
+    .footer { padding: 3rem 0; background: var(--ink-deep); color: #b9cebd; }
+    .footer-top { display: flex; justify-content: space-between; gap: 2rem; }
+    .footer .brand { color: #f5f6ee; }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: .8rem; }
+    .footer a { text-decoration: none; }
+    .footer small { display: block; max-width: 44rem; margin-top: 2.5rem; color: #a8bfb0; line-height: 1.7; }
+    @media (max-width: 850px) {
+      .nav-links { gap: 1rem; }
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: 0; min-height: 540px; }
+      .hero-page.guide { left: 4%; width: 215px; }
+      .hero-page.problems { left: 42%; width: 190px; }
+      .intro, .revision-top { gap: 2.5rem; }
+      .book-copy { padding: 2.4rem; }
+      .book-art img { width: 70%; }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: min(100% - 2.2rem, 1180px); }
+      .nav { min-height: 74px; }
+      .nav-links a:not(.nav-github) { display: none; }
+      .nav-links .nav-github { padding: .45rem .7rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy { padding: 4rem 0 1rem; }
+      h1 { font-size: clamp(3.6rem, 12vw, 5rem); }
+      .hero-visual { height: 405px; }
+      .orbit { width: 340px; height: 340px; left: 8%; top: 6%; }
+      .hero-page.guide { width: 190px; left: 15%; top: 40px; }
+      .hero-page.problems { width: 165px; left: 50%; top: 95px; }
+      .hero-note { bottom: 15px; }
+      .hero-foot { font-size: .59rem; }
+      .stat { display: block; padding: 1.4rem .7rem; }
+      .stat strong { display: block; margin-bottom: .45rem; font-size: 2rem; }
+      .stat span { display: block; font-size: .59rem; }
+      .intro, .revision-top { grid-template-columns: 1fr; gap: 1.5rem; }
+      .intro { padding: 5rem 0 3rem; }
+      .books { padding-bottom: 5rem; }
+      .book { grid-template-columns: 1fr; }
+      .book-copy { padding: 2rem; }
+      .book h3 { margin-top: 2rem; }
+      .book-art, .book--problems .book-art { order: 0; min-height: 390px; }
+      .book-art img { width: min(58%, 250px); }
+      .book--problems .book-copy { order: -1; }
+      .route { padding: 5rem 0; }
+      .route-head { display: block; }
+      .route-intro { margin: 1.2rem 0 0; }
+      .steps { grid-template-columns: 1fr; gap: .6rem; margin-top: 2.5rem; }
+      .steps h3 { margin-top: .9rem; }
+      .steps p { max-width: 100%; }
+      .revision { padding: 5rem 0; }
+      .comparison { gap: .7rem; }
+      .compare-card { padding: .7rem .7rem 0; }
+      .compare-caption { display: block; font-size: .62rem; }
+      .compare-caption span:last-child { display: block; margin-top: .3rem; }
+      .closing-inner, .footer-top { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
 </head>
 <body>
-  <h1>Physics Bowl D1 + D2  Downloads</h1>
-  <p>Use the links below to access the latest PDFs.</p>
-  <ul>
-    <li><a href="./CheatSheets.pdf">CheatSheets.pdf</a></li>
-    <li><a href="./Physics_Bowl_Initial_Version.pdf">Physics_Bowl_Initial_Version.pdf</a></li>
-    <li><a href="https://github.com/qiuxue-yee/Physics-Bowl-CheatSheets-prepmaterial">GitHub Repository</a></li>
-  </ul>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-head">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">p</span><span>Physics Bowl<br>Study Collection</span></a>
+      <div class="nav-links">
+        <a href="#collection">The books</a>
+        <a href="#approach">How to use</a>
+        <a href="#revision">The revision</a>
+        <a class="nav-github" href="https://github.com/qiuxue-yee/Physics-Bowl-CheatSheets-prepmaterial">GitHub ↗</a>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Independent study materials · 2026 edition</p>
+            <h1 id="hero-title">Physics,<br><em>one idea</em><br>at a time<span>.</span></h1>
+            <p>A study guide and problem set for the moments when you want to know not just which formula to use, but why it works.</p>
+            <div class="hero-actions">
+              <a class="button" href="#collection">Explore the books <span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="#approach">How to use them <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="orbit"></div>
+            <div class="hero-page guide"><img src="./previews/guide-after.png" alt=""></div>
+            <div class="hero-page problems"><img src="./previews/problem-set.png" alt=""></div>
+            <span class="hero-note">Concepts, questions, and the space between.</span>
+          </div>
+        </div>
+        <div class="hero-foot"><span>A study collection by Ray Zhou</span><span>Made for curious minds ↓</span></div>
+      </div>
+    </section>
+
+    <div class="stats" aria-label="Collection at a glance">
+      <div class="wrap stats-inner">
+        <div class="stat"><strong>12</strong><span>Units in the guide</span></div>
+        <div class="stat"><strong>71</strong><span>Worked examples</span></div>
+        <div class="stat"><strong>39</strong><span>Selected problems</span></div>
+      </div>
+    </div>
+
+    <section id="collection" aria-labelledby="collection-title">
+      <div class="wrap">
+        <div class="intro">
+          <div><p class="section-label">The collection / 01</p><h2 id="collection-title">Two books.<br>One learning loop.</h2></div>
+          <div class="intro-copy"><p>Good notes give you a place to begin. Good questions show you where to look next. These two books are designed to work together, from first concept to final calculation.</p></div>
+        </div>
+        <div class="books">
+          <article class="book">
+            <div class="book-copy">
+              <p class="book-number">Book 01 / Concepts &amp; methods</p>
+              <h3>The study guide</h3>
+              <p>A clear place to revisit the fundamentals: concepts, when formulas apply, common pitfalls, and worked examples across four parts of physics.</p>
+              <div class="book-meta"><span>12 units</span><span>71 examples</span><span>PDF</span></div>
+              <a class="button" href="./CheatSheets.pdf">Open the study guide <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="book-art"><img src="./previews/guide-after.png" alt="A sample page from the study guide on vectors and components" loading="lazy"></div>
+          </article>
+          <article class="book book--problems">
+            <div class="book-copy">
+              <p class="book-number">Book 02 / Practice &amp; reasoning</p>
+              <h3>Selected problems</h3>
+              <p>Work through 39 questions with a topic index, key insights, step-by-step solutions, and links back to the ideas in the guide.</p>
+              <div class="book-meta"><span>39 questions</span><span>Source citations</span><span>PDF</span></div>
+              <a class="button" href="./Physics_Bowl_Initial_Version.pdf">Open the problem set <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="book-art"><img src="./previews/problem-set.png" alt="The problem set's index of questions by topic" loading="lazy"></div>
+          </article>
+          <p class="download-note">For links between the books, download both PDFs into the same folder. Support varies by PDF viewer.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="route" id="approach" aria-labelledby="route-title">
+      <div class="wrap">
+        <div class="route-head">
+          <div><p class="section-label">A reading route / 02</p><h2 id="route-title">Learn. Try. Return.</h2></div>
+          <p class="route-intro">A simple way to move between an idea and the question that puts it to work.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="step-number">01 /</span><h3>Start with an idea.</h3><p>Choose a topic in the guide. Read the concept, its conditions, and the common pitfalls.</p></li>
+          <li><span class="step-number">02 /</span><h3>Give it a try.</h3><p>Work an example or a linked problem on your own before comparing the solution.</p></li>
+          <li><span class="step-number">03 /</span><h3>Find your way back.</h3><p>When a step is unclear, follow the link to revisit the relevant unit and its assumptions.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="revision" id="revision" aria-labelledby="revision-title">
+      <div class="wrap">
+        <div class="revision-top">
+          <div><p class="section-label">Behind the pages / 03</p><h2 id="revision-title">A work in<br>progress, thoughtfully.</h2></div>
+          <div class="revision-copy">
+            <p>This revision began with a question: how can a collection of notes become easier to navigate and more reliable to use? The sources are now organized by unit, the books link to each other, and selected questions point to their original AAPT exams.</p>
+            <p>The review also corrected mismatched figures and several derivations. The record is open about what was checked and what still needs attention.</p>
+            <a class="text-link" href="https://github.com/qiuxue-yee/Physics-Bowl-CheatSheets-prepmaterial/blob/main/REVIEW.md">Read the editorial review <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="comparison">
+          <figure class="compare-card">
+            <figcaption class="compare-caption"><span>Before</span><span>Earlier guide</span></figcaption>
+            <a href="./previews/guide-before.png"><img src="./previews/guide-before.png" alt="Earlier kinematics page before the revision"></a>
+          </figure>
+          <figure class="compare-card">
+            <figcaption class="compare-caption"><span>After</span><span>Revised guide</span></figcaption>
+            <a href="./previews/guide-after.png"><img src="./previews/guide-after.png" alt="Revised kinematics page, with clarified labels and an example"></a>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="wrap closing-inner">
+        <div><h2 id="closing-title">See something to improve?</h2><p>Corrections and constructive feedback help the collection grow.</p></div>
+        <a class="button" href="https://github.com/qiuxue-yee/Physics-Bowl-CheatSheets-prepmaterial/issues">Suggest a correction <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">p</span><span>Physics Bowl<br>Study Collection</span></a>
+        <div class="footer-links"><a href="./CheatSheets.pdf">Study guide</a><a href="./Physics_Bowl_Initial_Version.pdf">Problem set</a><a href="https://www.aapt.org/Programs/PhysicsBowl/printexams.cfm">AAPT archive ↗</a><a href="https://github.com/qiuxue-yee/Physics-Bowl-CheatSheets-prepmaterial">GitHub ↗</a></div>
+      </div>
+      <small>Created by Ray Zhou · Revised 2026-10-30<br>An independent study project. PhysicsBowl is organized by AAPT; this project is not endorsed by AAPT. Selected questions and some figures are attributed to their original sources.</small>
+    </div>
+  </footer>
 </body>
 </html>

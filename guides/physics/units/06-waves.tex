@@ -1,0 +1,177 @@
+\Unit[SHM; pendulum (small-angle); wave speed $v=f\lambda$; superposition/standing waves; sound and Doppler; SHM ODE]{Oscillations \& Waves}
+\label{unit:waves}
+
+\begin{KnowledgePoint}{Simple Harmonic Motion \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} SHM occurs when acceleration is proportional to and opposite to displacement; solutions are sinusoidal with constant amplitude (no damping).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &x=A\cos(\omega t+\phi),\quad v=-A\omega\sin(\omega t+\phi),\quad a=-\omega^2 x,\\
+    &T=\frac{2\pi}{\omega},\quad \omega=\sqrt{\frac{k}{m}}\ (\text{mass--spring}),\quad T_{\text{pend}}\approx2\pi\sqrt{\frac{\ell}{g}}\ (\text{small angle}).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $A$ amplitude; $\omega$ angular frequency; $\phi$ phase; $k$ spring constant; $\ell$ pendulum length.
+
+  
+
+  \textbf{Prerequisites \& scope:} No damping/driving; small-angle approximation for pendulum.
+  \end{formulabox}
+
+  \KPHeuristics
+\begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Use energy partition $K+U=\tfrac12kA^2$ to find speeds at positions; use phase to compute time fractions.
+    \item For compound oscillators, reduce to effective $k_{\text{eff}}$ or $\ell_{\text{eff}}$ before applying SHM formulas.
+    \item Small-angle pendulum: check $\theta_{\max}\lesssim 10^\circ$ for $T\approx2\pi\sqrt{\ell/g}$ to be within a percent; otherwise expect longer $T$. First-order correction (radians; \Extension result, memorize only): $\displaystyle T\approx 2\pi\sqrt{\ell/g}\,\big(1+\tfrac{\theta_0^2}{16}\big)$.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using pendulum period formula at large angles. Fix: restrict to small angles or use elliptic corrections.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A mass on a spring follows SHM with amplitude $A$ and period $T$. What fraction of the period is spent with $|x|>\tfrac{A}{2}$?
+  \begin{solutionbox}
+  Let $x(t)=A\cos(\omega t)$. The condition $|x(t)|>A/2$ is equivalent to $|\cos(\omega t)|>1/2$. It is simpler to calculate the fraction of time for the complementary condition, $|x(t)|\le A/2$, which corresponds to $|\cos(\omega t)|\le 1/2$.
+  In one full cycle $\theta=\omega t \in [0, 2\pi)$, this holds for $\theta \in [\pi/3, 2\pi/3]$ and $\theta \in [4\pi/3, 5\pi/3]$. The total angular duration is $(\frac{2\pi}{3}-\frac{\pi}{3}) + (\frac{5\pi}{3}-\frac{4\pi}{3}) = \frac{\pi}{3}+\frac{\pi}{3}=\frac{2\pi}{3}$.
+  The fraction of the period for this condition is $\frac{2\pi/3}{2\pi}=\frac{1}{3}$.
+  Therefore, the fraction of the period spent with $|x|>A/2$ is $1 - 1/3 = 2/3$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Waves (Traveling) \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Traveling waves follow $v=f\lambda$; boundary conditions set standing-wave modes; source/observer motion shifts frequency (Doppler).
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &v=f\lambda,\ \ y(x,t)=A\cos(kx-\omega t+\phi),\ k=\tfrac{2\pi}{\lambda},\ \omega=2\pi f.\\
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $v$ wave speed in medium; $L$ length; $v_o$ observer speed; $v_s$ source speed.
+
+  \textbf{Prerequisites \& scope:} Linear superposition; small amplitudes; Doppler formula assumes $v_o,v_s\ll v$ (nonrelativistic).
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Draw mode shapes to match node/antinode boundary conditions before writing $f_n$.
+    \item Use a sign diagram for Doppler to avoid sign errors; approaching increases frequency. For the formula given, this means observer towards source ($+v_o$, numerator) and source towards observer ($-v_s$, denominator). For receding, reverse these signs.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Using $v$ of sound/light incorrectly across media. Fix: use the correct medium speed for $v=f\lambda$.
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A wave has wavelength $\lambda=2\,\text{m}$ and frequency $f=50\,\text{Hz}$. Find its speed.
+  \begin{solutionbox}
+  $v=f\lambda=50\cdot2=100\,\text{m/s}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Standing Waves (Strings/Pipes) \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Boundaries reflect waves; interference of forward and backward waves creates nodes and antinodes with discrete mode frequencies set by geometry and boundary conditions.
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &\text{String fixed ends: } f_n=\frac{nv}{2L},\ n=1,2,\dots\\
+    &\text{Open/closed pipe: }\begin{cases}
+      f_n=\dfrac{nv}{2L}, & n=1,2,3,\dots\ (\text{both ends open}),\\
+      f_n=\dfrac{(2n-1)v}{4L}, & n=1,2,3,\dots\ (\text{one end closed}).
+    \end{cases}
+  \end{aligned}\right.
+  \]
+  \end{formulabox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  A string of length $L=1.2\,\text{m}$ fixed at both ends has fundamental frequency $f_1=200\,\text{Hz}$. Find the wave speed.
+  \begin{solutionbox}
+  $f_1=\dfrac{v}{2L}\Rightarrow v=2Lf_1=2\cdot1.2\cdot200=480\,\text{m/s}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{Doppler Effect (Fixed Medium) \Core}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} Relative motion between source and observer shifts the detected frequency: approaching raises $f'$ and receding lowers it; the medium is stationary.
+  \textbf{Core formula:}
+  \[
+    f'=\frac{v\pm v_o}{v\mp v_s}\,f\ (\text{approach uses top signs}).
+  \]
+  \textbf{Variable definitions:} $v$ wave speed; $v_o$ observer speed; $v_s$ source speed.
+  \end{formulabox}
+
+  \KPProblems
+  \begin{cheatproblem}
+  An acoustic source emits $f=440\,\text{Hz}$ in air with $v=340\,\text{m/s}$. The observer moves toward the source at $v_o=10\,\text{m/s}$ while the source moves toward the observer at $v_s=20\,\text{m/s}$. Find the observed frequency.
+  \begin{solutionbox}
+  $f'=\dfrac{v+v_o}{v-v_s}\,f=\dfrac{350}{320}\cdot 440\approx 481\,\text{Hz}$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\begin{KnowledgePoint}{SHM ODE and Driven Forms \Extension}
+  \KPFormulas
+  \begin{formulabox}
+  \textbf{Concept explanation:} The homogeneous SHM ODE has sinusoidal solutions; with driving and damping, the steady-state response depends on drive frequency and damping ratio.
+
+  \textbf{Core formulas:}
+  \[
+  \left\{\begin{aligned}
+    &x''+\omega_0^2 x=0 \Rightarrow x(t)=C\cos\omega_0 t+D\sin\omega_0 t,\\
+    &\text{Damped: } x''+2\zeta\omega_0 x'+\omega_0^2 x=0,\ \text{under/critical/over-damped by }\zeta,\\
+      &\text{Driven: } x''+2\zeta\omega_0 x'+\omega_0^2 x=\frac{F_0}{m}\cos\omega t,\\
+      &\Rightarrow\ \text{amplitude peaks near }\omega\approx\omega_0,\\
+      &\text{for small damping }\omega_{\text{peak}}\approx\omega_0\sqrt{1-2\zeta^2}\ (\zeta\ll1).
+  \end{aligned}\right.
+  \]
+
+  \textbf{Variable definitions:} $\omega_0$ natural frequency; $\zeta$ damping ratio; $F_0$ drive amplitude.
+
+  \textbf{Prerequisites \& scope:} Linear oscillator model; small oscillations; steady-state assumes transients have decayed.
+  \end{formulabox}
+
+  \KPHeuristics
+  \begin{heuristicsbox}
+  \begin{itemize}[leftmargin=*]
+    \item Identify regime via $\zeta$; near resonance, estimate amplification and phase shift.
+  \end{itemize}
+  \vspace{0.4em}
+  \begin{itemize}[leftmargin=*]
+    \item Confusing natural and driving frequencies. Fix: keep $\omega_0$ (system) distinct from $\omega$ (drive).
+  \end{itemize}
+  \end{heuristicsbox}
+
+  \KPProblems
+\begin{cheatproblem}
+  For $x''+\omega^2x=0$ with $x(0)=0$ and $\dot x(0)=v_0$, find $x(t)$ and the maximum speed.
+  \begin{solutionbox}
+  The general solution is $x(t)=C\cos(\omega t)+D\sin(\omega t)$.
+  $x(0)=0 \Rightarrow C=0$.
+  $\dot x(t) = D\omega\cos(\omega t)$, so $\dot x(0)=v_0 \Rightarrow D\omega=v_0 \Rightarrow D=v_0/\omega$.
+  Thus, $x(t)=\dfrac{v_0}{\omega}\sin(\omega t)$. The velocity is $v(t) = \dot x(t) = v_0\cos(\omega t)$.
+  The maximum speed is the amplitude of $v(t)$, which is $|v_0|$.
+  \end{solutionbox}
+  \end{cheatproblem}
+\end{KnowledgePoint}
+
+\UnitProblemLinks{waves}
