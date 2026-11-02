@@ -43,6 +43,8 @@ The guide has four parts and 71 worked examples. Its **Core** and
 **Extension** labels are reading cues, not official PhysicsBowl division
 classifications. Download the two PDFs into the same folder for their
 cross-document links; support for these links varies by PDF viewer.
+In a Chrome online-PDF check, a companion-book link did not open the other
+book. Use the contents and topic index to navigate manually when needed.
 
 ## From notes to a connected resource
 

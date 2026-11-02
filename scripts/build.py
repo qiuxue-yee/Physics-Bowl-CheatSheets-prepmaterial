@@ -22,6 +22,8 @@ README = '''Physics Bowl Study Collection
 Keep both PDFs in the same folder so companion links can work.
 Support for links to another PDF varies by reader. The guide and problem set
 also include topic labels and page references for navigation without links.
+In a Chrome online-PDF check, a companion-book link did not open the other
+book; use the contents and topic index to navigate manually when needed.
 
 These are independent study materials and are not endorsed by AAPT.
 Selected questions and some figures are attributed to AAPT source papers.
