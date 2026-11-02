@@ -34,6 +34,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Build both PDFs from source
         run: python scripts/build.py --write-docs
+      - name: Verify generated web and offline editions match
+        run: python -m unittest discover -s tests -p test_release.py -v
       - name: Verify published files and companion links
         run: python scripts/inspect_pdfs.py --pdf-dir docs --link-mode online --compare-dir .build/online
       - name: Save review PDFs
