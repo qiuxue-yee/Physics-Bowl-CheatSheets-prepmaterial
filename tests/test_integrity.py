@@ -1,4 +1,4 @@
-"""Regression checks against the original structure and AAPT answer keys."""
+"""Regression checks against the original structure and recorded answer keys."""
 from __future__ import annotations
 
 import json
@@ -50,7 +50,7 @@ class MaterialIntegrityTests(unittest.TestCase):
         self.assertEqual(point_count, 48)
         self.assertEqual(example_counts, [10, 8, 6, 8, 8, 5, 7, 4, 4, 5, 4, 2])
 
-    def test_all_questions_have_sources_and_match_official_answer_keys(self):
+    def test_all_questions_have_sources_and_match_recorded_answer_keys(self):
         problems = problem_blocks()
         self.assertEqual(set(problems), set(range(1, 40)))
         self.assertEqual(set(SOURCES), {str(i) for i in problems})

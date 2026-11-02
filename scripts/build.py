@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 import sys
+from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / ".build" / "pdf"
@@ -15,6 +16,36 @@ BOOKS = [
     ("CheatSheets", "guides/physics/CheatSheets.tex"),
     ("Physics_Bowl_Initial_Version", "problems/Physics_Bowl_Initial_Version.tex"),
 ]
+ZIP_NAME = 'PhysicsBowl_Study_Collection.zip'
+README = '''Physics Bowl Study Collection
+
+Keep both PDFs in the same folder so companion links can work.
+Support for links to another PDF varies by reader. The guide and problem set
+also include topic labels and page references for navigation without links.
+
+These are independent study materials and are not endorsed by AAPT.
+Selected questions and some figures are attributed to AAPT source papers.
+'''
+
+
+def create_archive(directory: Path) -> None:
+    """Package exactly the inspected PDFs with a reproducible reading note."""
+    temporary = directory / (ZIP_NAME + '.tmp')
+    try:
+        with ZipFile(temporary, 'w', compression=ZIP_DEFLATED, compresslevel=9) as archive:
+            for name, data in [*( (name + '.pdf', (directory / (name + '.pdf')).read_bytes())
+                                   for name, _ in BOOKS ), ('README.txt', README.encode('utf-8'))]:
+                info = ZipInfo(name, (2025, 10, 23, 0, 0, 0))
+                info.compress_type = ZIP_DEFLATED
+                info.external_attr = 0o644 << 16
+                archive.writestr(info, data, compress_type=ZIP_DEFLATED, compresslevel=9)
+        with ZipFile(temporary) as archive:
+            for name, _ in BOOKS:
+                if archive.read(name + '.pdf') != (directory / (name + '.pdf')).read_bytes():
+                    raise ValueError(f'{name}: archive does not match published PDF')
+        temporary.replace(directory / ZIP_NAME)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def main() -> None:
@@ -60,10 +91,14 @@ def main() -> None:
                    if re.search(pattern, log)]
     if issues:
         raise SystemExit("PDF verification failed:\n- " + "\n- ".join(issues))
+    subprocess.run([sys.executable, 'scripts/inspect_pdfs.py', '--pdf-dir', str(BUILD)], cwd=ROOT, check=True)
     if args.write_docs:
         for name, _ in BOOKS:
             shutil.copy2(BUILD / f"{name}.pdf", ROOT / "docs" / f"{name}.pdf")
-        print("Updated the two existing PDF download paths in docs/.")
+        subprocess.run([sys.executable, 'scripts/inspect_pdfs.py', '--pdf-dir', str(ROOT / 'docs'),
+                        '--compare-dir', str(BUILD)], cwd=ROOT, check=True)
+        create_archive(ROOT / 'docs')
+        print('Updated the verified PDF download paths and complete collection ZIP in docs/.')
     print("Both PDFs compiled with resolved cross-references.")
 
 

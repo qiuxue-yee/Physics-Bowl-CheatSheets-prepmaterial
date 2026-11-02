@@ -37,6 +37,7 @@
     .nav-links a { color: #dce9db; text-decoration: none; }
     .nav-links a:hover, .footer a:hover { color: #eeb58e; }
     .nav-links .nav-github { border: 1px solid #8ca69a; padding: .55rem .9rem; border-radius: 3px; }
+    .mobile-nav { display: none; }
     .hero { overflow: hidden; background: var(--ink-deep); color: #f8f6ee; }
     .hero-grid { min-height: 600px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 2rem; align-items: center; }
     .hero-copy { position: relative; z-index: 2; padding: 5rem 0 5.5rem; }
@@ -100,6 +101,7 @@
     .book--problems .book-art img { transform: translate(-50%, -47%) rotate(-3deg); }
     .book--problems .book-meta span { background: #f8eee7; color: #8b5a45; }
     .download-note { margin: 1.2rem 0 0; color: var(--muted); font-size: .8rem; }
+    .bundle-download { display: inline-flex; align-items: center; min-height: 44px; margin-top: 1rem; font-weight: 700; color: var(--ink); }
     .route { background: #193a34; color: #f7f6ef; padding: 6.5rem 0; }
     .route .section-label { color: #e7ab87; }
     .route-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; }
@@ -147,6 +149,8 @@
       .nav { min-height: 74px; }
       .nav-links a:not(.nav-github) { display: none; }
       .nav-links .nav-github { padding: .45rem .7rem; }
+      .mobile-nav { display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid #ffffff24; }
+      .mobile-nav a { display: flex; align-items: center; min-height: 44px; color: #dce9db; font-size: .75rem; font-weight: 650; text-decoration: none; }
       .hero-grid { grid-template-columns: 1fr; }
       .hero-copy { padding: 4rem 0 1rem; }
       h1 { font-size: clamp(3.6rem, 12vw, 5rem); }
@@ -195,6 +199,9 @@
         <a href="#revision">The revision</a>
         <a class="nav-github" href="https://github.com/qiuxue-yee/Physics-Bowl-CheatSheets-prepmaterial">GitHub ↗</a>
       </div>
+    </nav>
+    <nav class="wrap mobile-nav" aria-label="Page sections">
+      <a href="#collection">The books</a><a href="#approach">How to use</a><a href="#revision">The revision</a>
     </nav>
   </header>
   <main id="main">
@@ -256,7 +263,8 @@
             </div>
             <div class="book-art"><img src="./previews/problem-set.png" alt="The problem set's index of questions by topic" loading="lazy"></div>
           </article>
-          <p class="download-note">For links between the books, download both PDFs into the same folder. Support varies by PDF viewer.</p>
+          <a class="bundle-download" href="./PhysicsBowl_Study_Collection.zip" download>Download both books · ZIP ↓</a>
+          <p class="download-note">Unzip both PDFs into the same folder to use companion links. Support varies by PDF viewer.</p>
         </div>
       </div>
     </section>

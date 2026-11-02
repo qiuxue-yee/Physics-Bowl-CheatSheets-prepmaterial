@@ -10,8 +10,14 @@
   &nbsp;·&nbsp;
   <a href="docs/Physics_Bowl_Initial_Version.pdf">Problem set PDF</a>
   &nbsp;·&nbsp;
+  <a href="docs/PhysicsBowl_Study_Collection.zip">Download both books</a>
+  &nbsp;·&nbsp;
   <a href="#中文说明">中文说明</a>
 </p>
+
+<p align="center"><a href="https://qiuxue-yee.github.io/Physics-Bowl-CheatSheets-prepmaterial/">Visit the study collection website</a></p>
+
+![Physics Bowl Study Collection website](docs/previews/website.png)
 
 ---
 
@@ -84,10 +90,15 @@ python -m pip install PyMuPDF
 python -m unittest discover -s tests -v
 python scripts/build.py --write-docs
 python scripts/inspect_pdfs.py
+python scripts/inspect_pdfs.py --pdf-dir docs --compare-dir .build/pdf
 ```
 
 The build alternates LaTeX passes to resolve references between books. The PDF
-inspection checks page bounds, companion destinations and source links.
+inspection checks page bounds, companion destinations and source links. The
+build inspects PDFs before updating the published copies, compares those copies
+against the verified build and packages them together with reading instructions.
+Integrity tests compare answers against the recorded key data; the editorial
+review documents the separate comparison with AAPT's published keys.
 When editing the topic map or sources, update the JSON files in `data/` and
 run `python scripts/generate_crossrefs.py` before building. GitHub Actions
 builds the PDFs on pushes to `main`. The `docs/` reading page is published
@@ -101,7 +112,7 @@ selected question statements and some figures originate in AAPT materials;
 each problem cites a source paper. The [AAPT exam archive](https://www.aapt.org/Programs/PhysicsBowl/printexams.cfm)
 provides complete exams and official solutions.
 
-Original explanatory material is shared under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Original explanatory material is shared under [CC BY-NC-SA 4.0](LICENSE).
 That license does not grant rights to AAPT's questions or figures.
 
 ---

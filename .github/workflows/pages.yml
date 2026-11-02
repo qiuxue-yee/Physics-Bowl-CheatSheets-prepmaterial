@@ -34,8 +34,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Build both PDFs from source
         run: python scripts/build.py --write-docs
-      - name: Check PDF pages and companion links
-        run: python scripts/inspect_pdfs.py
+      - name: Verify published files and companion links
+        run: python scripts/inspect_pdfs.py --pdf-dir docs --compare-dir .build/pdf
       - name: Save review PDFs
         uses: actions/upload-artifact@v6
         with:
@@ -43,17 +43,18 @@ jobs:
           path: |
             docs/CheatSheets.pdf
             docs/Physics_Bowl_Initial_Version.pdf
+            docs/PhysicsBowl_Study_Collection.zip
       - name: Configure Pages
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && github.event.repository.has_pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/configure-pages@v6
       - name: Upload Pages artifact
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && github.event.repository.has_pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
         with:
           path: docs
 
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && github.event.repository.has_pages
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-24.04
     environment:

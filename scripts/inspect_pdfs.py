@@ -1,6 +1,8 @@
 """Check every generated page and cross-document PDF destination."""
 from __future__ import annotations
 
+import argparse
+import hashlib
 import json
 from pathlib import Path
 from urllib.parse import unquote
@@ -16,7 +18,17 @@ NAMES = ("CheatSheets.pdf", "Physics_Bowl_Initial_Version.pdf")
 
 
 def main() -> None:
-    books = {name: fitz.open(BUILD / name) for name in NAMES}
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--pdf-dir', type=Path, default=BUILD, help='directory containing both PDFs')
+    parser.add_argument('--compare-dir', type=Path, help='require byte-identical PDFs in this directory')
+    args = parser.parse_args()
+    if args.compare_dir:
+        for name in NAMES:
+            actual = hashlib.sha256((args.pdf_dir / name).read_bytes()).digest()
+            expected = hashlib.sha256((args.compare_dir / name).read_bytes()).digest()
+            if actual != expected:
+                raise SystemExit(f'{name}: published PDF differs from verified build')
+    books = {name: fitz.open(args.pdf_dir / name) for name in NAMES}
     destinations = {name: set(doc.resolve_names()) for name, doc in books.items()}
     sources = json.loads((ROOT / "data/problem-sources.json").read_text(encoding="utf-8"))
     source_urls = {entry["url"] for entry in sources.values()}

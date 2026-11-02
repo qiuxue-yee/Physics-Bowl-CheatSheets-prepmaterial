@@ -10,6 +10,11 @@ The selected answers were also compared with the official AAPT answer keys.
 The checks are documented below and in the regression tests; they are not a
 substitute for an independent subject-matter review.
 
+The automated integrity test compares the printed answers to the recorded
+keys in `data/problem-sources.json`; it does not independently retrieve or
+recheck AAPT's current publications. The key comparison above describes the
+editorial review, not a live verification performed by the test.
+
 ## Study guide examples
 
 Example numbers restart in each unit. The ranges below cover every example;
