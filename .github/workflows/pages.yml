@@ -35,7 +35,7 @@ jobs:
       - name: Build both PDFs from source
         run: python scripts/build.py --write-docs
       - name: Verify published files and companion links
-        run: python scripts/inspect_pdfs.py --pdf-dir docs --compare-dir .build/pdf
+        run: python scripts/inspect_pdfs.py --pdf-dir docs --link-mode online --compare-dir .build/online
       - name: Save review PDFs
         uses: actions/upload-artifact@v6
         with:

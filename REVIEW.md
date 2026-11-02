@@ -15,6 +15,11 @@ keys in `data/problem-sources.json`; it does not independently retrieve or
 recheck AAPT's current publications. The key comparison above describes the
 editorial review, not a live verification performed by the test.
 
+The public website's PDFs use HTTPS companion links so browser PDF viewers can
+open the other book. The ZIP retains local-file companion links for compatible
+offline PDF readers. Automated checks compare the editions' text, sample page
+images and link destinations.
+
 ## Study guide examples
 
 Example numbers restart in each unit. The ranges below cover every example;

@@ -5,7 +5,6 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
-from urllib.parse import unquote
 
 try:
     import fitz
@@ -14,13 +13,15 @@ except ImportError as exc:
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / ".build/pdf"
-NAMES = ("CheatSheets.pdf", "Physics_Bowl_Initial_Version.pdf")
+from pdf_links import NAMES, companion_target
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--pdf-dir', type=Path, default=BUILD, help='directory containing both PDFs')
     parser.add_argument('--compare-dir', type=Path, help='require byte-identical PDFs in this directory')
+    parser.add_argument('--link-mode', choices=('offline', 'online'), default='offline',
+                        help='expected type of companion links')
     args = parser.parse_args()
     if args.compare_dir:
         for name in NAMES:
@@ -52,14 +53,13 @@ def main() -> None:
                 uri = link.get("uri", "")
                 if name == NAMES[1] and uri in source_urls:
                     source_count += 1
-                target = link.get("file", "")
-                if "#nameddest=" not in target:
+                target = companion_target(link)
+                if target is None:
                     continue
-                target_name, destination = target.split("#nameddest=", 1)
-                destination = unquote(destination)
+                target_name, destination, mode = target
                 external[name] += 1
-                if target_name not in books or destination not in destinations.get(target_name, set()):
-                    errors.append(f"{name} page {index + 1}: unresolved {target}")
+                if mode != args.link_mode or target_name == name or destination not in destinations.get(target_name, set()):
+                    errors.append(f"{name} page {index + 1}: invalid companion link {target}")
     if external[NAMES[0]] < 39 or external[NAMES[1]] < 39:
         errors.append(f"Too few reciprocal links: {external}")
     if source_count != 39:
@@ -68,7 +68,7 @@ def main() -> None:
         raise SystemExit("\n".join(errors))
     for name, doc in books.items():
         print(f"{name}: {len(doc)} pages, {external[name]} verified companion links")
-    print(f"Verified {source_count} AAPT problem-source links and all page bounds.")
+    print(f"Verified {source_count} AAPT problem-source links, {args.link_mode} companion links and all page bounds.")
 
 
 if __name__ == "__main__":

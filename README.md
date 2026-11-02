@@ -41,10 +41,9 @@ back to the reasoning you want to revisit.
 
 The guide has four parts and 71 worked examples. Its **Core** and
 **Extension** labels are reading cues, not official PhysicsBowl division
-classifications. Download the two PDFs into the same folder for their
-cross-document links; support for these links varies by PDF viewer.
-In a Chrome online-PDF check, a companion-book link did not open the other
-book. Use the contents and topic index to navigate manually when needed.
+classifications. The website's PDF links open the corresponding place in the
+online companion book. The ZIP includes matching offline editions: extract both
+PDFs into the same folder and use a reader that supports links to local files.
 
 ## From notes to a connected resource
 
@@ -92,13 +91,14 @@ python -m pip install PyMuPDF
 python -m unittest discover -s tests -v
 python scripts/build.py --write-docs
 python scripts/inspect_pdfs.py
-python scripts/inspect_pdfs.py --pdf-dir docs --compare-dir .build/pdf
+python scripts/inspect_pdfs.py --pdf-dir docs --link-mode online --compare-dir .build/online
 ```
 
 The build alternates LaTeX passes to resolve references between books. The PDF
 inspection checks page bounds, companion destinations and source links. The
-build inspects PDFs before updating the published copies, compares those copies
-against the verified build and packages them together with reading instructions.
+build verifies the offline PDFs, creates online editions with HTTPS companion
+links, checks both forms before publishing, and packages the offline editions
+with reading instructions. Tests compare their text, page images and targets.
 Integrity tests compare answers against the recorded key data; the editorial
 review documents the separate comparison with AAPT's published keys.
 When editing the topic map or sources, update the JSON files in `data/` and

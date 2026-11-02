@@ -9,9 +9,11 @@ import shutil
 import subprocess
 import sys
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
+from pdf_links import make_web_books
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / ".build" / "pdf"
+ONLINE = ROOT / ".build" / "online"
 BOOKS = [
     ("CheatSheets", "guides/physics/CheatSheets.tex"),
     ("Physics_Bowl_Initial_Version", "problems/Physics_Bowl_Initial_Version.tex"),
@@ -19,23 +21,22 @@ BOOKS = [
 ZIP_NAME = 'PhysicsBowl_Study_Collection.zip'
 README = '''Physics Bowl Study Collection
 
-Keep both PDFs in the same folder so companion links can work.
-Support for links to another PDF varies by reader. The guide and problem set
-also include topic labels and page references for navigation without links.
-In a Chrome online-PDF check, a companion-book link did not open the other
-book; use the contents and topic index to navigate manually when needed.
+The PDFs in this ZIP use local companion-file links. Keep both PDFs in the
+same folder and use a reader that supports links to another local PDF. Reader
+support varies. The website offers online PDFs with links that work in Chrome.
+The contents and topic index can also be used for manual navigation.
 
 These are independent study materials and are not endorsed by AAPT.
 Selected questions and some figures are attributed to AAPT source papers.
 '''
 
 
-def create_archive(directory: Path) -> None:
-    """Package exactly the inspected PDFs with a reproducible reading note."""
+def create_archive(directory: Path, source: Path) -> None:
+    """Package the inspected offline PDFs with a reproducible reading note."""
     temporary = directory / (ZIP_NAME + '.tmp')
     try:
         with ZipFile(temporary, 'w', compression=ZIP_DEFLATED, compresslevel=9) as archive:
-            for name, data in [*( (name + '.pdf', (directory / (name + '.pdf')).read_bytes())
+            for name, data in [*( (name + '.pdf', (source / (name + '.pdf')).read_bytes())
                                    for name, _ in BOOKS ), ('README.txt', README.encode('utf-8'))]:
                 info = ZipInfo(name, (2025, 10, 23, 0, 0, 0))
                 info.compress_type = ZIP_DEFLATED
@@ -43,8 +44,8 @@ def create_archive(directory: Path) -> None:
                 archive.writestr(info, data, compress_type=ZIP_DEFLATED, compresslevel=9)
         with ZipFile(temporary) as archive:
             for name, _ in BOOKS:
-                if archive.read(name + '.pdf') != (directory / (name + '.pdf')).read_bytes():
-                    raise ValueError(f'{name}: archive does not match published PDF')
+                if archive.read(name + '.pdf') != (source / (name + '.pdf')).read_bytes():
+                    raise ValueError(f'{name}: archive does not match verified offline PDF')
         temporary.replace(directory / ZIP_NAME)
     finally:
         temporary.unlink(missing_ok=True)
@@ -94,13 +95,16 @@ def main() -> None:
     if issues:
         raise SystemExit("PDF verification failed:\n- " + "\n- ".join(issues))
     subprocess.run([sys.executable, 'scripts/inspect_pdfs.py', '--pdf-dir', str(BUILD)], cwd=ROOT, check=True)
+    make_web_books(BUILD, ONLINE)
+    subprocess.run([sys.executable, 'scripts/inspect_pdfs.py', '--pdf-dir', str(ONLINE),
+                    '--link-mode', 'online'], cwd=ROOT, check=True)
     if args.write_docs:
         for name, _ in BOOKS:
-            shutil.copy2(BUILD / f"{name}.pdf", ROOT / "docs" / f"{name}.pdf")
+            shutil.copy2(ONLINE / f"{name}.pdf", ROOT / "docs" / f"{name}.pdf")
         subprocess.run([sys.executable, 'scripts/inspect_pdfs.py', '--pdf-dir', str(ROOT / 'docs'),
-                        '--compare-dir', str(BUILD)], cwd=ROOT, check=True)
-        create_archive(ROOT / 'docs')
-        print('Updated the verified PDF download paths and complete collection ZIP in docs/.')
+                        '--link-mode', 'online', '--compare-dir', str(ONLINE)], cwd=ROOT, check=True)
+        create_archive(ROOT / 'docs', BUILD)
+        print('Updated verified online PDFs and the offline collection ZIP in docs/.')
     print("Both PDFs compiled with resolved cross-references.")
 
 
